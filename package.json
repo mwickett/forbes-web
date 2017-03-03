@@ -20,6 +20,7 @@
     "offline-plugin": "^4.6.1",
     "rimraf": "^2.5.4",
     "snazzy": "^6.0.0",
+    "spike": "^0.15.0-1",
     "spike-core": "^0.13.3",
     "standard": "^8.6.0"
   },
