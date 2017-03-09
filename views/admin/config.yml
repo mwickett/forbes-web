@@ -1,17 +1,17 @@
 backend:
-  name: github
-  repo: mwickett/forbes-web
-  branch: master
+    name: github
+    repo: mwickett/forbes-web
+    branch: master
 
 media_folder: "assets/img/uploads"
 public_folder: "img/uploads"
 
 collections:
-  name: "team"
-  label: "Team"
-  folder: "_collections/team"
-  create: true
-  fields:
-      - {label: "Name", name: "name", widget: "string"}
-      - {label: "Body", name: "body", widget: "markdown"}
-      - {label: "Title", name: "title", widget: "string"}
+  - name: "team"
+    label: "Team"
+    folder: "_collections/team"
+    create: true
+    fields:
+        - {label: "Name", name: "name", widget: "string"}
+        - {label: "Body", name: "body", widget: "markdown"}
+        - {label: "Title", name: "title", widget: "string"}
