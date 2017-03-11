@@ -9,8 +9,11 @@
   "bugs": "https://github.com/mwickett/forbes-and-associates-web/issues",
   "dependencies": {
     "babel-preset-env": "^1.1.8",
+    "dotenv": "^4.0.0",
     "image-webpack-loader": "^3.1.0",
+    "marked": "^0.3.6",
     "reshape-standard": "next",
+    "spike-contentful": "next",
     "spike-css-standards": "next",
     "spike-page-id": "next",
     "webpack": "^2.2.1"
@@ -33,6 +36,6 @@
     "precommit": "npm run lint -s",
     "pretest": "npm run lint -s",
     "test": "NODE_ENV=test ava",
-    "watch" : "spike watch"
+    "watch": "spike watch"
   }
 }

@@ -27,3 +27,6 @@ extends(src='layout.sgr')
     p Customize your settings by editing the
       a(href="https://spike.readme.io/docs/appjs") app.js
       |  file or simply start by editing this view
+
+    // p {{{ marked(contentful.home[0].missionStatement) }}}
+    p {{ contentful.contactPage[0].contactPhone }}
