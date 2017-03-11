@@ -1,0 +1,4 @@
+nav
+  ul
+    each(loop='item in ["how-we-help", "team", "events", "contact"]')
+      li:a(href='{{ item }}' class="{{ pageId === item ? 'active' : 'inactive'}}") {{ item }}

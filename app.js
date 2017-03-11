@@ -34,7 +34,8 @@ module.exports = {
                   name: 'contactPage',
                   id: 'contactPage',
               },
-          ]
+          ],
+          json: 'data/data.json'
       })
   ]
 }
