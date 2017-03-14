@@ -1,4 +1,5 @@
 nav
+  include(src="includes/_logo.sgr")
   ul
-    each(loop='item in ["how-we-help", "team", "events", "contact"]')
+    each(loop='item in ["how-we-help", "meet-our-team", "upcoming-events", "get-in-touch"]')
       li:a(href='{{ item }}' class="{{ pageId === item ? 'active' : 'inactive'}}") {{ item }}

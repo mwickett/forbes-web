@@ -11,11 +11,14 @@ html
     block(name='title')
       title Dr. Forbes & Associates - Psychologist, counselling, educational assessments - London, Ontario
 
+    script(src="https://use.typekit.net/bfd0rgr.js")
+    script.
+      try{Typekit.load({ async: true });}catch(e){}
+
     block(name='stylesheets')
       link(rel='stylesheet' href='css/index.css')
 
   body(role='document')
-    include(src="includes/_logo.sgr")
     include(src="includes/_nav.sgr")
     main(role='main' id='{{ pageId }}')
       block(name='content')

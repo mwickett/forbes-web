@@ -6,6 +6,7 @@ const jsStandards = require('babel-preset-env')
 const pageId = require('spike-page-id')
 const Contentful = require('spike-contentful')
 const marked = require('marked')
+
 const locals = {}
 
 module.exports = {

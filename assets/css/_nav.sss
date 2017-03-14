@@ -1,0 +1,36 @@
+nav
+  display: flex
+  width: 100%
+  justify-content: space-between
+  /*align-items: center*/
+  margin-bottom: 87px
+  padding: 25px 25px 0px 25px
+  font-size: 13px
+  font-family: "soleil", sans-serif
+
+  & ul
+    display: flex
+    align-items: center
+    list-style: none
+
+    & li
+      flex: 1 1 auto
+      margin: 0 2em
+
+      & a
+        text-decoration: none
+        text-transform: uppercase
+        color: var(--brandGrey)
+
+        &:active,
+        :visited,
+        :hover
+          color: var(--brandGrey)
+
+      & a.active
+        border-bottom: 2px var(--brandColour) solid
+        padding-bottom: 5px
+
+  & #logo svg
+    width: 215px
+    flex: 0 1 215px
