@@ -4,6 +4,6 @@ extends(src='layout.sgr')
 
     // p {{{ marked(contentful.home[0].missionStatement) }}}
     p {{ contentful.contactPage[0].fields.contactPhone }}
-    p {{{ md(contentful.contactPage[0].fields.contactBody) }}}
+    p {{{ marked(contentful.contactPage[0].fields.contactBody) }}}
 
     p(mdi) _Hello_, I am #1 and this is [my link](#).
