@@ -1,3 +1,6 @@
 extends(src='layout.sgr')
   block(name='content')
-    h2 Team
+    each(loop='team of contentful.team')
+      h3 {{ team.fields.name }}, {{ team.fields.educationTitle }}
+      p {{{ marked(team.fields.fullBio) }}}
+      // Add image

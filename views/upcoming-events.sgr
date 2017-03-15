@@ -1,3 +1,10 @@
 extends(src='layout.sgr')
   block(name='content')
-    h2 Events
+    each(loop='event of contentful.events')
+      h3 {{ event.fields.eventTitle }}
+      time {{ event.fields.dateTime }}
+
+      h5 Description
+      p {{{ marked(event.fields.eventDescription) }}}
+
+      // Event specific image?

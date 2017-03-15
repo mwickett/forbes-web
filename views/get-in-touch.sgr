@@ -1,3 +1,43 @@
 extends(src='layout.sgr')
   block(name='content')
-    h2 Contact
+    h2 {{ contentful.contactPage[0].fields.getInTouch }}
+    p {{{ marked(contentful.contactPage[0].fields.contactBody) }}}
+    p
+     | Phone: {{ contentful.contactPage[0].fields.contactPhone }}
+     | Fax: {{ contentful.contactPage[0].fields.contactFax }}
+
+    p: a(href='mailto:{{ contentful.contactPage[0].fields.contactEmail }}') {{ contentful.contactPage[0].fields.contactEmail }}
+
+    p {{{ marked(contentful.contactPage[0].fields.contactAddress) }}}
+
+
+    form.contact-form(action='thanks', name="contact", netlify, netlify-honeypot="bot-field")
+        h3 This is a form
+        .form-row
+          input#name(type='text', name='name', placeholder='Your Full Name')
+          label(for="name") Name
+        .form-row
+          input#organization(type='text', name='organization', placeholder='The name of your organization')
+          label(for="organization") Organization
+        .form-row
+          input#email(type='email', name='email', placeholder='Valid Email Address' required)
+          label(for="email") Email
+        .form-row
+          select(name='goal')
+            option(value="What goal can Academica help you achieve?") What goal can Academica help you achieve?
+            option(value="Increase my event registrations") Increase my event registrations
+            option(value="Increase my awareness within the sector") Increase my awareness within the sector
+            option(value="Showcase my product") Showcase my product
+            option(value="Highlight a milestone or achievement") Highlight a milestone or achievement
+            option(value="Drive traffic to my website") Drive traffic to my website
+            option(value="Share my brand narrative with the sector") Share my brand narrative with the sector
+            option(value="I have another custom goal in mind") I have another custom goal in mind (tell us below)
+          label(for="goal") What goal can Academica help you achieve?
+        .form-row
+          input#about(type="text" name='about', placeholder='Tell us about your product, service or event')
+          label(for="about") About
+        .form-row
+          input.hidden#bot-field(type='text', name='bot-field', placeholder='Spam check')
+          label.hidden(for="bot-field") Bot field
+        .form-row
+          button Get started
