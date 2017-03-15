@@ -35,6 +35,18 @@ module.exports = {
                   name: 'contactPage',
                   id: 'contactPage',
               },
+              {
+                name: 'services',
+                id: 'service'
+              },
+              {
+                name: 'team',
+                id: 'team'
+              },
+              {
+                name: 'events',
+                id: 'event'
+              }
           ],
           json: 'data/data.json'
       })
