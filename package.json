@@ -13,6 +13,7 @@
     "image-webpack-loader": "^3.1.0",
     "marked": "^0.3.6",
     "reshape-standard": "next",
+    "sanitize.css": "^5.0.0",
     "spike-contentful": "next",
     "spike-css-standards": "next",
     "spike-page-id": "next",

@@ -22,6 +22,7 @@ html
     include(src="includes/_nav.sgr")
     main(role='main' id='{{ pageId }}')
       block(name='content')
+    include(src="includes/_footer.sgr")
 
     block(name='javascript')
       script(src='js/main.js' defer)
