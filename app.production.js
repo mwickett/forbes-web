@@ -1,3 +1,5 @@
+require('dotenv').config({ silent: true})
+
 const OfflinePlugin = require('offline-plugin')
 const {UglifyJsPlugin} = require('webpack').optimize
 

@@ -1,9 +1,36 @@
 extends(src='layout.sgr')
   block(name='content')
-    h2 Home
+    .hero
+      h1 {{{ marked(contentful.home[0].fields.missionStatement) }}}
+      img(src="img/lander.png")
 
-    // p {{{ marked(contentful.home[0].missionStatement) }}}
-    p {{ contentful.contactPage[0].fields.contactPhone }}
-    p {{{ marked(contentful.contactPage[0].fields.contactBody) }}}
+    .whatToExpect
+      h2 {{ contentful.home[0].fields.whatToExpectTitle }}
+      p {{{ marked(contentful.home[0].fields.whatToExpectBody) }}}
 
-    p(mdi) _Hello_, I am #1 and this is [my link](#).
+    hr
+
+    .howWeHelp
+      h3 How we help
+      each(loop='homePageFeature of contentful.home[0].fields.homePageFeatures')
+        h3 {{ homePageFeature.fields.homeFeatureTitle }}
+        p {{ homePageFeature.fields.homeFeatureBody }}
+        a(href='{{ homePageFeature.fields.homeFeatureButtonUrl }}') {{ homePageFeature.fields.homeFeatureButtonText }}
+
+    hr
+
+    .meetTheTeam
+      h3 Meet the team
+      each(loop='teamMember of contentful.home[0].fields.teamCarousel')
+        h3 {{ teamMember.fields.name }}, {{ teamMember.fields.educationTitle }}
+        p {{ teamMember.fields.jobTitle }}
+        p {{{ marked(teamMember.fields.shortBio) }}}
+
+    hr
+
+    .eventsPreview
+      h3 Events
+      each(loop='event of contentful.home[0].fields.homeEvents')
+        h3 {{ event.fields.eventTitle }}
+        p Date & Time: {{ event.fields.dateTime }}
+        p {{ event.fields.eventDescription }}
