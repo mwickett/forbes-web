@@ -37,11 +37,17 @@ module.exports = {
               },
               {
                 name: 'services',
-                id: 'service'
+                id: 'service',
+                filters: {
+                  order: 'fields.order'
+                }
               },
               {
                 name: 'team',
-                id: 'team'
+                id: 'team',
+                filters: {
+                  order: 'fields.order'
+                }
               },
               {
                 name: 'events',
