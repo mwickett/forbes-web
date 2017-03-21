@@ -3,4 +3,4 @@ extends(src='layout.sgr')
     each(loop='team of contentful.team')
       h3 {{ team.fields.name }}, {{ team.fields.educationTitle }}
       p {{{ marked(team.fields.fullBio) }}}
-      // Add image
+      img(src="{{ team.fields.avatar.fields.file.url }}")
