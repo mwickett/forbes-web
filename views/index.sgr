@@ -16,6 +16,9 @@ extends(src='layout.sgr')
         h3 {{ homePageFeature.fields.homeFeatureTitle }}
         p {{ homePageFeature.fields.homeFeatureBody }}
         a(href='{{ homePageFeature.fields.homeFeatureButtonUrl }}') {{ homePageFeature.fields.homeFeatureButtonText }}
+        picture
+          source(type='image/webp' srcset='{{ homePageFeature.fields.homeFeatureBackgroundImage.fields.file.url }}fm=webp&w=2000 2000w, {{ homePageFeature.fields.homeFeatureBackgroundImage.fields.file.url }}?fm=webp&w=1500 1500w, {{ homePageFeature.fields.homeFeatureBackgroundImage.fields.file.url }}?fm=webp&w=900 900w, {{ homePageFeature.fields.homeFeatureBackgroundImage.fields.file.url }}?fm=webp&w=450 450w')
+          img(src='{{ homePageFeature.fields.homeFeatureBackgroundImage.fields.file.url }}?fm=jpg&w=900' srcset='{{ homePageFeature.fields.homeFeatureBackgroundImage.fields.file.url }}?fm=jpg&w=2000 2000w, {{ homePageFeature.fields.homeFeatureBackgroundImage.fields.file.url }}?fm=jpg&w=1500 1500w, {{ homePageFeature.fields.homeFeatureBackgroundImage.fields.file.url }}?fm=jpg&w=900 900w, {{ homePageFeature.fields.homeFeatureBackgroundImage.fields.file.url }}?fm=jpg&w=450 450w' alt='j')
 
     hr
 
