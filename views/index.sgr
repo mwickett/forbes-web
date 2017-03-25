@@ -13,21 +13,9 @@ extends(src='layout.sgr')
     .howWeHelp
       h3 How we help
       each(loop='homePageFeature of contentful.home[0].fields.homePageFeatures')
-        h3 {{ homePageFeature.fields.homeFeatureTitle }}
-        p {{ homePageFeature.fields.homeFeatureBody }}
-        a(href='{{ homePageFeature.fields.homeFeatureButtonUrl }}') {{ homePageFeature.fields.homeFeatureButtonText }}
-        picture
-          source(type='image/webp'
-            srcset='{{ homePageFeature.fields.homeFeatureBackgroundImage.fields.file.url }}?fm=webp&w=2000&fit=fill 2000w,
-            {{ homePageFeature.fields.homeFeatureBackgroundImage.fields.file.url }}?fm=webp&w=1500&fit=fill 1500w,
-            {{ homePageFeature.fields.homeFeatureBackgroundImage.fields.file.url }}?fm=webp&w=900 900w,
-            {{ homePageFeature.fields.homeFeatureBackgroundImage.fields.file.url }}?fm=webp&w=450 450w')
-          img(src='{{ homePageFeature.fields.homeFeatureBackgroundImage.fields.file.url }}?fm=jpg&w=900&fit=fill'
-            srcset='{{ homePageFeature.fields.homeFeatureBackgroundImage.fields.file.url }}?fm=jpg&w=2000&fit=fill 2000w,
-            {{ homePageFeature.fields.homeFeatureBackgroundImage.fields.file.url }}?fm=jpg&w=1500&fit=fill 1500w,
-            {{ homePageFeature.fields.homeFeatureBackgroundImage.fields.file.url }}?fm=jpg&w=900 900w,
-            {{ homePageFeature.fields.homeFeatureBackgroundImage.fields.file.url }}?fm=jpg&w=450 450w'
-            alt='{{ homePageFeature.fields.homeFeatureBackgroundImage.fields.description }}')
+        h3 {{ homePageFeature.fields.serviceName }}
+        p {{ homePageFeature.fields.homepageDescription }}
+        a(href='{{ homePageFeature.fields.homepageButtonUrl }}') {{ homePageFeature.fields.homepageButtonText }}
 
     hr
 
