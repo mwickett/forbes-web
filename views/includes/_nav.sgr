@@ -1,5 +1,5 @@
 nav
   include(src="includes/_logo.sgr")
   ul
-    each(loop='item in ["how-we-help", "meet-our-team", "upcoming-events", "get-in-touch"]')
-      li:a(href='{{ item }}' class="{{ pageId === item ? 'active' : 'inactive'}}") {{ item }}
+    each(loop='item in ["How We Help", "Meet Our Team", "Upcoming Events", "Get In Touch"]')
+      li:a(href='{{{ slugify(item) }}}' class="{{ pageId === slugify(item) ? 'active' : 'inactive'}}") {{ item }}

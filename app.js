@@ -9,6 +9,19 @@ const marked = require('marked')
 
 const locals = {}
 
+// Used to convert anything to URL friendly slug
+const slugify = function(text) {
+  return text
+    .toString()
+    .trim()
+    .toLowerCase()
+    .replace(/\s+/g, "-")
+    .replace(/[^\w\-]+/g, "")
+    .replace(/\-\-+/g, "-")
+    .replace(/^-+/, "")
+    .replace(/-+$/, "")
+}
+
 module.exports = {
   devtool: 'source-map',
   matchers: {
@@ -17,7 +30,7 @@ module.exports = {
   },
   ignore: ['**/layout.sgr', '**/_*', '**/.*', '_cache/**', 'readme.md', 'yarn.lock'],
   reshape: htmlStandards({
-    locals: (ctx) => { return Object.assign(locals, { pageId: pageId(ctx) }, { marked: marked }, {typeKitId: process.env.TYPEKIT_ID}) }
+    locals: (ctx) => { return Object.assign(locals, { pageId: pageId(ctx) }, { marked: marked }, {typeKitId: process.env.TYPEKIT_ID}, {slugify: slugify}) }
   }),
   postcss: cssStandards(),
   babel: { presets: [[jsStandards, { modules: false }]] },
@@ -52,6 +65,10 @@ module.exports = {
               {
                 name: 'events',
                 id: 'event'
+              },
+              {
+                name: 'basicPage',
+                id: 'basicPage'
               }
           ],
           json: 'data/data.json'

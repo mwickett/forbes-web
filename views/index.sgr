@@ -11,16 +11,17 @@ extends(src='layout.sgr')
     hr
 
     .howWeHelp
-      h3 How we help
+      h2 How we help
       each(loop='homePageFeature of contentful.home[0].fields.homePageFeatures')
         h3 {{ homePageFeature.fields.serviceName }}
         p {{ homePageFeature.fields.homepageDescription }}
+        img(src="{{ homePageFeature.fields.serviceIcon.fields.file.url }}" alt="{{ homePageFeature.fields.serviceIcon.fields.description }}")
         a(href='{{ homePageFeature.fields.homepageButtonUrl }}') {{ homePageFeature.fields.homepageButtonText }}
 
     hr
 
     .meetTheTeam
-      h3 Meet the team
+      h2 Meet the team
       each(loop='teamMember of contentful.home[0].fields.teamCarousel')
         h3 {{ teamMember.fields.name }}, {{ teamMember.fields.educationTitle }}
         p {{ teamMember.fields.jobTitle }}
@@ -29,7 +30,7 @@ extends(src='layout.sgr')
     hr
 
     .eventsPreview
-      h3 Events
+      h2 Events
       each(loop='event of contentful.home[0].fields.homeEvents')
         h3 {{ event.fields.eventTitle }}
         p Date & Time: {{ event.fields.dateTime }}

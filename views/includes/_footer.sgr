@@ -1,2 +1,32 @@
 #footer
-  p this is the footer
+
+    .footer-item
+      h5 Services
+      ul
+        li: a(href='/how-we-help#performance') Performance Enhancement
+        li: a(href='/how-we-help#learning') Learning Assessment
+        li: a(href='/how-we-help#career') Career Assessment
+        li: a(href='/how-we-help#counselling') Counselling
+
+      h5: a(href='/privacy') Privacy Policy
+
+    .footer-item
+      h5 Information
+      ul
+        li: a(href='/meet-our-team') Team
+        li: a(href='/upcoming-events') Events
+
+    .footer-item
+      h5 Contact Us
+      ul
+        li: a(href='mailto:info@drforbes.ca') info@drforbes.ca
+        li 130-630 Colborne Street
+           |London Ontario N6B 2V2
+        li 519-280-6697
+
+      h5 &copy; 2017 Forbes and Associates
+
+    .footer-item
+      h5 Follow Us
+      ul
+        li: a(href='https://www.facebook.com/drforbes') Facebook Icon
