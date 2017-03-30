@@ -1,16 +1,17 @@
 extends(src='layout.sgr')
   block(name='content')
-    .hero
+    #hero
       h1 {{{ marked(contentful.home[0].fields.missionStatement) }}}
-      img(src="img/lander.png")
+      img#heroImage(src="img/lander.png")
 
-    .whatToExpect
+    #whatToExpect.g-imageBg
       h2 {{ contentful.home[0].fields.whatToExpectTitle }}
-      p {{{ marked(contentful.home[0].fields.whatToExpectBody) }}}
+      .expectContent
+        p {{{ marked(contentful.home[0].fields.whatToExpectBody) }}}
 
     hr
 
-    .howWeHelp
+    #howWeHelp
       h2 How we help
       each(loop='homePageFeature of contentful.home[0].fields.homePageFeatures')
         h3 {{ homePageFeature.fields.serviceName }}
@@ -20,7 +21,7 @@ extends(src='layout.sgr')
 
     hr
 
-    .meetTheTeam
+    #meetTheTeam
       h2 Meet the team
       each(loop='teamMember of contentful.home[0].fields.teamCarousel')
         h3 {{ teamMember.fields.name }}, {{ teamMember.fields.educationTitle }}
@@ -29,7 +30,7 @@ extends(src='layout.sgr')
 
     hr
 
-    .eventsPreview
+    #eventsPreview
       h2 Events
       each(loop='event of contentful.home[0].fields.homeEvents')
         h3 {{ event.fields.eventTitle }}
