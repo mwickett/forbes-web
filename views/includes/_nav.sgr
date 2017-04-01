@@ -1,5 +1,9 @@
-nav#main-nav
-  include(src="includes/_logo.sgr")
-  ul
-    each(loop='item in ["How We Help", "Meet Our Team", "Upcoming Events", "Get In Touch"]')
-      li:a(href='{{{ slugify(item) }}}' class="{{ pageId === slugify(item) ? 'active' : 'inactive'}}") {{ item }}
+header
+  #logo
+    a(href='/'): img(src='img/DrForbes-logo.svg')
+    div#navToggle
+      a(href='#') Menu
+  nav
+    ul
+      each(loop='item in ["How We Help", "Meet Our Team", "Upcoming Events", "Get In Touch"]')
+        li:a(href='{{{ slugify(item) }}}' class="{{ pageId === slugify(item) ? 'active' : 'inactive'}}") {{ item }}

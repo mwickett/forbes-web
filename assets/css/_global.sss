@@ -5,10 +5,12 @@
   --black: #000000
   --blue: #0092FF
 
-html
+body
   font-family: "ff-tisa-web-pro", serif
   font-size: responsive 18px 20px
   font-range: 320px 1280px
+  -webkit-font-smoothing: antialiased
+  text-rendering: optimizeLegibility
 
 h1,
 h2,
@@ -26,6 +28,9 @@ a,
 a:visited,
 a:active
   color: var(--blue)
+
+img
+  max-width: 100%
 
 
 // Layout

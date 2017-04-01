@@ -1,36 +1,99 @@
-nav#main-nav
+header
   display: flex
-  width: 100%
-  justify-content: space-between
-  /*align-items: center*/
-  margin-bottom: 87px
-  padding: 25px 25px 0px 25px
-  font-size: 13px
-  font-family: "soleil", sans-serif
+  flex-direction: column
+  text-align: center
 
-  & ul
+  & nav
+    background-color: white
+    display: none
+    flex: 1
+    transition: 800ms all ease
+    color: var(--brandColour)
+
+    & ul
+      list-style-type: none
+      margin: 0
+      padding: 0
+      width: 100%
+
+      & li
+        border-bottom: 1px solid rgba(0,0,0,0.1)
+        position: relative
+
+        & a
+          display: block
+          color: var(--brandColour) !important
+          font-weight: 700
+          padding: 1.5rem 0
+          text-decoration: none
+          transition: 250ms all ease
+
+  & #logo
+    line-height: 70px
     display: flex
-    align-items: center
-    list-style: none
+    flex-flow: row nowrap
+    padding: 1em
+    justify-content: space-between
+    align-content: flex-start
 
-    & li
-      flex: 1 1 auto
-      margin: 0 2em
+    & a
+      flex: 0 1 205px
+      margin-right: 0.8em
+      text-align: left
+
+    & div#navToggle
+      background-color: var(--brandColour)
+      transition: 300ms all ease
+      align-self: flex-end
+      border-radius: 4px
+
+      &:hover
+        background-color: rgba(0,0,0,0.1)
 
       & a
+        color: white
+        display: block
+        font-size: 0.85em
+        font-weight: 800
+        padding: 0 1.5rem
         text-decoration: none
-        text-transform: uppercase
-        color: var(--brandGrey)
+        transition: 300ms all ease
 
-        &:active,
-        :visited,
-        :hover
-          color: var(--brandGrey)
+@media all and (min-width: 600px)
 
-      & a.active
-        border-bottom: 2px var(--brandColour) solid
-        padding-bottom: 5px
+  header
+    flex-direction: row
+    align-items: baseline
+    & div#logo
+      flex: 1
+      & div#navToggle
+        display: none
+    & nav
+      flex: 2
+      display: flex
+      font-size: 13px
+      font-family: "soleil", sans-serif
 
-  & #logo svg
-    width: 215px
-    flex: 0 1 215px
+
+      & ul
+        display: flex
+        align-items: center
+        justify-content: space-between
+        list-style: none
+
+        & li
+          flex: 1 1 auto
+          border-bottom: none
+
+          & a
+            text-decoration: none
+            text-transform: uppercase
+            color: var(--brandGrey) !important
+
+            &:active,
+            :visited,
+            :hover
+              color: var(--brandGrey)
+
+          & a.active
+            border-bottom: 2px var(--brandColour) solid
