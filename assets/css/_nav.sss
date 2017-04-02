@@ -23,7 +23,7 @@ header
         & a
           display: block
           color: var(--brandColour) !important
-          font-weight: 700
+          font-weight: 500
           padding: 1.5rem 0
           text-decoration: none
           transition: 250ms all ease
@@ -42,19 +42,23 @@ header
       text-align: left
 
     & div#navToggle
-      background-color: var(--brandColour)
+      background-color: white
+      border: 2px solid var(--brandColour)
       transition: 300ms all ease
       align-self: flex-end
-      border-radius: 4px
+      border-radius: 10px
 
       &:hover
         background-color: rgba(0,0,0,0.1)
 
       & a
-        color: white
+        color: var(--brandColour)
+        font-family: "soleil", sans-serif
         display: block
         font-size: 0.85em
-        font-weight: 800
+        font-weight: 500
+        text-transform: uppercase
+        text-align: center
         padding: 0 1.5rem
         text-decoration: none
         transition: 300ms all ease
