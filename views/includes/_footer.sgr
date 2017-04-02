@@ -7,6 +7,7 @@
       li: a(href='/how-we-help#career') Career Assessment
       li: a(href='/how-we-help#counselling') Counselling
 
+  .privacy
     h5: a(href='/privacy') Privacy Policy
 
   .footer-item
@@ -23,6 +24,7 @@
          |London Ontario N6B 2V2
       li 519-280-6697
 
+  .copyright
     h5 &copy; 2017 Forbes and Associates
 
   .footer-item
