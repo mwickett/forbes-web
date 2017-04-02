@@ -2,28 +2,32 @@
 
   // Hero section
   & #hero
-    min-height: 100vh
-    width: 100%
+    display: flex
+    flex-flow: column nowrap
+    justify-content: space-between
+    align-items: center
+    height: 80vh
 
     & h1
+      margin-top: 5rem
       text-align: center
+      padding: 0 1em
+      font-size: 1.6em
       max-width: 20em
-      margin: 0 auto
-      margin-top: 5em
 
       & p:last-of-type
         color: var(--brandColour)
 
-    & img#heroImage
-      position: absolute
-      bottom: 0px
-      left: 32%
-      height: auto
-      width: 400px
+    & #heroImage
+      width: 200px
 
   // What to expect
 
   & #whatToExpect
+    & h2
+      margin-top: 0
+
+  /*& #whatToExpect
     display: flex
     color: white
     padding: 5em 2em
@@ -38,4 +42,4 @@
     & .expectContent
       border-left: 2px solid white
       margin: 2em
-      padding-left: 2em
+      padding-left: 2em*/
