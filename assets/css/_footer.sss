@@ -3,9 +3,14 @@
   color: white
   display: flex
   flex-flow: column nowrap
-  padding: 2em
+  padding: 2em 4em
 
   & h5
+    color: white
+    font-weight: 500
+    margin-bottom: 1em
+
+  & h6
     color: white
     font-weight: 200
 
@@ -18,22 +23,21 @@
     padding-left: 0
     font-size: 0.7em
 
-  & .privacy
-    order: 1
 
-  & .copyright
-    order: 2
-
-@media all and (min-width: 400px)
+@media all and (min-width: 600px)
   #footer
     flex-flow: row wrap
     justify-content: space-between
 
-    & .privacy
-      order: initial
+    & .bottom
+      display: flex
+      flex-flow: row nowrap
+      justify-content: center
+      width: 100%
 
-    & .copyright
-      order: initial
+      & h6
+        margin: 7em 2em 2em 2em
+
 
   /*display: flex
   width: 100%
