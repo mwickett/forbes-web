@@ -34,6 +34,22 @@
       margin-top: 0
       color: white
       text-transform: uppercase
+      font-size: 2em
+
+    @media all and (min-width: 600px)
+      flex-flow: row nowrap
+
+      & h2
+        flex: 1
+        font-size: 3em
+        text-align: right
+        line-height: 0.9
+
+      & .expectContent
+        flex: 1.5
+        border-left: 2px solid white
+        padding-left: 2em
+        margin: 2em
 
   // How We help
 
