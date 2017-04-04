@@ -8,14 +8,20 @@
     align-items: center
     height: 90vh
 
-    & h1
-      text-align: center
-      padding: 0 1em
-      font-size: 1.6em
-      max-width: 20em
+    & #heroContent
+      height: 100%
+      display: flex
+      flex-flow: column nowrap
+      justify-content: center
 
-      & p:last-of-type
-        color: var(--brandColour)
+      & h1
+        text-align: center
+        padding: 0 1em
+        font-size: 1.6em
+        max-width: 20em
+
+        & p:last-of-type
+          color: var(--brandColour)
 
     & #heroImage
       width: 200px
