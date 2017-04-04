@@ -17,22 +17,8 @@ extends(src='layout.sgr')
           input#name(type='text', name='name', placeholder='Your Full Name')
           label(for="name") Name
         .form-row
-          input#organization(type='text', name='organization', placeholder='The name of your organization')
-          label(for="organization") Organization
-        .form-row
           input#email(type='email', name='email', placeholder='Valid Email Address' required)
           label(for="email") Email
-        .form-row
-          select(name='goal')
-            option(value="What goal can Academica help you achieve?") What goal can Academica help you achieve?
-            option(value="Increase my event registrations") Increase my event registrations
-            option(value="Increase my awareness within the sector") Increase my awareness within the sector
-            option(value="Showcase my product") Showcase my product
-            option(value="Highlight a milestone or achievement") Highlight a milestone or achievement
-            option(value="Drive traffic to my website") Drive traffic to my website
-            option(value="Share my brand narrative with the sector") Share my brand narrative with the sector
-            option(value="I have another custom goal in mind") I have another custom goal in mind (tell us below)
-          label(for="goal") What goal can Academica help you achieve?
         .form-row
           input#about(type="text" name='about', placeholder='Tell us about your product, service or event')
           label(for="about") About
