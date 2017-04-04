@@ -79,9 +79,9 @@
       position: absolute
       top: 0
       left: 0
+      z-index: 0
       width: 100%
       height: 100%
-      z-index: 1
       opacity: 0.2
 
 
@@ -89,3 +89,41 @@
       color: var(--brandGrey)
       text-transform: uppercase
       margin-top: 3em
+
+    & .service-card
+      display: flex
+      flex-flow: column nowrap
+      align-items: center
+      margin: 1em
+      background: #FFFFFF
+      border: 1px solid #D9D1D1
+      box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.24)
+      border-radius: 4px
+      z-index: 1
+
+      & :hover
+        border: 2px solid var(--brandColour)
+
+      & .service-card__image
+        display: flex
+        flex-flow: column nowrap
+        align-items: center
+        width: 100%
+        background:
+          radial-gradient(
+            198.86px at 50% 50%,
+            rgba(255, 255, 255, 0.71) 0%,
+            rgba(255, 255, 255, 0) 100%),
+          linear-gradient(0deg, #6D6D6D, #6D6D6D)
+        padding: 2em
+        border-radius: 4px 4px 0px 0px
+
+        & img
+          width: 55%
+
+      & .service-card__content
+        display: flex
+        flex-flow: column nowrap
+        align-items: center
+        justify-content: space-around
+        padding: 2em
