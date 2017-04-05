@@ -22,7 +22,7 @@ extends(src='layout.sgr')
               h3 {{ homePageFeature.fields.serviceName }}
               hr
               p {{ homePageFeature.fields.homepageDescription }}
-              a.button(href='{{ homePageFeature.fields.homepageButtonUrl }}') {{ homePageFeature.fields.homepageButtonText }}
+            a.button(href='{{ homePageFeature.fields.homepageButtonUrl }}') {{ homePageFeature.fields.homepageButtonText }}
 
     #meetTheTeam
       h2 Meet the team

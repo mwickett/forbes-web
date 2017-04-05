@@ -87,7 +87,7 @@
     & h2
       color: var(--brandGrey)
       text-transform: uppercase
-      margin-top: 3em
+      margin: 3em 0em
 
     & .service-container
       display: flex
@@ -111,13 +111,16 @@
         z-index: 1
         font-family: 'soleil', sans-serif
 
+        & a.button
+          margin-bottom: 2em
+
         @media screen and (min-width: 600px)
           flex: 0 1 45%
           margin: 0
           margin-bottom: 2em
 
         &:hover
-          border: 2px solid var(--brandColour)
+          border: 1px solid var(--brandColour)
 
         & .service-card__image
           display: flex
@@ -127,7 +130,7 @@
           background:
             radial-gradient(
               198.86px at 50% 50%,
-              rgba(255, 255, 255, 0.71) 0%,
+              rgba(255, 255, 255, 0.41) 0%,
               rgba(255, 255, 255, 0) 100%),
             linear-gradient(0deg, #6D6D6D, #6D6D6D)
           padding: 2em
@@ -138,6 +141,7 @@
 
         & .service-card__content
           display: flex
+          flex: 1
           flex-flow: column nowrap
           align-items: center
           justify-content: space-around
@@ -151,4 +155,3 @@
 
           & p
             font-weight: 200
-            margin-bottom: 3em
