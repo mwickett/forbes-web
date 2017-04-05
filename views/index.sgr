@@ -14,6 +14,7 @@ extends(src='layout.sgr')
     #howWeHelp
       h2 How we help
       .service-container
+        .background
         each(loop='homePageFeature of contentful.home[0].fields.homePageFeatures')
           .service-card
             .service-card__image
