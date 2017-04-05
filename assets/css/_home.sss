@@ -84,57 +84,71 @@
       height: 100%
       opacity: 0.2
 
-
     & h2
       color: var(--brandGrey)
       text-transform: uppercase
       margin-top: 3em
 
-    & .service-card
+    & .service-container
       display: flex
       flex-flow: column nowrap
-      align-items: center
-      margin: 1em
-      background: #FFFFFF
-      border: 1px solid #D9D1D1
-      box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.24)
-      border-radius: 4px
-      z-index: 1
-      font-family: 'soleil', sans-serif
+      justify-content: center
 
-      &:hover
-        border: 2px solid var(--brandColour)
-
-      & .service-card__image
-        display: flex
-        flex-flow: column nowrap
-        align-items: center
-        width: 100%
-        background:
-          radial-gradient(
-            198.86px at 50% 50%,
-            rgba(255, 255, 255, 0.71) 0%,
-            rgba(255, 255, 255, 0) 100%),
-          linear-gradient(0deg, #6D6D6D, #6D6D6D)
-        padding: 2em
-        border-radius: 4px 4px 0px 0px
-
-        & img
-          width: 55%
-
-      & .service-card__content
-        display: flex
-        flex-flow: column nowrap
-        align-items: center
+      @media screen and (min-width: 600px)
+        flex-flow: row wrap
         justify-content: space-around
-        padding: 2em
+        align-content: center
 
-        & hr
-          background-color: var(--brandColour)
-          height: 2px
-          width: 100px
-          border: 0
+      & .service-card
+        display: flex
+        flex-flow: column nowrap
+        align-items: center
+        margin: 1em
+        background: #FFFFFF
+        border: 1px solid #D9D1D1
+        box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.24)
+        border-radius: 4px
+        z-index: 1
+        font-family: 'soleil', sans-serif
 
-        & p
-          font-weight: 200
-          margin-bottom: 3em
+        @media screen and (min-width: 600px)
+          flex: 0 1 45%
+          margin: 0
+          margin-bottom: 2em
+
+        &:hover
+          border: 2px solid var(--brandColour)
+
+        & .service-card__image
+          display: flex
+          flex-flow: column nowrap
+          align-items: center
+          width: 100%
+          background:
+            radial-gradient(
+              198.86px at 50% 50%,
+              rgba(255, 255, 255, 0.71) 0%,
+              rgba(255, 255, 255, 0) 100%),
+            linear-gradient(0deg, #6D6D6D, #6D6D6D)
+          padding: 2em
+          border-radius: 4px 4px 0px 0px
+
+          & img
+            width: 55%
+
+        & .service-card__content
+          display: flex
+          flex-flow: column nowrap
+          align-items: center
+          justify-content: space-around
+          padding: 2em
+
+          & hr
+            background-color: var(--brandColour)
+            height: 2px
+            width: 100px
+            border: 0
+
+          & p
+            font-weight: 200
+            margin-bottom: 3em

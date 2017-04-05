@@ -13,15 +13,16 @@ extends(src='layout.sgr')
 
     #howWeHelp
       h2 How we help
-      each(loop='homePageFeature of contentful.home[0].fields.homePageFeatures')
-        .service-card
-          .service-card__image
-            img(src='{{ homePageFeature.fields.serviceIcon.fields.file.url }}' alt='{{ homePageFeature.fields.serviceIcon.fields.description }}')
-          .service-card__content
-            h3 {{ homePageFeature.fields.serviceName }}
-            hr
-            p {{ homePageFeature.fields.homepageDescription }}
-            a.button(href='{{ homePageFeature.fields.homepageButtonUrl }}') {{ homePageFeature.fields.homepageButtonText }}
+      .service-container
+        each(loop='homePageFeature of contentful.home[0].fields.homePageFeatures')
+          .service-card
+            .service-card__image
+              img(src='{{ homePageFeature.fields.serviceIcon.fields.file.url }}' alt='{{ homePageFeature.fields.serviceIcon.fields.description }}')
+            .service-card__content
+              h3 {{ homePageFeature.fields.serviceName }}
+              hr
+              p {{ homePageFeature.fields.homepageDescription }}
+              a.button(href='{{ homePageFeature.fields.homepageButtonUrl }}') {{ homePageFeature.fields.homepageButtonText }}
 
     #meetTheTeam
       h2 Meet the team
