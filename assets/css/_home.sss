@@ -26,6 +26,12 @@
     & #heroImage
       width: 200px
 
+      @media all and (min-width: 1440px)
+        width: 300px
+
+      @media all and (min-width: 768px) and (min-height: 1024px)
+        width: 250px
+
   // What to expect
 
   & #whatToExpect
@@ -35,6 +41,7 @@
     align-items: center
     padding: 2em
     color: white
+    font-family: 'soleil', sans-serif
 
     & h2
       margin-top: 0
@@ -47,9 +54,9 @@
 
       & h2
         flex: 1
-        font-size: 3em
+        font-size: 4em
         text-align: right
-        line-height: 0.9
+        line-height: 1.1
 
       & .expectContent
         flex: 1.5
@@ -88,6 +95,7 @@
       color: var(--brandGrey)
       text-transform: uppercase
       margin: 3em 0em
+      font-size: 3em
 
     & .service-container
       display: flex
