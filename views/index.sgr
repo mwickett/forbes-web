@@ -14,7 +14,7 @@ extends(src='layout.sgr')
     #howWeHelp
       h2 How we help
       .service-container
-        .background
+        .g-background
         each(loop='homePageFeature of contentful.home[0].fields.homePageFeatures')
           .service-card
             .service-card__image
@@ -27,10 +27,25 @@ extends(src='layout.sgr')
 
     #meetTheTeam
       h2 Meet the team
-      each(loop='teamMember of contentful.home[0].fields.teamCarousel')
-        h3 {{ teamMember.fields.name }}, {{ teamMember.fields.educationTitle }}
-        p {{ teamMember.fields.jobTitle }}
-        p {{{ marked(teamMember.fields.shortBio) }}}
+      .s-team-carousel
+        each(loop='teamMember of contentful.home[0].fields.teamCarousel')
+          .s-team-carousel-member
+            picture.s-team-carousel-member__avatar
+              source(type='image/webp'
+                srcset='{{ teamMember.fields.avatar.fields.file.url }}?f=face&fit=thumb&w=2000&h=2000&r=1000&fm=webp 2000w,
+                {{ teamMember.fields.avatar.fields.file.url }}?f=face&fit=thumb&w=1500&h=1500&r=1000&fm=webp 1500w,
+                {{ teamMember.fields.avatar.fields.file.url }}?f=face&fit=thumb&w=900&h=900&r=1000&fm=webp 900w,
+                {{ teamMember.fields.avatar.fields.file.url }}?f=face&fit=thumb&w=200&h=200&r=1000&fm=webp 450w')
+              img(src='{{ teamMember.fields.avatar.fields.file.url }}?fm=jpg&w=900&h=900&fit=thumb&r=1000'
+                srcset='{{ teamMember.fields.avatar.fields.file.url }}?f=face&fit=thumb&w=2000&h=2000&r=1000&fm=jpg 2000w,
+                {{ teamMember.fields.avatar.fields.file.url }}?f=face&fit=thumb&w=1500&h=1500&r=1000&fm=jpg 1500w,
+                {{ teamMember.fields.avatar.fields.file.url }}?f=face&fit=thumb&w=900&h=900&r=1000&fm=jpg 900w,
+                {{ teamMember.fields.avatar.fields.file.url }}?f=face&fit=thumb&w=450&h=450&r=1000&fm=jpg 450w'
+                alt='{{ teamMember.fields.avatar.fields.description }}')
+            h3.s-team-carousel-member__name {{ teamMember.fields.name }}, {{ teamMember.fields.educationTitle }}
+            p.s-team-carousel-member__jobTitle {{ teamMember.fields.jobTitle }}
+            p.s-team-carousel-member__bio {{{ marked(teamMember.fields.shortBio) }}}
+            a(href='/meet-our-team') Read more &rarr;
 
     #eventsPreview
       h2 Events
