@@ -8,3 +8,5 @@ extends(src='layout.sgr')
       p {{{ marked(event.fields.eventDescription) }}}
 
       // Event specific image?
+
+    include(src='includes/_cta.sgr')

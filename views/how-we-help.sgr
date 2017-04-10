@@ -13,3 +13,5 @@ extends(src='layout.sgr')
       each(loop='faq of service.fields.serviceFaq')
         h5 {{ faq.fields.question }}
         p {{{ marked(faq.fields.answer) }}}
+
+    include(src='includes/_cta.sgr')
