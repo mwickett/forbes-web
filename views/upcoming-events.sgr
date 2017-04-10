@@ -1,12 +1,14 @@
 extends(src='layout.sgr')
   block(name='content')
-    each(loop='event of contentful.events')
-      h3 {{ event.fields.eventTitle }}
-      time {{ event.fields.dateTime }}
+    .events-page-wapper
+      each(loop='event of contentful.events')
+        .event(id='{{{ slugify(event.fields.eventTitle) }}}')
+          h3 {{ event.fields.eventTitle }}
+          time {{ event.fields.dateTime }}
 
-      h5 Description
-      p {{{ marked(event.fields.eventDescription) }}}
+          h5 Description
+          p {{{ marked(event.fields.eventDescription) }}}
 
-      // Event specific image?
+          // Event specific image?
 
     include(src='includes/_cta.sgr')

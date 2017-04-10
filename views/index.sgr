@@ -51,11 +51,13 @@ extends(src='layout.sgr')
 
     #eventsPreview.g-imageBg
       h2 Events
-      .events-container
+      .events-container.g-wrapper
         each(loop='event of contentful.home[0].fields.homeEvents')
           .events-card
             h3 {{ event.fields.eventTitle }}
-            p Date & Time: {{ event.fields.dateTime }}
             p {{ event.fields.eventDescription }}
+            a(href='/upcoming-events#{{{ slugify(event.fields.eventTitle) }}}') Read more &rarr;
+            p {{ event.fields.dateTime }}
+            p Location: {{ event.fields.location.lon }} {{ event.fields.location.lat }}
 
     include(src='includes/_cta.sgr')
