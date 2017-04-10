@@ -23,7 +23,7 @@ extends(src='layout.sgr')
               h3 {{ homePageFeature.fields.serviceName }}
               hr
               p {{ homePageFeature.fields.homepageDescription }}
-            a.button(href='{{ homePageFeature.fields.homepageButtonUrl }}') {{ homePageFeature.fields.homepageButtonText }}
+            a.g-button(href='{{ homePageFeature.fields.homepageButtonUrl }}') {{ homePageFeature.fields.homepageButtonText }}
 
     #meetTheTeam
       h2 Meet the team
@@ -44,12 +44,16 @@ extends(src='layout.sgr')
                 alt='{{ teamMember.fields.avatar.fields.description }}')
             h3.s-team-carousel-member__name {{ teamMember.fields.name }}, {{ teamMember.fields.educationTitle }}
             p.s-team-carousel-member__jobTitle {{ teamMember.fields.jobTitle }}
-            p.s-team-carousel-member__bio {{{ marked(teamMember.fields.shortBio) }}}
+            p(md).s-team-carousel-member__bio {{ teamMember.fields.shortBio }}
             a(href='/meet-our-team') Read more &rarr;
 
-    #eventsPreview
+    #eventsPreview.g-imageBg
       h2 Events
-      each(loop='event of contentful.home[0].fields.homeEvents')
-        h3 {{ event.fields.eventTitle }}
-        p Date & Time: {{ event.fields.dateTime }}
-        p {{ event.fields.eventDescription }}
+      .events-container
+        each(loop='event of contentful.home[0].fields.homeEvents')
+          .events-card
+            h3 {{ event.fields.eventTitle }}
+            p Date & Time: {{ event.fields.dateTime }}
+            p {{ event.fields.eventDescription }}
+
+    include(src='includes/_cta.sgr')

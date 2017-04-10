@@ -1,0 +1,4 @@
+#cta
+  .s-cta-content
+    h2 Learning performance starts here
+    a.g-button(href='/get-in-touch') Get started
