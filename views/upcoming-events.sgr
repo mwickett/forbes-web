@@ -4,7 +4,7 @@ extends(src='layout.sgr')
       each(loop='event of contentful.events')
         .event(id='{{{ slugify(event.fields.eventTitle) }}}')
           h3 {{ event.fields.eventTitle }}
-          time {{ event.fields.dateTime }}
+          time {{{ formatDate(event.fields.dateTime) }}}
 
           h5 Description
           p {{{ marked(event.fields.eventDescription) }}}

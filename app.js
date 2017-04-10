@@ -8,6 +8,8 @@ const Contentful = require('spike-contentful')
 const marked = require('marked')
 const axios = require('axios')
 const googleMapsApiKey = process.env.GOOGLE_MAPS_KEY
+const moment = require('moment')
+
 
 const locals = {}
 
@@ -24,6 +26,30 @@ const slugify = function(text) {
     .replace(/-+$/, "")
 }
 
+// const getAddress = function(lat, lon) {
+//   // return new pending promise
+//   return new Promise((resolve, reject) => {
+//     // select http or https module, depending on reqested url
+//     const request = https.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lon}&key=${googleMapsApiKey}`, (response) => {
+//       // handle http errors
+//       if (response.statusCode < 200 || response.statusCode > 299) {
+//          reject(new Error('Failed to load page, status code: ' + response.statusCode));
+//        }
+//       // temporary data holder
+//       const body = [];
+//       // on every content chunk, push it to the data array
+//       response.on('data', (chunk) => body.push(chunk));
+//       // we are done, resolve promise with those joined chunks
+//       response.on('end', (body) => {
+//         console.log(body)
+//         resolve(body)
+//       });
+//     });
+//     // handle connection errors of the request
+//     request.on('error', (err) => reject(err))
+//     })
+// };
+
 function reverseLookup(lat, lon) {
   return axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lon}&key=${googleMapsApiKey}`)
     .then(function (response) {
@@ -37,10 +63,19 @@ function reverseLookup(lat, lon) {
 }
 
 function getAddress(lat, lon) {
-  reverseLookup(lat, lon).then(function(address) {
-    console.log(address)
-    return address
+  return new Promise((resolve, reject) => {
+    reverseLookup(lat, lon)
+    .then(function(address) {
+      resolve(address)
+    })
+    .catch(reject)
   })
+}
+
+// Clean up data & time format
+function formatDate(dateTime) {
+  const cleanDate = moment(dateTime).format("dddd, MMMM Do YYYY, h:mm:ss a")
+  return cleanDate
 }
 
 module.exports = {
@@ -51,7 +86,7 @@ module.exports = {
   },
   ignore: ['**/layout.sgr', '**/_*', '**/.*', '_cache/**', 'readme.md', 'yarn.lock'],
   reshape: htmlStandards({
-    locals: (ctx) => { return Object.assign(locals, { pageId: pageId(ctx) }, { marked: marked }, {typeKitId: process.env.TYPEKIT_ID}, {slugify: slugify}, {getAddress: getAddress}) }
+    locals: (ctx) => { return Object.assign(locals, { pageId: pageId(ctx) }, { marked: marked }, {typeKitId: process.env.TYPEKIT_ID}, {slugify: slugify}, {formatDate: formatDate}) }
   }),
   postcss: cssStandards(),
   babel: { presets: [[jsStandards, { modules: false }]] },
@@ -64,6 +99,15 @@ module.exports = {
               {
                   name: 'home',
                   id: 'home',
+                  transform: (home) => {
+                    const event = home.fields.homeEvents
+                    event.forEach((event) => {
+                      const lat = event.fields.location.lat
+                      const lon = event.fields.location.lon
+                      getAddress(lat, lon).then((res) => {event.fields.location.address = res})
+                    })
+                    return home
+                  }
               },
               {
                   name: 'contactPage',

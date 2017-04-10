@@ -29,7 +29,7 @@ extends(src='layout.sgr')
 
     #meetTheTeam
       h2 Meet the team
-      .s-team-carousel
+      .s-team-carousel.g-wrapper
         each(loop='teamMember of contentful.home[0].fields.teamCarousel')
           .s-team-carousel-member(id='{{{ slugify(teamMember.fields.name )}}}')
             picture.s-team-carousel-member__avatar
@@ -57,8 +57,7 @@ extends(src='layout.sgr')
             h3 {{ event.fields.eventTitle }}
             p {{ event.fields.eventDescription }}
             a(href='/upcoming-events#{{{ slugify(event.fields.eventTitle) }}}') Read more &rarr;
-            p {{ event.fields.dateTime }}
-            p LocationGOogle: {{{ getAddress(event.fields.location.lat, event.fields.location.lon) }}}
-            p Location: {{ event.fields.location.lon }} {{ event.fields.location.lat }}
+            p {{{ formatDate(event.fields.dateTime) }}}
+            p Loc: {{ event.fields.location.address }}
 
     include(src='includes/_cta.sgr')
