@@ -29,7 +29,7 @@ extends(src='layout.sgr')
       h2 Meet the team
       .s-team-carousel
         each(loop='teamMember of contentful.home[0].fields.teamCarousel')
-          .s-team-carousel-member
+          .s-team-carousel-member(id='{{{ slugify(teamMember.fields.name )}}}')
             picture.s-team-carousel-member__avatar
               source(type='image/webp'
                 srcset='{{ teamMember.fields.avatar.fields.file.url }}?f=face&fit=thumb&w=2000&h=2000&r=1000&fm=webp 2000w,
@@ -45,7 +45,7 @@ extends(src='layout.sgr')
             h3.s-team-carousel-member__name {{ teamMember.fields.name }}, {{ teamMember.fields.educationTitle }}
             p.s-team-carousel-member__jobTitle {{ teamMember.fields.jobTitle }}
             p(md).s-team-carousel-member__bio {{ teamMember.fields.shortBio }}
-            a(href='/meet-our-team') Read more &rarr;
+            a(href='/meet-our-team#{{{ slugify(teamMember.fields.name)}}}') Read more &rarr;
 
     #eventsPreview.g-imageBg
       h2 Events
