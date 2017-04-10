@@ -173,7 +173,7 @@
         margin-bottom: 5em
 
         & .s-team-carousel-member__avatar
-          max-width: 400px
+          width: 400px
 
         & .s-team-carousel-member__name
           font-size: 1.5em
@@ -204,6 +204,7 @@
       & .events-card
         @apply --flexCol
         align-items: left
+        align-self: flex-start
         background-color: white
         padding: 1em
         border-radius: 4px
@@ -211,6 +212,11 @@
         box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.24)
 
         @media screen and (min-width: 600px)
+          flex: 0 1 45%
+          margin: 0
+          margin-bottom: 4em
+
+        @media screen and (min-width: 1024px)
           flex: 0 1 30%
           margin: 0
           margin-bottom: 4em

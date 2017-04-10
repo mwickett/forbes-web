@@ -5,7 +5,7 @@ extends(src='layout.sgr')
         .event(id='{{{ slugify(event.fields.eventTitle) }}}')
           h3 {{ event.fields.eventTitle }}
           time {{{ formatDate(event.fields.dateTime) }}}
-
+          p {{ event.fields.location.address }}
           h5 Description
           p {{{ marked(event.fields.eventDescription) }}}
 
