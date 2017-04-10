@@ -6,6 +6,8 @@ const jsStandards = require('babel-preset-env')
 const pageId = require('spike-page-id')
 const Contentful = require('spike-contentful')
 const marked = require('marked')
+const axios = require('axios')
+const googleMapsApiKey = process.env.GOOGLE_MAPS_KEY
 
 const locals = {}
 
@@ -22,6 +24,25 @@ const slugify = function(text) {
     .replace(/-+$/, "")
 }
 
+function reverseLookup(lat, lon) {
+  return axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lon}&key=${googleMapsApiKey}`)
+    .then(function (response) {
+      const results = response
+      const address = results.data.results[0].formatted_address
+      return address
+    })
+    .catch(function(error){
+      console.log(error)
+    })
+}
+
+function getAddress(lat, lon) {
+  reverseLookup(lat, lon).then(function(address) {
+    console.log(address)
+    return address
+  })
+}
+
 module.exports = {
   devtool: 'source-map',
   matchers: {
@@ -30,7 +51,7 @@ module.exports = {
   },
   ignore: ['**/layout.sgr', '**/_*', '**/.*', '_cache/**', 'readme.md', 'yarn.lock'],
   reshape: htmlStandards({
-    locals: (ctx) => { return Object.assign(locals, { pageId: pageId(ctx) }, { marked: marked }, {typeKitId: process.env.TYPEKIT_ID}, {slugify: slugify}) }
+    locals: (ctx) => { return Object.assign(locals, { pageId: pageId(ctx) }, { marked: marked }, {typeKitId: process.env.TYPEKIT_ID}, {slugify: slugify}, {getAddress: getAddress}) }
   }),
   postcss: cssStandards(),
   babel: { presets: [[jsStandards, { modules: false }]] },
