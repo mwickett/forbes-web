@@ -8,9 +8,10 @@ extends(src='layout.sgr')
 
     #whatToExpect.g-imageBg
       .g-wrapper
-        h2 {{ contentful.home[0].fields.whatToExpectTitle }}
-        .expectContent
-          p {{{ marked(contentful.home[0].fields.whatToExpectBody) }}}
+        .what-to-expect-content
+          h2 {{ contentful.home[0].fields.whatToExpectTitle }}
+          .expectContent
+            p {{{ marked(contentful.home[0].fields.whatToExpectBody) }}}
 
     #howWeHelp
       h2 How we help

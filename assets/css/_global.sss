@@ -52,11 +52,8 @@ img
 
 
 // Layout
-.g-container
-  max-width: 60em
-  margin: 0 auto
-  width: 90%
 
+// Global content wrapper
 .g-wrapper
   max-width: 60em
   margin: 0 auto
@@ -84,7 +81,6 @@ img
     url(../img/runners.jpg)
 
 // Button
-
 a.g-button
   font-family: "soleil", sans-serif
   font-style: normal
@@ -108,7 +104,7 @@ a.g-button
     border: 2px solid var(--brandColour)
     transition: 250ms all ease
 
-// Cropped background
+// Cropped top and bottom grey background
 .g-background
   background-color: #F4F2F2
   height: calc(100% - 14rem)
@@ -116,5 +112,5 @@ a.g-button
   width: 100%
   position: absolute
   top: 5rem
-  // Override any container
+  // Override any container - seems to work, but needs testing
   width: 100vw

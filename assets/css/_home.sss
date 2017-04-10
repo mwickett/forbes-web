@@ -32,37 +32,39 @@
   // What to expect
 
   & #whatToExpect
-    @apply --flexCol
     padding: 2em
     color: white
     font-family: 'soleil', sans-serif
 
-    & h2
-      margin-top: 0
-      color: white
-      text-transform: uppercase
-      font-size: 2em
-
-    @media all and (min-width: 600px)
-      flex-flow: row nowrap
+    & .what-to-expect-content
+      @apply --flexCol
 
       & h2
-        flex: 1
-        font-size: 4em
-        text-align: right
-        line-height: 1.1
+        margin-top: 0
+        color: white
+        text-transform: uppercase
+        font-size: 2em
 
-      & .expectContent
-        flex: 1.5
-        border-left: 2px solid white
-        padding-left: 2em
-        margin: 2em
+      @media all and (min-width: 600px)
+        flex-flow: row nowrap
 
-        & p
-          margin: 0
+        & h2
+          flex: 1
+          font-size: 4em
+          text-align: right
+          line-height: 1.1
 
-        & p:nth-of-type(3)
-          margin-top: 2em
+        & .expectContent
+          flex: 1.5
+          border-left: 2px solid white
+          padding-left: 2em
+          margin: 2em
+
+          & p
+            margin: 0
+
+          & p:nth-of-type(3)
+            margin-top: 2em
 
   // How We help
 
