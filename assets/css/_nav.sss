@@ -1,7 +1,9 @@
 header
-  display: flex
-  flex-direction: column
-  text-align: center
+  margin: 0 auto
+  width: 100%
+
+.header-content
+  @apply --flexCol
 
   & nav
     background-color: white
@@ -63,11 +65,10 @@ header
         text-decoration: none
         transition: 300ms all ease
 
-@media all and (min-width: 600px)
-
-  header
+  @media all and (min-width: 600px)
     flex-direction: row
     align-items: baseline
+
     & div#logo
       flex: 1
       & div#navToggle
@@ -104,6 +105,6 @@ header
           & a.active
             border-bottom: 2px var(--brandColour) solid
 
-@media all and (min-width: 800px)
-  header > nav
-    font-size: 0.7em
+  @media all and (min-width: 800px)
+    .header-content > nav
+      font-size: 0.7em
