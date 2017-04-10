@@ -1,6 +1,9 @@
 #footer
   background-color: var(--brandGrey)
   color: white
+  @apply --flexCol
+
+.footer-content
   display: flex
   flex-flow: column nowrap
   padding: 2em 4em
@@ -24,8 +27,7 @@
     font-size: 0.7em
 
 
-@media all and (min-width: 600px)
-  #footer
+  @media all and (min-width: 600px)
     flex-flow: row wrap
     justify-content: space-between
 
@@ -37,29 +39,3 @@
 
       & h6
         margin: 7em 2em 2em 2em
-
-
-  /*display: flex
-  width: 100%
-  justify-content: space-between
-  padding: 2em 8em
-  flex-wrap: wrap
-
-  & h5
-    color: white
-    font-weight: 200
-
-  & a
-    color: white
-    text-decoration: none
-
-  & ul
-    list-style: none
-    padding-left: 0
-    font-size: 0.7em
-
-    & li
-      margin-bottom: 1.2em
-
-  &.footer-item
-    flex: 1 1 auto*/
