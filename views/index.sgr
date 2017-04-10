@@ -7,13 +7,14 @@ extends(src='layout.sgr')
         img(src='img/lander.png' alt='Hands opening book')
 
     #whatToExpect.g-imageBg
-      h2 {{ contentful.home[0].fields.whatToExpectTitle }}
-      .expectContent
-        p {{{ marked(contentful.home[0].fields.whatToExpectBody) }}}
+      .g-wrapper
+        h2 {{ contentful.home[0].fields.whatToExpectTitle }}
+        .expectContent
+          p {{{ marked(contentful.home[0].fields.whatToExpectBody) }}}
 
     #howWeHelp
       h2 How we help
-      .service-container
+      .service-container.g-wrapper
         .g-background
         each(loop='homePageFeature of contentful.home[0].fields.homePageFeatures')
           .service-card
