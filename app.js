@@ -106,6 +106,30 @@ module.exports = {
               {
                 name: 'events',
                 id: 'event',
+                // transform: (events) => {
+                //   const loopNestedObj = (obj) => {
+                //     Object.keys(obj).forEach(key => {
+                //       let latLon = []
+                //       if ((obj[key]) && typeof obj[key] === 'object') {
+                //         loopNestedObj(obj[key])
+                //       } else {
+                //         //Do something with it
+                //         if (key === 'lat') {
+                //           latLon.push(obj[key])
+                //         }
+                //
+                //         if (key === 'lon') {
+                //           latLon.push(obj[key])
+                //         }
+                //
+                //           console.log(latLon)
+                //
+                //       }
+                //     })
+                //   }
+                //
+                //   loopNestedObj(events)
+                //}
               },
               {
                 name: 'basicPage',
