@@ -1,17 +1,20 @@
 extends(src='layout.sgr')
   block(name='content')
     each(loop='service of contentful.services')
-      h2 {{ service.fields.serviceName }}
-      p {{ service.fields.serviceDescription }}
-      // Add image
+      .s-services-container
+        .s-services-header(id='{{{ slugify(service.fields.serviceName) }}}')
+          .g-wrapper
+            h2 {{ service.fields.serviceName }}
+            p {{ service.fields.serviceDescription }}
+            img(src='{{ service.fields.serviceIcon.fields.file.url }}' alt='{{ service.fields.serviceIcon.fields.description }}')
+        .s-services-content.g-wrapper
+          h4 What are the fees?
+          p ${{ service.fields.fee }}
+          p {{{ marked(service.fields.feeDescription) }}}
 
-      h4 What are the fees?
-      p ${{ service.fields.fee }}
-      p {{{ marked(service.fields.feeDescription) }}}
-
-      h4 Frequently Asked Questions
-      each(loop='faq of service.fields.serviceFaq')
-        h5 {{ faq.fields.question }}
-        p {{{ marked(faq.fields.answer) }}}
+          h4 Frequently Asked Questions
+          each(loop='faq of service.fields.serviceFaq')
+            h5 {{ faq.fields.question }}
+            p {{{ marked(faq.fields.answer) }}}
 
     include(src='includes/_cta.sgr')

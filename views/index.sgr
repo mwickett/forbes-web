@@ -25,7 +25,7 @@ extends(src='layout.sgr')
               h3 {{ homePageFeature.fields.serviceName }}
               hr
               p {{ homePageFeature.fields.homepageDescription }}
-            a.g-button(href='{{ homePageFeature.fields.homepageButtonUrl }}') {{ homePageFeature.fields.homepageButtonText }}
+            a.g-button(href='/how-we-help#{{{ slugify(homePageFeature.fields.serviceName) }}}') {{ homePageFeature.fields.homepageButtonText }}
 
     #meetTheTeam
       h2 Meet the team
