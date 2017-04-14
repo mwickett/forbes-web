@@ -21,14 +21,14 @@ extends(src='layout.sgr')
         .s-services-content.g-wrapper
           .s-services-content-panel.g-border
             .g-flourish-bar
-            h4 What are the fees?
-            p ${{ service.fields.fee }}
-            p {{{ marked(service.fields.feeDescription) }}}
-          .s-services-content-panel.g-border
-            .g-flourish-bar
             h4 Frequently Asked Questions
             each(loop='faq of service.fields.serviceFaq')
               h5 {{ faq.fields.question }}
-              p {{{ marked(faq.fields.answer) }}}
+              | {{{ marked(faq.fields.answer) }}}
+          .s-services-content-panel.g-border
+            .g-flourish-bar
+            h4 What are the fees?
+            | ${{ service.fields.fee }}
+            | {{{ marked(service.fields.feeDescription) }}}
 
     include(src='includes/_cta.sgr')

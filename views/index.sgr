@@ -11,7 +11,7 @@ extends(src='layout.sgr')
         .what-to-expect-content
           h2 {{ contentful.home[0].fields.whatToExpectTitle }}
           .expectContent
-            p {{{ marked(contentful.home[0].fields.whatToExpectBody) }}}
+            | {{{ marked(contentful.home[0].fields.whatToExpectBody) }}}
 
     #howWeHelp
       h2 How we help
