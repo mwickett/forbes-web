@@ -8,9 +8,28 @@
       align-content: center
 
     & .s-services-header
-      background:
+      background-color: var(--brandColour)
+      /*background:
         radial-gradient(
           377.36px at 72.35% 46.8%,
           rgba(255, 255, 255, 0.32) 0%,
           rgba(255, 255, 255, 0) 100%),
-        linear-gradient(0deg, #F03F35, #F03F35)
+        linear-gradient(0deg, #F03F35, #F03F35)*/
+      width: 100vw
+
+      & .s-services-header-content
+        padding: 1em
+        color: white
+        font-family: 'soleil', sans-serif
+        @apply --flexFlow
+        position: relative
+
+        &:after
+          @apply --addDotsTriangle
+
+        & h2
+          color: white
+
+        @media screen and (min-width: 600px)
+          flex-flow: row wrap
+          justify-content: space-around
