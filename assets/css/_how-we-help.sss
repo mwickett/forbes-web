@@ -9,27 +9,48 @@
 
     & .s-services-header
       background-color: var(--brandColour)
-      /*background:
-        radial-gradient(
-          377.36px at 72.35% 46.8%,
-          rgba(255, 255, 255, 0.32) 0%,
-          rgba(255, 255, 255, 0) 100%),
-        linear-gradient(0deg, #F03F35, #F03F35)*/
       width: 100vw
+      position: relative
+      padding-bottom: 5em
 
-      & .s-services-header-content
+      &::before
+        @apply --addDotsTriangle
+
+      & .s-services-header-content-wrapper
         padding: 1em
         color: white
         font-family: 'soleil', sans-serif
-        @apply --flexFlow
-        position: relative
+        @apply --flexCol
 
-        &:after
-          @apply --addDotsTriangle
+        & .s-services-header-content
+          @apply --flexCol
+          flex: 1.5 1.5 auto
+          align-items: flex-start
 
-        & h2
-          color: white
+          & h2
+            color: white
+            font-size: 2em
+
+        & .s-services-header-image
+          flex: 1 1 auto
 
         @media screen and (min-width: 600px)
-          flex-flow: row wrap
+          flex-flow: row nowrap
           justify-content: space-around
+
+    & .s-services-content
+      @apply --flexCol
+      margin-bottom: 4em
+
+      & .s-services-content-panel
+        padding: 1em
+        margin: 1em
+        flex: 1 1 50%
+        margin-top: -5em
+        z-index: 2
+        background-color: white
+
+      @media screen and (min-width: 600px)
+        flex-flow: row nowrap
+        justify-content: space-around
+        align-items: stretch
