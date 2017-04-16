@@ -10,7 +10,6 @@ header
     background-color: white
     display: none
     flex: 1
-    transition: 800ms all ease
     color: var(--brandColour)
 
     & ul
@@ -29,7 +28,6 @@ header
           font-weight: 500
           padding: 1.5rem 0
           text-decoration: none
-          transition: 250ms all ease
 
   & #logo
     line-height: 70px
@@ -47,7 +45,6 @@ header
     & div#navToggle
       background-color: white
       border: 2px solid var(--brandColour)
-      transition: 300ms all ease
       align-self: flex-end
       border-radius: 10px
 
@@ -64,7 +61,6 @@ header
         text-align: center
         padding: 0 1.5rem
         text-decoration: none
-        transition: 300ms all ease
 
   @media all and (min-width: 600px)
     flex-direction: row
@@ -97,11 +93,17 @@ header
             text-transform: uppercase
             color: var(--brandGrey) !important
             padding-bottom: 5px
+            transition: ease all 500ms
 
-            &:active,
-            :visited,
-            :hover
+            &:visited
               color: var(--brandGrey)
+
+            &:hover
+              color: #848484 !important
+
+            &:active
+              transform: translateY(2px)
+              transition: translateY ease 750ms
 
           & a.active
             border-bottom: 2px var(--brandColour) solid
