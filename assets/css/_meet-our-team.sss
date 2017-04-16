@@ -5,7 +5,24 @@
     margin: 1em
     margin-top: -5em
 
-  & .s-team-member
-    padding: 2em
-    background-color: white
-    margin-bottom: 2em
+    & .s-team-member
+      @apply --flexCol
+      padding: 2em
+      background-color: white
+      margin-bottom: 2em
+      align-items: flex-start
+
+      @media all and (min-width: 600px)
+        flex-flow: row nowrap
+        justify-content: space-around
+
+      & .s-team-member__content
+        @apply --flexCol
+        align-items: flex-start
+        flex: 2 1 auto
+
+      & .s-team-member__photo
+
+        @media all and (min-width: 600px)
+          flex: 1 1 auto
+          padding-left: 3em

@@ -6,20 +6,22 @@ extends(src='layout.sgr')
       .g-wrapper
         each(loop='team of contentful.team')
           .s-team-member(id='{{{ slugify(team.fields.name)}}}').g-border
-            .g-flourish-bar
-            h3 {{ team.fields.name }}, {{ team.fields.educationTitle }}
-            p {{{ marked(team.fields.fullBio) }}}
-            picture
-              source(type='image/webp'
-                srcset='{{ team.fields.avatar.fields.file.url }}?f=face&fit=thumb&w=2000&h=2000&r=1000&fm=webp 2000w,
-                {{ team.fields.avatar.fields.file.url }}?f=face&fit=thumb&w=1500&h=1500&r=1000&fm=webp 1500w,
-                {{ team.fields.avatar.fields.file.url }}?f=face&fit=thumb&w=900&h=900&r=1000&fm=webp 900w,
-                {{ team.fields.avatar.fields.file.url }}?f=face&fit=thumb&w=200&h=200&r=1000&fm=webp 450w')
-              img(src='{{ team.fields.avatar.fields.file.url }}?fm=jpg&w=900&h=900&fit=thumb&r=1000'
-                srcset='{{ team.fields.avatar.fields.file.url }}?f=face&fit=thumb&w=2000&h=2000&r=1000&fm=jpg 2000w,
-                {{ team.fields.avatar.fields.file.url }}?f=face&fit=thumb&w=1500&h=1500&r=1000&fm=jpg 1500w,
-                {{ team.fields.avatar.fields.file.url }}?f=face&fit=thumb&w=900&h=900&r=1000&fm=jpg 900w,
-                {{ team.fields.avatar.fields.file.url }}?f=face&fit=thumb&w=450&h=450&r=1000&fm=jpg 450w'
-                alt='{{ team.fields.avatar.fields.description }}')
+            .s-team-member__content
+              .g-flourish-bar
+              h3 {{ team.fields.name }}, {{ team.fields.educationTitle }}
+              | {{{ marked(team.fields.fullBio) }}}
+            .s-team-member__photo
+              picture
+                source(type='image/webp'
+                  srcset='{{ team.fields.avatar.fields.file.url }}?f=face&fit=thumb&w=2000&h=2000&r=1000&fm=webp 2000w,
+                  {{ team.fields.avatar.fields.file.url }}?f=face&fit=thumb&w=1500&h=1500&r=1000&fm=webp 1500w,
+                  {{ team.fields.avatar.fields.file.url }}?f=face&fit=thumb&w=900&h=900&r=1000&fm=webp 900w,
+                  {{ team.fields.avatar.fields.file.url }}?f=face&fit=thumb&w=200&h=200&r=1000&fm=webp 450w')
+                img(src='{{ team.fields.avatar.fields.file.url }}?fm=jpg&w=900&h=900&fit=thumb&r=1000'
+                  srcset='{{ team.fields.avatar.fields.file.url }}?f=face&fit=thumb&w=2000&h=2000&r=1000&fm=jpg 2000w,
+                  {{ team.fields.avatar.fields.file.url }}?f=face&fit=thumb&w=1500&h=1500&r=1000&fm=jpg 1500w,
+                  {{ team.fields.avatar.fields.file.url }}?f=face&fit=thumb&w=900&h=900&r=1000&fm=jpg 900w,
+                  {{ team.fields.avatar.fields.file.url }}?f=face&fit=thumb&w=450&h=450&r=1000&fm=jpg 450w'
+                  alt='{{ team.fields.avatar.fields.description }}')
 
     include(src='includes/_cta.sgr')
