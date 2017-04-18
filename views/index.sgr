@@ -53,13 +53,16 @@ extends(src='layout.sgr')
     #eventsPreview.g-imageBg
       h2 Events
       .events-container.g-wrapper
-        each(loop='event of contentful.home[0].fields.homeEvents')
-          .events-card
-            h3 {{ event.fields.eventTitle }}
-            p {{ event.fields.eventDescription }}
-            a(href='/upcoming-events#{{{ slugify(event.fields.eventTitle) }}}') Read more &rarr;
-            p {{{ formatDate(event.fields.dateTime) }}}
-            p Loc: {{ event.fields.location.address }}
-      a(href='/upcoming-events') See all events
+        if(condition="{{ contentful.home[0].fields.homeEvents }}.length === 0")
+          p There are no events
+        else
+          each(loop='event of contentful.home[0].fields.homeEvents')
+            .events-card
+              h3 {{ event.fields.eventTitle }}
+              p {{ event.fields.eventDescription }}
+              a(href='/upcoming-events#{{{ slugify(event.fields.eventTitle) }}}') Read more &rarr;
+              p {{{ formatDate(event.fields.dateTime) }}}
+              p Loc: {{ event.fields.location.address }}
+        a(href='/upcoming-events') See all events
 
     include(src='includes/_cta.sgr')
