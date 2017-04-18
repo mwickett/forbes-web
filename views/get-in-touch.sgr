@@ -1,29 +1,37 @@
 extends(src='layout.sgr')
   block(name='content')
-    h2 {{ contentful.contactPage[0].fields.getInTouch }}
-    p {{{ marked(contentful.contactPage[0].fields.contactBody) }}}
-    p
-     | Phone: {{ contentful.contactPage[0].fields.contactPhone }}
-     | Fax: {{ contentful.contactPage[0].fields.contactFax }}
+    .g-header-full
+      img(src='img/runners.jpg')
+    .p-wrapper
+      .g-wrapper
+        .p-content-block.g-border
+          .g-flourish-bar
+          .p-content-block__grid-wrapper
+            .p-content-block__col
+              h2 {{ contentful.contactPage[0].fields.getInTouch }}
+              p {{{ marked(contentful.contactPage[0].fields.contactBody) }}}
+              p
+               | Phone: {{ contentful.contactPage[0].fields.contactPhone }}
+               | Fax: {{ contentful.contactPage[0].fields.contactFax }}
 
-    p: a(href='mailto:{{ contentful.contactPage[0].fields.contactEmail }}') {{ contentful.contactPage[0].fields.contactEmail }}
+              p: a(href='mailto:{{ contentful.contactPage[0].fields.contactEmail }}') {{ contentful.contactPage[0].fields.contactEmail }}
 
-    p {{{ marked(contentful.contactPage[0].fields.contactAddress) }}}
+              p {{{ marked(contentful.contactPage[0].fields.contactAddress) }}}
 
-
-    form.contact-form(action='thanks', name="contact", netlify, netlify-honeypot="bot-field")
-        h3 This is a form
-        .form-row
-          input#name(type='text', name='name', placeholder='Your Full Name')
-          label(for="name") Name
-        .form-row
-          input#email(type='email', name='email', placeholder='Valid Email Address' required)
-          label(for="email") Email
-        .form-row
-          input#about(type="text" name='about', placeholder='Tell us about your product, service or event')
-          label(for="about") About
-        .form-row
-          input.hidden#bot-field(type='text', name='bot-field', placeholder='Spam check')
-          label.hidden(for="bot-field") Bot field
-        .form-row
-          button Get started
+            .p-content-block__col
+              form.contact-form(action='thanks', name="contact", netlify, netlify-honeypot="bot-field")
+                  h3 This is a form
+                  .form-row
+                    input#name(type='text', name='name', placeholder='Your Full Name')
+                    label(for="name") Name
+                  .form-row
+                    input#email(type='email', name='email', placeholder='Valid Email Address' required)
+                    label(for="email") Email
+                  .form-row
+                    input#about(type="text" name='about', placeholder='Tell us about your product, service or event')
+                    label(for="about") About
+                  .form-row
+                    input.hidden#bot-field(type='text', name='bot-field', placeholder='Spam check')
+                    label.hidden(for="bot-field") Bot field
+                  .form-row
+                    button Get started
