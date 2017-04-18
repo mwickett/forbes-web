@@ -33,11 +33,13 @@
       margin-top: -5em
 
       & .p-content-block
-        @apply --flexCol
         padding: 2em
         background-color: white
         margin-bottom: 2em
-        align-items: flex-start
+
+      & .p-content-block__grid-wrapper
+        @apply --flexCol
+        align-items: stretch
 
         @media all and (min-width: 600px)
           flex-flow: row nowrap
@@ -47,9 +49,6 @@
 
           @media all and (min-width: 600px)
             width: 45%
-
-        & .p-content-block__col:nth-of-type(2)
-          margin-top: 5em
 
 body
   font-family: "ff-tisa-web-pro", serif
@@ -93,6 +92,7 @@ img
   width: 95px
   height: 10px
   background-color: var(--brandColour)
+  margin-bottom: 2em
 
 //Border
 .g-border

@@ -6,26 +6,27 @@ extends(src='layout.sgr')
       .g-wrapper
         each(loop='team of contentful.team')
           .p-content-block(id='{{{ slugify(team.fields.name)}}}').g-border
-            .p-content-block__col
-              .g-flourish-bar
-              h3 {{ team.fields.name }}, {{ team.fields.educationTitle }}
-              p.s-job-title {{ team.fields.jobTitle }}
-              | {{{ marked(team.fields.fullBio) }}}
-            .p-content-block__col
-              picture
-                source(type='image/webp'
-                  srcset='{{ team.fields.avatar.fields.file.url }}?f=face&fit=thumb&w=2000&h=2000&r=1000&fm=webp 2000w,
-                  {{ team.fields.avatar.fields.file.url }}?f=face&fit=thumb&w=1500&h=1500&r=1000&fm=webp 1500w,
-                  {{ team.fields.avatar.fields.file.url }}?f=face&fit=thumb&w=900&h=900&r=1000&fm=webp 900w,
-                  {{ team.fields.avatar.fields.file.url }}?f=face&fit=thumb&w=200&h=200&r=1000&fm=webp 450w')
-                img(src='{{ team.fields.avatar.fields.file.url }}?fm=jpg&w=900&h=900&fit=thumb&r=1000'
-                  srcset='{{ team.fields.avatar.fields.file.url }}?f=face&fit=thumb&w=2000&h=2000&r=1000&fm=jpg 2000w,
-                  {{ team.fields.avatar.fields.file.url }}?f=face&fit=thumb&w=1500&h=1500&r=1000&fm=jpg 1500w,
-                  {{ team.fields.avatar.fields.file.url }}?f=face&fit=thumb&w=900&h=900&r=1000&fm=jpg 900w,
-                  {{ team.fields.avatar.fields.file.url }}?f=face&fit=thumb&w=450&h=450&r=1000&fm=jpg 450w'
-                  alt='{{ team.fields.avatar.fields.description }}')
-              if(condition="{{{ team.fields.contactEmail }}}")
-                h4 Contact
-                a(href='mailto:{{{ team.fields.contactEmail }}}') {{{ team.fields.contactEmail }}}
+            .g-flourish-bar
+            h2 {{ team.fields.name }}, {{ team.fields.educationTitle }}
+            p.s-job-title {{ team.fields.jobTitle }}
+            .p-content-block__grid-wrapper
+              .p-content-block__col
+                | {{{ marked(team.fields.fullBio) }}}
+              .p-content-block__col
+                picture
+                  source(type='image/webp'
+                    srcset='{{ team.fields.avatar.fields.file.url }}?f=face&fit=thumb&w=2000&h=2000&r=1000&fm=webp 2000w,
+                    {{ team.fields.avatar.fields.file.url }}?f=face&fit=thumb&w=1500&h=1500&r=1000&fm=webp 1500w,
+                    {{ team.fields.avatar.fields.file.url }}?f=face&fit=thumb&w=900&h=900&r=1000&fm=webp 900w,
+                    {{ team.fields.avatar.fields.file.url }}?f=face&fit=thumb&w=200&h=200&r=1000&fm=webp 450w')
+                  img(src='{{ team.fields.avatar.fields.file.url }}?fm=jpg&w=900&h=900&fit=thumb&r=1000'
+                    srcset='{{ team.fields.avatar.fields.file.url }}?f=face&fit=thumb&w=2000&h=2000&r=1000&fm=jpg 2000w,
+                    {{ team.fields.avatar.fields.file.url }}?f=face&fit=thumb&w=1500&h=1500&r=1000&fm=jpg 1500w,
+                    {{ team.fields.avatar.fields.file.url }}?f=face&fit=thumb&w=900&h=900&r=1000&fm=jpg 900w,
+                    {{ team.fields.avatar.fields.file.url }}?f=face&fit=thumb&w=450&h=450&r=1000&fm=jpg 450w'
+                    alt='{{ team.fields.avatar.fields.description }}')
+                if(condition="{{{ team.fields.contactEmail }}}")
+                  h4 Contact
+                  a(href='mailto:{{{ team.fields.contactEmail }}}') {{{ team.fields.contactEmail }}}
 
     include(src='includes/_cta.sgr')

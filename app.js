@@ -50,7 +50,7 @@ function getAddress(lat, lon) {
 
 // Clean up data & time format
 function formatDate(dateTime) {
-  const cleanDate = moment(dateTime).format("dddd, MMMM Do YYYY, h:mm:ss a")
+  const cleanDate = moment(dateTime).format("dddd, MMMM Do YYYY, h:mm a")
   return cleanDate
 }
 

@@ -1,13 +1,21 @@
 extends(src='layout.sgr')
   block(name='content')
-    .events-page-wapper
-      each(loop='event of contentful.events')
-        .event(id='{{{ slugify(event.fields.eventTitle) }}}')
-          h3 {{ event.fields.eventTitle }}
-          time {{{ formatDate(event.fields.dateTime) }}}
-          p {{ event.fields.location.address }}
-          h5 Description
-          p {{{ marked(event.fields.eventDescription) }}}
+    .g-header-full
+      img(src="img/events-header.jpg")
+    .p-wrapper
+      .g-wrapper
+        each(loop='event of contentful.events')
+          .p-content-block(id='{{{ slugify(event.fields.eventTitle) }}}').g-border
+            .g-flourish-bar
+            h2 {{ event.fields.eventTitle }}
+            time.s-event-date {{{ formatDate(event.fields.dateTime) }}}
+            .p-content-block__grid-wrapper
+              .p-content-block__col
+                h4 Description
+                p {{{ marked(event.fields.eventDescription) }}}
+              .p-content-block__col
+                h4 Location
+                p {{ event.fields.location.address }}
 
           // Event specific image?
 
