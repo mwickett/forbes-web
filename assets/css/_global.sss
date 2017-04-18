@@ -30,12 +30,16 @@
     & .p-wrapper
       position: relative
       margin: 1em
-      margin-top: -5em
+      // Creates card overlap effect
+      margin-top: -2em
+
+      @media all and (min-width: 600px)
+        margin-top: -5em
 
       & .p-content-block
         padding: 2em
         background-color: white
-        margin-bottom: 2em
+        margin-bottom: 4em
 
       & .p-content-block__grid-wrapper
         @apply --flexCol
@@ -145,6 +149,7 @@ a.g-button
 
 .g-header-full
   width: 100vw
+  max-height: 80vh
 
   & img
     width: 100%
