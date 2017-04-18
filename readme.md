@@ -1,6 +1,16 @@
 # Forbes and Associates Web
 
-Website for Forbes and Associates Psychology Practice
+Website for Forbes and Associates Psychology Practice.
+
+## Style Conventions
+
+This project (mostly) follows the [GPS approach](https://github.com/jescalan/gps). This means each page is scoped using an id on the `<main>` element.
+
+Additionally, the following class naming conventions are used:
+
+* `.g-<name>` for global style classes used across the site
+* `.p-<name>` for page level style classes used on a single page
+* `.s-<name>` for section level style classes. These are mostly used on the home page (for example)
 
 ## Setup
 

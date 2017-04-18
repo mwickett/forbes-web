@@ -2,15 +2,16 @@ extends(src='layout.sgr')
   block(name='content')
     .g-header-full
       img(src="img/team-header.jpg")
-    .s-team-wrapper
+    .p-wrapper
       .g-wrapper
         each(loop='team of contentful.team')
-          .s-team-member(id='{{{ slugify(team.fields.name)}}}').g-border
-            .s-team-member__content
+          .p-content-block(id='{{{ slugify(team.fields.name)}}}').g-border
+            .p-content-block__col
               .g-flourish-bar
               h3 {{ team.fields.name }}, {{ team.fields.educationTitle }}
+              p.s-job-title {{ team.fields.jobTitle }}
               | {{{ marked(team.fields.fullBio) }}}
-            .s-team-member__photo
+            .p-content-block__col
               picture
                 source(type='image/webp'
                   srcset='{{ team.fields.avatar.fields.file.url }}?f=face&fit=thumb&w=2000&h=2000&r=1000&fm=webp 2000w,
@@ -23,5 +24,8 @@ extends(src='layout.sgr')
                   {{ team.fields.avatar.fields.file.url }}?f=face&fit=thumb&w=900&h=900&r=1000&fm=jpg 900w,
                   {{ team.fields.avatar.fields.file.url }}?f=face&fit=thumb&w=450&h=450&r=1000&fm=jpg 450w'
                   alt='{{ team.fields.avatar.fields.description }}')
+              if(condition="{{{ team.fields.contactEmail }}}")
+                h4 Contact
+                a(href='mailto:{{{ team.fields.contactEmail }}}') {{{ team.fields.contactEmail }}}
 
     include(src='includes/_cta.sgr')

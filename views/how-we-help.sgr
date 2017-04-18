@@ -1,14 +1,14 @@
 extends(src='layout.sgr')
   block(name='content')
     each(loop='service of contentful.services')
-      .s-services-container
-        .s-services-header(id='{{{ slugify(service.fields.serviceName) }}}')
+      .p-services-container
+        .p-services-header(id='{{{ slugify(service.fields.serviceName) }}}')
           .g-wrapper
-            .s-services-header-content-wrapper
-              .s-services-header-content
+            .p-services-header-content-wrapper
+              .p-services-header-content
                 h2 {{ service.fields.serviceName }}
                 p {{ service.fields.serviceDescription }}
-              picture.s-services-header-image
+              picture.p-services-header-image
                 source(type='image/webp'
                   srcset='{{ service.fields.serviceImage.fields.file.url }}?fm=webp&w=1500&fit=fill 1500w,
                   {{ service.fields.serviceImage.fields.file.url }}?fm=webp&w=900 900w,
@@ -18,14 +18,14 @@ extends(src='layout.sgr')
                   {{ service.fields.serviceImage.fields.file.url }}?fm=jpg&w=900 900w,
                   {{ service.fields.serviceImage.fields.file.url }}?fm=jpg&w=450 450w'
                   alt='{{ service.fields.serviceImage.fields.description }}')
-        .s-services-content.g-wrapper
-          .s-services-content-panel.g-border
+        .p-services-content.g-wrapper
+          .p-services-content-panel.g-border
             .g-flourish-bar
             h4 Frequently Asked Questions
             each(loop='faq of service.fields.serviceFaq')
               h5 {{ faq.fields.question }}
               | {{{ marked(faq.fields.answer) }}}
-          .s-services-content-panel.g-border
+          .p-services-content-panel.g-border
             .g-flourish-bar
             h4 What are the fees?
             | ${{ service.fields.fee }}
