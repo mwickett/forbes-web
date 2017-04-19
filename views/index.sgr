@@ -4,7 +4,18 @@ extends(src='layout.sgr')
       #heroContent
         h1 {{{ marked(contentful.home[0].fields.missionStatement) }}}
       #heroImage
-        img(src='img/lander.png' alt='Hands opening book')
+        picture
+          source(type='image/webp'
+            srcset='{{ contentful.home[0].fields.landerImage.fields.file.url }}?fm=webp&w=2000&fit=fill 2000w,
+            {{ contentful.home[0].fields.landerImage.fields.file.url }}?fm=webp&w=1500&fit=fill 1500w,
+            {{ contentful.home[0].fields.landerImage.fields.file.url }}?fm=webp&w=900 900w,
+            {{ contentful.home[0].fields.landerImage.fields.file.url }}?fm=webp&w=450 450w')
+          img(src='{{ contentful.home[0].fields.landerImage.fields.file.url }}?fm=jpg&w=900&fit=fill'
+            srcset='{{ contentful.home[0].fields.landerImage.fields.file.url }}?fm=jpg&w=2000&fit=fill 2000w,
+            {{ contentful.home[0].fields.landerImage.fields.file.url }}?fm=jpg&w=1500&fit=fill 1500w,
+            {{ contentful.home[0].fields.landerImage.fields.file.url }}?fm=jpg&w=900 900w,
+            {{ contentful.home[0].fields.landerImage.fields.file.url }}?fm=jpg&w=450 450w'
+            alt='{{ contentful.home[0].fields.landerImage.fields.description }}')
 
     #whatToExpect.g-imageBg
       .g-wrapper
@@ -53,9 +64,7 @@ extends(src='layout.sgr')
     #eventsPreview.g-imageBg
       h2 Events
       .events-container.g-wrapper
-        if(condition="{{ contentful.home[0].fields.homeEvents }}.length === 0")
-          p There are no events
-        else
+        if(condition="{{ contentful.home[0].fields.homeEvents }}")
           each(loop='event of contentful.home[0].fields.homeEvents')
             .events-card
               h3 {{ event.fields.eventTitle }}
@@ -63,6 +72,8 @@ extends(src='layout.sgr')
               a(href='/upcoming-events#{{{ slugify(event.fields.eventTitle) }}}') Read more &rarr;
               p {{{ formatDate(event.fields.dateTime) }}}
               p Loc: {{ event.fields.location.address }}
+        else
+          p There are no events
         a(href='/upcoming-events') See all events
 
     include(src='includes/_cta.sgr')
