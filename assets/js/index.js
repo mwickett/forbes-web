@@ -1,3 +1,16 @@
-require('offline-plugin/runtime').install();
+require('offline-plugin/runtime').install()
 
-console.log('you can use ES6 here : )')
+function toggleNav (e) {
+  if (navActive === true) {
+    nav.style.display = 'none'
+    navActive = false
+  } else {
+    nav.style.display = 'block'
+    navActive = true
+  }
+}
+
+let navActive = false
+const nav = document.getElementById('nav')
+const navButton = document.getElementById('navLink')
+navButton.addEventListener('click', toggleNav)
