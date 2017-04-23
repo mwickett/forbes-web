@@ -57,10 +57,11 @@ extends(src='layout.sgr')
                   {{ teamMember.fields.avatar.fields.file.url }}?f=face&fit=thumb&w=900&h=900&r=1000&fm=jpg 900w,
                   {{ teamMember.fields.avatar.fields.file.url }}?f=face&fit=thumb&w=450&h=450&r=1000&fm=jpg 450w'
                   alt='{{ teamMember.fields.avatar.fields.description }}')
-            h3.s-team-carousel-member__name {{ teamMember.fields.name }}, {{ teamMember.fields.educationTitle }}
-            p.s-team-carousel-member__jobTitle {{ teamMember.fields.jobTitle }}
-            p(md).s-team-carousel-member__bio {{ teamMember.fields.shortBio }}
-            a(href='/meet-our-team#{{{ slugify(teamMember.fields.name)}}}') Read more &rarr;
+            .s-team-carousel-member__content
+              h3.s-team-carousel-member__name {{ teamMember.fields.name }}, {{ teamMember.fields.educationTitle }}
+              p.s-team-carousel-member__jobTitle {{ teamMember.fields.jobTitle }}
+              p(md).s-team-carousel-member__bio {{ teamMember.fields.shortBio }}
+              a(href='/meet-our-team#{{{ slugify(teamMember.fields.name)}}}') Read more &rarr;
 
     #eventsPreview.g-imageBg
       h2 Events
