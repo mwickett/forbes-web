@@ -152,26 +152,45 @@
     &:before
       @apply --addDotsTriangle
       top: -50px
+      z-index: -1
 
     & h2
       color: var(--brandGrey)
       text-transform: uppercase
-      margin: 2em 0em
+      margin: 1em 0em
       font-size: 3em
 
+    & #nextTeamMember
+      background-color: var(--brandColour)
+      padding: 1em
+      margin: 1em
+      border-radius: 4px
+      color: white
+      font-family: 'soleil', sans-serif
+      cursor: pointer
+
     & .s-team-carousel
+      padding: 2em
 
       & .s-team-carousel-member
         margin-bottom: 5em
 
         &.js-inactive
-          display: none
+          visibility: hidden
+          opacity: 0
+          transition: opacity ease 700ms
+          height: 0
+          margin-bottom: 0
 
         &.js-active
-          display: block
+          visibility: visible
+          transition: opacity ease 700ms
+          opacity: 1
+          height: auto
+          margin-bottom: 0
 
         & .s-team-carousel-member__avatar
-          width: 70vw
+          max-width: 40vw
           margin: 0 auto
 
         & .s-team-carousel-member__name
