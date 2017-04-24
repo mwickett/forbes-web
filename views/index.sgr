@@ -40,7 +40,6 @@ extends(src='layout.sgr')
 
     #meetTheTeam
       h2 Meet the team
-      div(id='nextTeamMember') Next team member &rarr;
       .s-team-carousel.g-wrapper
         each(loop='teamMember of contentful.home[0].fields.teamCarousel')
           .s-team-carousel-member(id='{{{ slugify(teamMember.fields.name )}}}')
@@ -62,6 +61,7 @@ extends(src='layout.sgr')
               p.s-team-carousel-member__jobTitle {{ teamMember.fields.jobTitle }}
               p(md).s-team-carousel-member__bio {{ teamMember.fields.shortBio }}
               a(href='/meet-our-team#{{{ slugify(teamMember.fields.name)}}}') Read more &rarr;
+      div(id='nextTeamMember') Next team member &rarr;
 
     #eventsPreview.g-imageBg
       h2 Events

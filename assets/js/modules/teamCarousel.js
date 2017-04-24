@@ -1,5 +1,4 @@
 function teamCarousel () {
-
   function getTeamMembers () {
     const teamMembers = Array.from(document.getElementsByClassName('s-team-carousel-member'))
     return teamMembers
