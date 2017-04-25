@@ -9,6 +9,7 @@ const marked = require('marked')
 const axios = require('axios')
 const googleMapsApiKey = process.env.GOOGLE_MAPS_KEY
 const moment = require('moment')
+const syntaxDynamicImport = require('babel-plugin-syntax-dynamic-import')
 
 
 const locals = {}
@@ -65,7 +66,7 @@ module.exports = {
     locals: (ctx) => { return Object.assign(locals, { pageId: pageId(ctx) }, { marked: marked }, {typeKitId: process.env.TYPEKIT_ID}, {slugify: slugify}, {formatDate: formatDate}) }
   }),
   postcss: cssStandards(),
-  babel: { presets: [[jsStandards, { modules: false }]] },
+  babel: { presets: [[jsStandards, { modules: false }]], plugins: ["syntax-dynamic-import"] },
   plugins: [
       new Contentful({
           addDataTo: locals,
