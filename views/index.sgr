@@ -41,7 +41,7 @@ extends(src='layout.sgr')
     #meetTheTeam
       h2 Meet the team
       .s-team-carousel.g-wrapper
-        each(loop='teamMember of contentful.home[0].fields.teamCarousel')
+        each(loop='teamMember of contentful.team')
           .s-team-carousel-member(id='{{{ slugify(teamMember.fields.name )}}}')
             .s-team-carousel-member__avatar
               picture
@@ -66,13 +66,14 @@ extends(src='layout.sgr')
     #eventsPreview.g-imageBg
       h2 Events
       .events-container.g-wrapper
-        each(loop='event of contentful.home[0].fields.homeEvents')
+        each(loop='event of contentful.events')
           .events-card
             h3 {{ event.fields.eventTitle }}
             p {{ event.fields.eventDescription }}
             a(href='/upcoming-events#{{{ slugify(event.fields.eventTitle) }}}') Read more &rarr;
             p {{{ formatDate(event.fields.dateTime) }}}
-            p Loc: {{ event.fields.location.address }}
+            p Location:
+            p {{{ marked(event.fields.eventAddress) }}}
         a(href='/upcoming-events') See all events
 
     include(src='includes/_cta.sgr')

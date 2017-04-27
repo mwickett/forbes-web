@@ -15,7 +15,8 @@ extends(src='layout.sgr')
                 p {{{ marked(event.fields.eventDescription) }}}
               .p-content-block__col
                 h4 Location
-                p {{ event.fields.location.address }}
+                .p-event-address
+
 
           // Event specific image?
 
