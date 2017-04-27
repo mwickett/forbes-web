@@ -59,7 +59,8 @@ extends(src='layout.sgr')
             .s-team-carousel-member__content
               h3.s-team-carousel-member__name {{ teamMember.fields.name }}, {{ teamMember.fields.educationTitle }}
               p.s-team-carousel-member__jobTitle {{ teamMember.fields.jobTitle }}
-              p(md).s-team-carousel-member__bio {{ teamMember.fields.shortBio }}
+              .s-team-carousel-member__bio
+                | {{{ marked(teamMember.fields.shortBio) }}}
               a(href='/meet-our-team#{{{ slugify(teamMember.fields.name)}}}') Read more &rarr;
       div(id='nextTeamMember') Next team member &rarr;
 
@@ -73,7 +74,8 @@ extends(src='layout.sgr')
             a(href='/upcoming-events#{{{ slugify(event.fields.eventTitle) }}}') Read more &rarr;
             p {{{ formatDate(event.fields.dateTime) }}}
             p Location:
-            p {{{ marked(event.fields.eventAddress) }}}
+            .g-address
+              | {{{ marked(event.fields.eventAddress) }}}
         a(href='/upcoming-events') See all events
 
     include(src='includes/_cta.sgr')
