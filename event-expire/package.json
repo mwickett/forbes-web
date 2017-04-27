@@ -1,0 +1,19 @@
+{
+  "name": "event-expire",
+  "version": "1.0.0",
+  "description": "Serverless to expire events",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mike Wickett",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.16.1",
+    "contentful": "^4.3.0",
+    "moment": "^2.18.1"
+  },
+  "devDependencies": {
+    "dotenv": "^4.0.0"
+  }
+}

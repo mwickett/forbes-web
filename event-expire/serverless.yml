@@ -11,7 +11,7 @@
 #
 # Happy Coding!
 
-service: services
+service: event-expire
 
 # You can pin your service to only deploy with a specific Serverless version
 # Check out our docs for more details
@@ -41,9 +41,12 @@ provider:
 #            - "Ref" : "ServerlessDeploymentBucket"
 #            - "/*"
 
-# you can define service wide environment variables here
-#  environment:
-#    variable1: value1
+you can define service wide environment variables here
+ environment:
+   CONTENTFUL_SPACE_ID: zgs2tu6qgkp6
+   CONTENTFUL_ACCESS_TOKEN: f0d4e088fed5f094656c83af6c0453860c77a0cb1acfc2542409c74b0eb2d5b8
+   NETLIFY_BUILD_URL: https://api.netlify.com/build_hooks/59024720cf321c3e3359d747
+
 
 # you can add packaging information here
 #package:
