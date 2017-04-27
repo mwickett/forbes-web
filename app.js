@@ -63,7 +63,8 @@ module.exports = {
   },
   ignore: ['**/layout.sgr', '**/_*', '**/.*', '_cache/**', 'readme.md', 'yarn.lock'],
   reshape: htmlStandards({
-    locals: (ctx) => { return Object.assign(locals, { pageId: pageId(ctx) }, { marked: marked }, {typeKitId: process.env.TYPEKIT_ID}, {slugify: slugify}, {formatDate: formatDate}) }
+    locals: (ctx) => { return Object.assign(locals, { pageId: pageId(ctx) }, { marked: marked }, {typeKitId: process.env.TYPEKIT_ID}, {slugify: slugify}, {formatDate: formatDate}) },
+    markdown: { linkify: false }
   }),
   postcss: cssStandards(),
   babel: { presets: [[jsStandards, { modules: false }]], plugins: ["syntax-dynamic-import"] },
@@ -75,16 +76,7 @@ module.exports = {
           contentTypes: [
               {
                   name: 'home',
-                  id: 'home',
-                  transform: (home) => {
-                    const event = home.fields.homeEvents
-                    event.forEach((event) => {
-                      const lat = event.fields.location.lat
-                      const lon = event.fields.location.lon
-                      getAddress(lat, lon).then((res) => {event.fields.location.address = res})
-                    })
-                    return home
-                  }
+                  id: 'home'
               },
               {
                   name: 'contactPage',
@@ -106,31 +98,7 @@ module.exports = {
               },
               {
                 name: 'events',
-                id: 'event',
-                // transform: (events) => {
-                //   const loopNestedObj = (obj) => {
-                //     Object.keys(obj).forEach(key => {
-                //       let latLon = []
-                //       if ((obj[key]) && typeof obj[key] === 'object') {
-                //         loopNestedObj(obj[key])
-                //       } else {
-                //         //Do something with it
-                //         if (key === 'lat') {
-                //           latLon.push(obj[key])
-                //         }
-                //
-                //         if (key === 'lon') {
-                //           latLon.push(obj[key])
-                //         }
-                //
-                //           console.log(latLon)
-                //
-                //       }
-                //     })
-                //   }
-                //
-                //   loopNestedObj(events)
-                //}
+                id: 'event'
               },
               {
                 name: 'basicPage',
