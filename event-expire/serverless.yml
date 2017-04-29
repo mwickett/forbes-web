@@ -58,8 +58,9 @@ you can define service wide environment variables here
 #    - exclude-me-dir/**
 
 functions:
-  hello:
-    handler: handler.hello
+  expireEvents:
+    handler: handler.expireEvents
+
 
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events

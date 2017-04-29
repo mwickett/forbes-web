@@ -1,11 +1,10 @@
-require('dotenv').config({ silent: true})
+require('dotenv').config({ silent: true })
 
 const contentfulManagement = require('contentful-management')
 const spaceID = process.env.CONTENTFUL_SPACE_ID
 
 
-module.exports = (eventId, callback) => {
-  console.log(eventId)
+module.exports = async (eventId) => {
   const client = contentfulManagement.createClient({
     accessToken: process.env.CONTENTFUL_MANAGEMENT_TOKEN
   })
@@ -15,7 +14,18 @@ module.exports = (eventId, callback) => {
     space.getEntry(eventId)
     .then((entry) => {
       entry.unpublish()
-      .then((entry) => callback(entry.sys.id))
+      .then((entry) => {
+        console.log('UNPUBLISHED' + entry.sys.id)
+        return 'unpublished'
+      })
+      .catch((e) => {
+        const message1 = "First catch " + e
+        return message1
+      })
     })
+  })
+  .catch((e) => {
+    const message2 = "Second catch " + e
+    return message2
   })
 }

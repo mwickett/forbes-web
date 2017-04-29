@@ -9,7 +9,6 @@
   "author": "Mike Wickett",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.16.1",
     "contentful": "^4.3.0",
     "contentful-management": "^3.4.0",
     "moment": "^2.18.1"

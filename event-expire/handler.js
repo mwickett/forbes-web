@@ -1,5 +1,5 @@
 'use strict';
 
-const checkEvents = require('./lib/checkEvents')
+const expireEvents = require('./lib/expireEvents')
 
-module.exports.checkEvents = checkEvents
+module.exports.expireEvents = expireEvents
