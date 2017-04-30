@@ -1,38 +1,41 @@
-require('dotenv').config({ silent: true })
-
-// Checks Contentful event content types for their eventDate and if they are before the current day, calls to
-// unpublishEevnt(id, finished) to unpublish the event fron Contentful
-const contentful = require('contentful')
+const contentful = require('contentful-management')
 const moment = require('moment')
-const unpublishEvent = require('./unpublishEvent')
 
-const spaceID = process.env.CONTENTFUL_SPACE_ID
+const dateNow = moment().format('YYYY-MM-DDThh:mm:ssZ')
 
-const client = contentful.createClient({
-  accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
-  space: spaceID
-})
-
-client.getEntries({
-  'content_type': 'event'
-})
-.then((entries) => {
-  const eventsForExpiry = entries.items.filter((entry) => {
-    const eventDate = moment(entry.fields.dateTime, 'YYYY-MM-DDThh:mm:ss-HH:mm')
-    const currentDate = moment().format('YYYY-MM-DDThh:mm:ss-HH:mm')
-    if (moment(eventDate).isBefore(currentDate)) {
-      return true
-    } else {
-      return false
-    }
+module.exports = (event, context, callback) => {
+  const client = contentful.createClient({
+    accessToken: process.env.CONTENTFUL_MANAGEMENT_TOKEN
   })
 
-  Promise.all(eventsForExpiry.map(async (event) => {
-    const results = await unpublishEvent(event.sys.id)
-    console.log(results)
+  client.getSpace(process.env.CONTENTFUL_SPACE_ID)
+  .then((space) => {
+    return space.getEntries({
+      'content_type': 'event',
+      'fields.dateTime[lte]': dateNow,
+      'sys.publishedAt[exists]': true
+    })
   })
-  )
-})
-.catch((e) => {
-  console.log('There was an error ' + e)
-})
+  .then((entries) => {
+    return Promise.all(entries.items.map((entry) => {
+      return entry.unpublish()
+    }))
+  })
+  .then((events) => {
+    return Promise.all(events.map((event) => {
+      return event.archive()
+    }))
+  })
+  .then((result) => {
+    const eventsExpired = result.length
+    return callback(null, {
+      statusCode: 200,
+      body: JSON.stringify({
+        message: 'Expired ' + eventsExpired + ' events.'
+      })
+    })
+  })
+  .catch((e) => {
+    callback(e)
+  })
+}

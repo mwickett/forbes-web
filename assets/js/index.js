@@ -1,5 +1,4 @@
 import mobileNav from './modules/nav.js'
-//import teamCarousel from './modules/teamCarousel'
 require('offline-plugin/runtime').install()
 
 function getPageId () {
@@ -14,6 +13,13 @@ function loadIndex () {
     .catch(err => console.log('Failed to load index scripts', err))
 }
 
+function loadTinySlider () {
+  import('tiny-slider')
+    .then((module) => {
+      console.log(module.default())
+    })
+}
+
 document.addEventListener('DOMContentLoaded', function () {
   // GLOBAL LOADS
   // Handle mobile nav dropdown
@@ -26,6 +32,7 @@ document.addEventListener('DOMContentLoaded', function () {
       loadIndex()
       break
     case 'how-we-help':
+      loadTinySlider()
       break
     case 'meet-our-team':
       break

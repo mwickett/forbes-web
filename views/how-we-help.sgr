@@ -31,4 +31,8 @@ extends(src='layout.sgr')
             | ${{ service.fields.fee }}
             | {{{ marked(service.fields.feeDescription) }}}
 
+    .slider
+      div: img(src='img/team-header.jpg')
+      div: img(src='img/events-header.jpg')
+
     include(src='includes/_cta.sgr')

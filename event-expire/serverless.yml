@@ -41,11 +41,11 @@ provider:
 #            - "Ref" : "ServerlessDeploymentBucket"
 #            - "/*"
 
-you can define service wide environment variables here
- environment:
-   CONTENTFUL_SPACE_ID: zgs2tu6qgkp6
-   CONTENTFUL_ACCESS_TOKEN: f0d4e088fed5f094656c83af6c0453860c77a0cb1acfc2542409c74b0eb2d5b8
-   NETLIFY_BUILD_URL: https://api.netlify.com/build_hooks/59024720cf321c3e3359d747
+# you can define service wide environment variables here
+  environment:
+    CONTENTFUL_SPACE_ID: zgs2tu6qgkp6
+    CONTENTFUL_MANAGEMENT_TOKEN: CFPAT-5e56d46991a3e60f8e8b93c5aded7e8f3c3efbeb1271498b7f34c98b79785f5f
+
 
 
 # you can add packaging information here
@@ -60,6 +60,13 @@ you can define service wide environment variables here
 functions:
   expireEvents:
     handler: handler.expireEvents
+    events:
+      - schedule:
+          name: expire-old-events
+          description: 'This expires and unpublishes contentful events'
+          rate: cron(0 10 * * ? *)
+          enabled: true
+
 
 
 #    The following are a few example events you can configure
