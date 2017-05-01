@@ -20,7 +20,7 @@ extends(src='layout.sgr')
 
             .p-content-block__col
               form.contact-form(action='thanks', name="contact", netlify, netlify-honeypot="bot-field")
-                  h3 This is a form
+                  h3 Contact Us
                   .form-row
                     input#name(type='text', name='name', placeholder='Your Full Name')
                     label(for="name") Name
@@ -34,4 +34,4 @@ extends(src='layout.sgr')
                     input.hidden#bot-field(type='text', name='bot-field', placeholder='Spam check')
                     label.hidden(for="bot-field") Bot field
                   .form-row
-                    button Get started
+                    button Send

@@ -1,2 +1,110 @@
 #get-in-touch
   @apply --standardPage
+
+  & .form-row
+    position: relative
+    padding-bottom: 20px
+
+  & label
+    color: var(--brandColour)
+    margin: 0px
+    position: absolute
+    top: -30px
+    left: 0
+    z-index: 1
+    opacity: 0
+    font-size: 1em
+    transition: var(--transitionOpacity)
+    font-family: 'soleil', sans-serif
+
+  & input
+    &[type="text"], &[type="email"]
+      border: none
+      border-bottom: 1px solid var(--brandGrey)
+      background: rgba(0,0,0,0)
+      color: var(--brandGrey)
+      height: 30px
+      margin-bottom: 20px
+      outline: 0 none
+      width: 100%
+      font-size: 1em
+      &::-webkit-input-placeholder
+        opacity: 1
+        transition: var(--transitionOpacity)
+
+      &:-moz-placeholder
+        opacity: 1
+        transition: var(--transitionOpacity)
+
+      &::-moz-placeholder
+        opacity: 1
+        transition: var(--transitionOpacity)
+
+      &:-ms-input-placeholder
+        opacity: 1
+        transition: var(--transitionOpacity)
+
+
+
+  & input:focus + label, & select:focus + label
+    opacity: 1
+    transition: var(--transitionOpacity)
+
+  & input:focus::-webkit-input-placeholder
+    opacity: 0
+    transition: var(--transitionOpacity)
+
+  & input:focus:-moz-placeholder
+    opacity: 0
+    transition: var(--transitionOpacity)
+
+  & input:focus::-moz-placeholder
+    opacity: 0
+    transition: var(--transitionOpacity)
+
+  & input:focus:-ms-input-placeholder
+    opacity: 0
+    transition: var(--transitionOpacity)
+
+  & textarea, select
+    border: none
+    border-bottom: 1px solid var(--brandGrey)
+    color: var(--brandGrey)
+    height: 30px
+    background: rgba(0,0,0,0)
+    margin-bottom: 20px
+    outline: 0 none
+    width: 100%
+    font-size: 1em
+
+  & select
+    appearance: none
+    -webkit-appearance: none
+    -moz-appearance: none
+    text-indent: 0.01px
+    text-overflow: ''
+    width: 100%
+    height: 35px
+    line-height: 25px
+    border-radius: 0
+    font-size: 1em
+
+  & select::-ms-expand
+    display: none
+
+  & button
+    background: var(--brandColour)
+    border: none
+    width: 100%
+    padding: 10px 25px 10px 25px
+    color: #FFF
+    box-shadow: 1px 1px 5px #B6B6B6
+    border-radius: 3px
+    cursor: pointer
+    font-size: 1em
+    transition: var(--transitionBackground)
+    &:hover
+      background: var(--brandColour)
+      transition: var(--transitionBackground)
+
+

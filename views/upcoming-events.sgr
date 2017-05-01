@@ -18,6 +18,4 @@ extends(src='layout.sgr')
                 .p-event-address
                   | {{{ marked(event.fields.eventAddress) }}}
 
-          // Event specific image?
-
     include(src='includes/_cta.sgr')

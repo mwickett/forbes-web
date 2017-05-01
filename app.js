@@ -69,43 +69,54 @@ module.exports = {
   postcss: cssStandards(),
   babel: { presets: [[jsStandards, { modules: false }]], plugins: ["syntax-dynamic-import"] },
   plugins: [
-      new Contentful({
-          addDataTo: locals,
-          accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
-          spaceId: process.env.CONTENTFUL_SPACE_ID,
-          contentTypes: [
-              {
-                  name: 'home',
-                  id: 'home'
-              },
-              {
-                  name: 'contactPage',
-                  id: 'contactPage',
-              },
-              {
-                name: 'services',
-                id: 'service',
-                filters: {
-                  order: 'fields.order'
-                }
-              },
-              {
-                name: 'team',
-                id: 'team',
-                filters: {
-                  order: 'fields.order'
-                }
-              },
-              {
-                name: 'events',
-                id: 'event'
-              },
-              {
-                name: 'basicPage',
-                id: 'basicPage'
-              }
-          ],
-          json: 'data/data.json'
-      })
+    new Contentful({
+      addDataTo: locals,
+      accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+      spaceId: process.env.CONTENTFUL_SPACE_ID,
+      contentTypes: [
+        {
+          name: 'home',
+          id: 'home'
+        },
+        {
+          name: 'contactPage',
+          id: 'contactPage'
+        },
+        {
+          name: 'services',
+          id: 'service',
+          filters: {
+            order: 'fields.order'
+          }
+        },
+        {
+          name: 'team',
+          id: 'team',
+          filters: {
+            order: 'fields.order'
+          }
+        },
+        {
+          name: 'events',
+          id: 'event',
+          filters: {
+            order: 'fields.dateTime'
+          }
+        },
+        {
+          name: 'homePageEvents',
+          id: 'event',
+          filters: {
+            order: 'fields.dateTime',
+            limit: 3
+          }
+        },
+        {
+          name: 'basicPage',
+          id: 'basicPage'
+        }
+      ],
+      json: 'data/data.json'
+    })
   ]
 }

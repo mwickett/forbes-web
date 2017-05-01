@@ -23,6 +23,9 @@
     justify-content: space-between
     align-items: center
 
+  --transitionOpacity: opacity 0.4s ease
+  --transitionBackground: background 0.4s ease
+
   // Page level applies
 
   // This is a "standard" page layout with block content (team, events)
@@ -163,3 +166,9 @@ a.g-button
   & img
     width: 100%
     height: auto
+
+// Overrides
+
+.hidden
+  display: none
+  opacity: 0
