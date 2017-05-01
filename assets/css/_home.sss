@@ -39,6 +39,7 @@
     & .what-to-expect-content
       @apply --flexCol
       margin: 3em 0
+      width: 100%
 
       & h2
         margin-top: 0
@@ -51,13 +52,13 @@
         flex-flow: row nowrap
 
         & h2
-          flex: 1
+          flex: 1 1 auto
           font-size: 4em
           text-align: right
           line-height: 1.1
 
         & .expectContent
-          flex: 1.5
+          flex: 1.5 1.5 auto
           border-left: 2px solid white
           padding-left: 2em
           margin: 2em
@@ -70,13 +71,14 @@
 
     &:before
       @apply --addDotsTriangle
+      z-index: -1
 
     & h2
       color: var(--brandGrey)
       text-transform: uppercase
       margin: 0em 0em
       padding: 1em 0
-      font-size: 3em
+      font-size: 3rem
       text-align: center
 
     & .service-container
@@ -84,6 +86,7 @@
       flex-flow: column nowrap
       justify-content: center
       position: relative
+      width: 100%
 
       @media screen and (min-width: 600px)
         flex-flow: row wrap
@@ -132,7 +135,7 @@
 
         & .service-card__content
           display: flex
-          flex: 1
+          flex: 1 1 auto
           flex-flow: column nowrap
           align-items: center
           justify-content: space-around
@@ -158,7 +161,7 @@
 
     &:before
       @apply --addDotsTriangle
-      top: -50px
+      top: -127px
       z-index: -1
 
     & h2
@@ -180,6 +183,7 @@
 
     & .s-team-carousel
       padding: 2em
+      width: 100%
 
       & .s-team-carousel-member
         margin-bottom: 5em
@@ -241,6 +245,7 @@
 
     & .events-container
       @apply --flexCol
+      width: 100%
 
       @media screen and (min-width: 600px)
         flex-flow: row wrap
