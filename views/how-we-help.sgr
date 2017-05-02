@@ -31,8 +31,26 @@ extends(src='layout.sgr')
             | ${{ service.fields.fee }}
             | {{{ marked(service.fields.feeDescription) }}}
 
-    .slider
-      div: img(src='img/team-header.jpg')
-      div: img(src='img/events-header.jpg')
+    .g-wrapper
+      h2 {{ contentful.officeCarousel[0].fields.carouselTitle }}
+      p {{{ marked(contentful.officeCarousel[0].fields.carouselDescription) }}}
+      .siema
+        each(loop='image of contentful.officeCarousel[0].fields.carouselImages')
+          picture
+            source(type='image/webp'
+              srcset='{{ image.fields.file.url }}?fm=webp&w=2000&fit=fill 2000w,
+              {{ image.fields.file.url }}?fm=webp&w=1500&fit=fill 1500w,
+              {{ image.fields.file.url }}?fm=webp&w=900 900w,
+              {{ image.fields.file.url }}?fm=webp&w=450 450w')
+            img(src='{{ image.fields.file.url }}?fm=jpg&w=900&fit=fill'
+              srcset='{{ image.fields.file.url }}?fm=jpg&w=2000&fit=fill 2000w,
+              {{ image.fields.file.url }}?fm=jpg&w=1500&fit=fill 1500w,
+              {{ image.fields.file.url }}?fm=jpg&w=900 900w,
+              {{ image.fields.file.url }}?fm=jpg&w=450 450w'
+            alt='{{ image.fields.description }}')
+      .siema-buttons
+        button.g-button.prev &larr; Previous
+        button.g-button.next Next &rarr;
+
 
     include(src='includes/_cta.sgr')

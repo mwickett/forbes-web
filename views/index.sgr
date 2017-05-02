@@ -62,7 +62,7 @@ extends(src='layout.sgr')
               .s-team-carousel-member__bio
                 | {{{ marked(teamMember.fields.shortBio) }}}
               a(href='/meet-our-team#{{{ slugify(teamMember.fields.name)}}}') Read more &rarr;
-      div(id='nextTeamMember') Next team member &rarr;
+      a.g-button(id='nextTeamMember') Next team member &rarr;
 
     #eventsPreview.g-imageBg
       h2 Events

@@ -1,4 +1,5 @@
 import mobileNav from './modules/nav.js'
+import Sticky from 'sticky-js'
 require('offline-plugin/runtime').install()
 
 function getPageId () {
@@ -13,10 +14,16 @@ function loadIndex () {
     .catch(err => console.log('Failed to load index scripts', err))
 }
 
-function loadTinySlider () {
-  import('tiny-slider')
-    .then((module) => {
-      console.log(module.default())
+function loadSiema () {
+  import('siema')
+    .then((Siema) => {
+      const mySiema = new Siema()
+
+      const prev = document.querySelector('.prev')
+      const next = document.querySelector('.next')
+
+      prev.addEventListener('click', () => mySiema.prev())
+      next.addEventListener('click', () => mySiema.next())
     })
 }
 
@@ -24,6 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // GLOBAL LOADS
   // Handle mobile nav dropdown
   mobileNav()
+  const sticky = new Sticky('.sticky')
 
   const currentPage = getPageId()
 
@@ -32,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function () {
       loadIndex()
       break
     case 'how-we-help':
-      loadTinySlider()
+      loadSiema()
       break
     case 'meet-our-team':
       break

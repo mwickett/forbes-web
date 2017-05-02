@@ -77,6 +77,9 @@ body
   -webkit-font-smoothing: antialiased
   text-rendering: optimizeLegibility
 
+main
+  margin-top: 110px
+
 h1,
 h2,
 h3,
@@ -102,7 +105,7 @@ img
 
 // Global content wrapper
 .g-wrapper
-  max-width: 60em
+  max-width: 50em
   margin: 0 auto
 
 //Global component styles
@@ -127,7 +130,7 @@ img
     url(../img/runners.jpg)
 
 // Button
-a.g-button
+a.g-button, button.g-button
   font-family: "soleil", sans-serif
   font-style: normal
   text-transform: uppercase
@@ -142,6 +145,8 @@ a.g-button
   box-sizing: border-box
   border-radius: 4px
   transition: 250ms all ease
+  margin: 1em
+  cursor: pointer
 
   &:hover
     color: white
@@ -149,6 +154,9 @@ a.g-button
     font-weight: 600
     border: 2px solid var(--brandColour)
     transition: 250ms all ease
+
+button.g-button:focus
+  outline: none
 
 // Cropped top and bottom grey background
 .g-background

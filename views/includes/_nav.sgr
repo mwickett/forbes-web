@@ -1,4 +1,4 @@
-header
+header.sticky
   .g-wrapper
     .header-content
       #logo

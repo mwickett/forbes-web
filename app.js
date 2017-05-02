@@ -114,6 +114,10 @@ module.exports = {
         {
           name: 'basicPage',
           id: 'basicPage'
+        },
+        {
+          name: 'officeCarousel',
+          id: 'imageCarousel'
         }
       ],
       json: 'data/data.json'
