@@ -1,0 +1,14 @@
+{
+  "name": "contact-form",
+  "version": "1.0.0",
+  "description": "Sends email from contact form",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.48.0"
+  }
+}
