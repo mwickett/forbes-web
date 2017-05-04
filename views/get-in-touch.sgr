@@ -19,13 +19,13 @@ extends(src='layout.sgr')
               p {{{ marked(contentful.contactPage[0].fields.contactAddress) }}}
 
             .p-content-block__col
-              form.contact-form(action='thanks', name="contact", netlify, netlify-honeypot="bot-field")
                   h3 Contact Us
+              form.contact-form(action='thanks', name="contact", netlify, netlify-honeypot="bot-field")
                   .form-row
                     input#name(type='text', name='name', placeholder='Your Full Name')
                     label(for="name") Name
                   .form-row
-                    input#email(type='email', name='email', placeholder='Valid Email Address' required)
+                    input#email(type='email', name='email', placeholder='Valid Email Address (required)' required)
                     label(for="email") Email
                   .form-row
                     input#message(type="text" name='message', placeholder='Message or question')
@@ -35,3 +35,5 @@ extends(src='layout.sgr')
                     label.hidden(for="bot-field") Bot field
                   .form-row
                     button Send
+                  .form-row
+                    span.formStatus.hidden Your message has been sent. We'll be in touch soon.

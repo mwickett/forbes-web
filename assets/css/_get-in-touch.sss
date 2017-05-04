@@ -1,6 +1,9 @@
 #get-in-touch
   @apply --standardPage
 
+  & form
+    margin-top: 2em
+
   & .form-row
     position: relative
     padding-bottom: 20px
@@ -27,7 +30,7 @@
       margin-bottom: 20px
       outline: 0 none
       width: 100%
-      font-size: 1em
+      font-size: 0.8em
       &::-webkit-input-placeholder
         opacity: 1
         transition: var(--transitionOpacity)
@@ -44,7 +47,14 @@
         opacity: 1
         transition: var(--transitionOpacity)
 
+      &:valid
+        color: green
 
+      &:invalid
+        background-color: red
+
+  & input:focus
+    border-bottom: 1px solid var(--brandColour)
 
   & input:focus + label, & select:focus + label
     opacity: 1
@@ -105,6 +115,9 @@
     transition: var(--transitionBackground)
     &:hover
       background: var(--brandColour)
+      transition: var(--transitionBackground)
+    &:disabled
+      background: var(--brandGrey)
       transition: var(--transitionBackground)
 
 

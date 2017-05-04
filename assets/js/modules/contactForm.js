@@ -3,16 +3,26 @@ const url = 'https://m5pun1fvqc.execute-api.us-east-1.amazonaws.com/testing/cont
 function contactForm () {
   const form = document.querySelector('form.contact-form')
   const submit = form.querySelector('button')
+  submit.disabled = true
 
   let nameField = form.querySelector('input#name')
   let emailField = form.querySelector('input#email')
   let messageField = form.querySelector('input#message')
   let botField = form.querySelector('input#bot-field')
+  let feedBackMessage = form.querySelector('span.formStatus')
 
-  function clearForm() {
+
+
+  function clearForm () {
     nameField.value = ''
     emailField.value = ''
     messageField.value = ''
+    submit.disabled = false
+  }
+
+  function displayMessage (field, message) {
+    field.innerHTML = message
+    field.classList.remove('hidden')
   }
 
   function sendFormData (data) {
@@ -38,13 +48,15 @@ function contactForm () {
         case 4:
           if (request.status === 200) {
             console.log('Submitted successfully')
+            displayMessage(feedBackMessage, "It's been sent! We'll be in touch soon")
+            clearForm()
           } else {
+            displayMessage(feedBackMessage, "Something went wrong. Please try again")
             console.log('Something went wrong with the server')
           }
           break
       }
     }
-    // Add response handling and pass error to user
   }
 
   function getFormData (e) {
@@ -66,10 +78,25 @@ function contactForm () {
     console.log(JSON.stringify(data))
     sendFormData(data)
     // Add validation checking
-    clearForm()
   }
 
-  submit.addEventListener('click', getFormData)
+  function validator (e) {
+    console.log(e)
+    submit.disabled = true
+    const data = {
+      name: form.querySelector('input#name').value.trim(),
+      email: form.querySelector('input#email').value.trim(),
+      description: form.querySelector('input#message').value.trim()
+    }
+    console.log(data)
+
+    if (data.name && data.email) {
+      submit.disabled = false
+      submit.addEventListener('click', getFormData)
+    }
+  }
+
+  form.addEventListener('change', validator)
 }
 
 export default contactForm
