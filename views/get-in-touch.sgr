@@ -19,7 +19,7 @@ extends(src='layout.sgr')
               p {{{ marked(contentful.contactPage[0].fields.contactAddress) }}}
 
             .p-content-block__col
-                  h3 Contact Us
+              h3 Contact Us
               form.contact-form(action='thanks', name="contact", netlify, netlify-honeypot="bot-field")
                   .form-row
                     input#name(type='text', name='name', placeholder='Your Full Name')
