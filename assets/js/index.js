@@ -27,6 +27,12 @@ function loadSiema () {
     })
 }
 
+function loadContactForm() {
+  import('./modules/contactForm')
+    .then(module => module.default())
+    .catch(err => console.log('Failed to load contact form', err))
+}
+
 document.addEventListener('DOMContentLoaded', function () {
   // GLOBAL LOADS
   // Handle mobile nav dropdown
@@ -43,6 +49,9 @@ document.addEventListener('DOMContentLoaded', function () {
       loadSiema()
       break
     case 'meet-our-team':
+      break
+    case 'get-in-touch':
+      loadContactForm()
       break
   }
 })
