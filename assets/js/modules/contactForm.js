@@ -1,8 +1,6 @@
 const url = 'https://m5pun1fvqc.execute-api.us-east-1.amazonaws.com/testing/contact'
 
 function contactForm () {
-  console.log("Contact Form Loaded")
-
   const form = document.querySelector('form.contact-form')
   const submit = form.querySelector('button')
 
@@ -23,6 +21,29 @@ function contactForm () {
     request.open('POST', url, true)
     request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8')
     request.send(payload)
+    request.onreadystatechange = () => {
+      switch (request.readyState) {
+        case 0:
+          console.log('Not opened yet')
+          break
+        case 1:
+          console.log('Opened')
+          break
+        case 2:
+          console.log('Headers')
+          break
+        case 3:
+          console.log('Loding')
+          break
+        case 4:
+          if (request.status === 200) {
+            console.log('Submitted successfully')
+          } else {
+            console.log('Something went wrong with the server')
+          }
+          break
+      }
+    }
     // Add response handling and pass error to user
   }
 
@@ -37,9 +58,9 @@ function contactForm () {
     }
 
     const data = {
-      name: form.querySelector('input#name').value,
-      email: form.querySelector('input#email').value,
-      description: form.querySelector('input#message').value
+      name: form.querySelector('input#name').value.trim(),
+      email: form.querySelector('input#email').value.trim(),
+      description: form.querySelector('input#message').value.trim()
     }
 
     console.log(JSON.stringify(data))
@@ -52,18 +73,3 @@ function contactForm () {
 }
 
 export default contactForm
-
-
-
-// Set submit event handler on button
-
-// Get values of form
-
-// Validate to make sure they're good
-
-// Assemble JSON
-
-// var request = new XMLHttpRequest();
-// request.open('POST', '/my/url', true);
-// request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
-// request.send(data);
