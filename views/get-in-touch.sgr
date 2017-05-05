@@ -22,14 +22,14 @@ extends(src='layout.sgr')
               h3 Contact Us
               form.contact-form(action='thanks', name="contact", netlify, netlify-honeypot="bot-field")
                   .form-row
-                    input#name(type='text', name='name', placeholder='Your Full Name')
+                    input#name(type='text', name='name', placeholder='Your Name' required)
                     label(for="name") Name
                   .form-row
-                    input#email(type='email', name='email', placeholder='Valid Email Address (required)' required)
+                    input#email(type='email', name='email', placeholder='name@domain.com' required)
                     label(for="email") Email
                   .form-row
                     input#message(type="text" name='message', placeholder='Message or question')
-                    label(for="about") About
+                    label(for="about") Message
                   .form-row
                     input.hidden#bot-field(type='text', name='bot-field', placeholder='Spam check')
                     label.hidden(for="bot-field") Bot field

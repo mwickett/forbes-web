@@ -81,22 +81,17 @@ function contactForm () {
   }
 
   function validator (e) {
-    console.log(e)
     submit.disabled = true
-    const data = {
-      name: form.querySelector('input#name').value.trim(),
-      email: form.querySelector('input#email').value.trim(),
-      description: form.querySelector('input#message').value.trim()
-    }
-    console.log(data)
+      // CHANGE THIS TO CHECK FIELD VALIDITY
+      // https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/Form_validation
 
-    if (data.name && data.email) {
+    if (nameField.validity.valid && emailField.validity.valid && messageField.validity.valid) {
       submit.disabled = false
-      submit.addEventListener('click', getFormData)
     }
   }
 
   form.addEventListener('change', validator)
+  submit.addEventListener('click', getFormData)
 }
 
 export default contactForm
