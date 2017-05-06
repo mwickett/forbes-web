@@ -67,7 +67,7 @@ extends(src='layout.sgr')
     #eventsPreview.g-imageBg
       h2 Events
       .events-container.g-wrapper
-        if(condition='contentful.events')
+        if(condition="{{{ checkLength(contentful.events)}}} > 0")
           each(loop='event of contentful.homePageEvents')
             .events-card
               h3 {{ event.fields.eventTitle }}
@@ -77,12 +77,12 @@ extends(src='layout.sgr')
               p Location:
               .g-address
                 | {{{ marked(event.fields.eventAddress) }}}
-            a.read-more(href='/upcoming-events') See all events
-          else
-            .events-card
-              h3 No events scheduled
-              p
-                a(href="#") Sign-up to be notified
-                | &nbsp; by email when an event is scheduled.
+          a.read-more(href='/upcoming-events') See all events
+        else
+          .events-card
+            h3 No events scheduled
+            p
+              a(href="#") Sign-up to be notified
+              | &nbsp; by email when an event is scheduled.
 
     include(src='includes/_cta.sgr')

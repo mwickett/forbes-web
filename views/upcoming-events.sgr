@@ -4,7 +4,7 @@ extends(src='layout.sgr')
       img(src="img/events-header.jpg")
     .p-wrapper
       .g-wrapper
-        if(condition='contentful.events')
+        if(condition="{{{ checkLength(contentful.events)}}} > 0")
           each(loop='event of contentful.events')
             .p-content-block(id='{{{ slugify(event.fields.eventTitle) }}}').g-border
               .g-flourish-bar
@@ -18,20 +18,20 @@ extends(src='layout.sgr')
                   h4 Location
                   .p-event-address
                     | {{{ marked(event.fields.eventAddress) }}}
-          else
-            .p-content-block.g-border
-              .g-flourish-bar
-              h2 No events scheduled yet
-              .p-content-block__grid-wrapper
-                .p-content-block__col
-                  h4 Check back later, or sign-up to be notified
-                  p
-                    a(href="#") Sign-up to be notified
-                    | &nbsp; by email when an event is scheduled.
-                .p-content-block__col
-                  h4 Got a bright idea? &#128161;
-                  .p-event-address
-                    a(href="get-in-touch") Get in touch
-                    | &nbsp; and let us know if you have an idea for an event
+        else
+          .p-content-block.g-border
+            .g-flourish-bar
+            h2 No events scheduled yet
+            .p-content-block__grid-wrapper
+              .p-content-block__col
+                h4 Check back later, or sign-up to be notified
+                p
+                  a(href="#") Sign-up to be notified
+                  | &nbsp; by email when an event is scheduled.
+              .p-content-block__col
+                h4 Got a bright idea? &#128161;
+                .p-event-address
+                  a(href="get-in-touch") Get in touch
+                  | &nbsp; and let us know if you have an idea for an event
 
     include(src='includes/_cta.sgr')
