@@ -4,10 +4,8 @@
       .footer-item
         h5 Services
         ul
-          li: a(href='/how-we-help#performance') Performance Enhancement
-          li: a(href='/how-we-help#learning') Learning Assessment
-          li: a(href='/how-we-help#career') Career Assessment
-          li: a(href='/how-we-help#counselling') Counselling
+          each(loop='service of contentful.services')
+            li:a(href='/how-we-help#{{{ slugify(service.fields.serviceName) }}}') {{ service.fields.serviceName }}
 
 
       .footer-item
