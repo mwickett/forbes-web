@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // GLOBAL LOADS
   // Handle mobile nav dropdown
   mobileNav()
-  const sticky = new Sticky('.sticky', {})
+  const sticky = new Sticky('.sticky', {  })
 
   const currentPage = getPageId()
 
