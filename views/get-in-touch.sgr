@@ -9,24 +9,27 @@ extends(src='layout.sgr')
           .p-content-block__grid-wrapper
             .p-content-block__col
               h2 {{ contentful.contactPage[0].fields.getInTouch }}
-              p {{{ marked(contentful.contactPage[0].fields.contactBody) }}}
+              p
+                | {{{ marked(contentful.contactPage[0].fields.contactBody) }}}
               p
                | Phone: {{ contentful.contactPage[0].fields.contactPhone }}
-               | Fax: {{ contentful.contactPage[0].fields.contactFax }}
+              p
+                | Fax: {{ contentful.contactPage[0].fields.contactFax }}
 
               p: a(href='mailto:{{ contentful.contactPage[0].fields.contactEmail }}') {{ contentful.contactPage[0].fields.contactEmail }}
 
-              p {{{ marked(contentful.contactPage[0].fields.contactAddress) }}}
+              p
+                | {{{ marked(contentful.contactPage[0].fields.contactAddress) }}}
 
             .p-content-block__col
               h3 Contact Us
-              form.contact-form(action='thanks', name="contact", netlify, netlify-honeypot="bot-field")
+              form.contact-form(action='thanks', name="contact", netlify, netlify-honeypot="bot-field" novalidate)
                   .form-row
                     input#name(type='text', name='name', placeholder='Your Name' required)
-                    label(for="name") Name
+                    label(for="name") Name (required)
                   .form-row
                     input#email(type='email', name='email', placeholder='name@domain.com' required)
-                    label(for="email") Email
+                    label(for="email") Email (required)
                   .form-row
                     input#message(type="text" name='message', placeholder='Message or question')
                     label(for="about") Message
@@ -34,6 +37,6 @@ extends(src='layout.sgr')
                     input.hidden#bot-field(type='text', name='bot-field', placeholder='Spam check')
                     label.hidden(for="bot-field") Bot field
                   .form-row
-                    button Send
+                    button(name="submit") Send
                   .form-row
-                    span.formStatus.hidden Your message has been sent. We'll be in touch soon.
+                    span.formStatus(aria-live="polite")

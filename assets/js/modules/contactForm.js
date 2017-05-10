@@ -3,7 +3,6 @@ const url = 'https://m5pun1fvqc.execute-api.us-east-1.amazonaws.com/testing/cont
 function contactForm () {
   const form = document.querySelector('form.contact-form')
   const submit = form.querySelector('button')
-  submit.disabled = true
 
   let nameField = form.querySelector('input#name')
   let emailField = form.querySelector('input#email')
@@ -11,18 +10,21 @@ function contactForm () {
   let botField = form.querySelector('input#bot-field')
   let feedBackMessage = form.querySelector('span.formStatus')
 
-
-
   function clearForm () {
     nameField.value = ''
     emailField.value = ''
     messageField.value = ''
-    submit.disabled = false
   }
 
-  function displayMessage (field, message) {
-    field.innerHTML = message
-    field.classList.remove('hidden')
+  function displayMessage (message, status) {
+    if (message === 'clear') {
+      feedBackMessage.innerHTML = " "
+      feedBackMessage.classList.remove('error')
+      feedBackMessage.classList.remove('success')
+    } else {
+      feedBackMessage.classList.add(status)
+      feedBackMessage.innerHTML = message
+    }
   }
 
   function sendFormData (data) {
@@ -48,10 +50,10 @@ function contactForm () {
         case 4:
           if (request.status === 200) {
             console.log('Submitted successfully')
-            displayMessage(feedBackMessage, "It's been sent! We'll be in touch soon")
+            displayMessage("It's been sent! We'll be in touch soon", 'success')
             clearForm()
           } else {
-            displayMessage(feedBackMessage, "Something went wrong. Please try again")
+            displayMessage('Something went wrong. Please try again', 'error')
             console.log('Something went wrong with the server')
           }
           break
@@ -60,11 +62,11 @@ function contactForm () {
   }
 
   function getFormData (e) {
-    e.preventDefault()
 
     // Check if bot field has a value, if it does, don't send.
     if (botField.value) {
       clearForm()
+      displayMessage('Bot-field filled - submission rejected as spam', 'error')
       console.log("Bot-field filled - submission rejected")
       return
     }
@@ -74,24 +76,39 @@ function contactForm () {
       email: form.querySelector('input#email').value.trim(),
       description: form.querySelector('input#message').value.trim()
     }
-
-    console.log(JSON.stringify(data))
     sendFormData(data)
-    // Add validation checking
   }
 
-  function validator (e) {
-    submit.disabled = true
-      // CHANGE THIS TO CHECK FIELD VALIDITY
-      // https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/Form_validation
-
-    if (nameField.validity.valid && emailField.validity.valid && messageField.validity.valid) {
-      submit.disabled = false
+  function validate (e) {
+    const target = e.target
+    // Check if it's our button
+    if (target.name === 'submit') {
+      e.preventDefault()
+      if (nameField.validity.valid && emailField.validity.valid) {
+        getFormData()
+      } else if (!nameField.validity.valid && !emailField.validity.valid) {
+        displayMessage('The name and email fields are required', 'error')
+        nameField.classList.add('error')
+        emailField.classList.add('error')
+      } else if (!nameField.validity.valid) {
+        displayMessage('The name field is required', 'error')
+        nameField.classList.add('error')
+      } else if (!emailField.validity.valid) {
+        displayMessage("The email field is required in the format 'name@email.com'", 'error')
+        emailField.classList.add('error')
+      }
+    } else {
+      if (target.validity.valid) {
+        displayMessage('clear')
+        target.classList.remove('error')
+      }
     }
   }
 
-  form.addEventListener('change', validator)
-  submit.addEventListener('click', getFormData)
+  nameField.addEventListener('keyup', validate)
+  emailField.addEventListener('keyup', validate)
+  messageField.addEventListener('keyup', validate)
+  submit.addEventListener('click', validate)
 }
 
 export default contactForm

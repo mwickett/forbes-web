@@ -9,14 +9,14 @@
     padding-bottom: 20px
 
   & label
-    color: var(--brandColour)
+    color: var(--brandGrey)
     margin: 0px
     position: absolute
     top: -30px
     left: 0
     z-index: 1
-    opacity: 0
-    font-size: 1em
+    opacity: 1
+    font-size: 0.8em
     transition: var(--transitionOpacity)
     font-family: 'soleil', sans-serif
 
@@ -26,55 +26,62 @@
       border-bottom: 1px solid var(--brandGrey)
       background: rgba(0,0,0,0)
       color: var(--brandGrey)
-      height: 30px
-      margin-bottom: 20px
+      height: 50px
+      margin-bottom: 40px
       outline: 0 none
       width: 100%
-      font-size: 0.8em
+      font-size: 1.2em
       &::-webkit-input-placeholder
-        opacity: 1
+        opacity: 0.5
         transition: var(--transitionOpacity)
 
       &:-moz-placeholder
-        opacity: 1
+        opacity: 0.5
         transition: var(--transitionOpacity)
 
       &::-moz-placeholder
-        opacity: 1
+        opacity: 0.5
         transition: var(--transitionOpacity)
 
       &:-ms-input-placeholder
-        opacity: 1
+        opacity: 0.5
         transition: var(--transitionOpacity)
 
-      &:valid
-        color: green
-
-      &:invalid
-        background-color: red
+  & input.error
+    border-bottom: 1px solid var(--brandColour)
 
   & input:focus
-    border-bottom: 1px solid var(--brandColour)
+    border-bottom: 1px solid var(--blue)
 
   & input:focus + label, & select:focus + label
     opacity: 1
     transition: var(--transitionOpacity)
+    transition: var(--transitionColor)
+    color: var(--blue)
 
   & input:focus::-webkit-input-placeholder
     opacity: 0
     transition: var(--transitionOpacity)
+    transition: var(--transitionColor)
+    color: var(--blue)
 
   & input:focus:-moz-placeholder
     opacity: 0
     transition: var(--transitionOpacity)
+    transition: var(--transitionColor)
+    color: var(--blue)
 
   & input:focus::-moz-placeholder
     opacity: 0
     transition: var(--transitionOpacity)
+    transition: var(--transitionColor)
+    color: var(--blue)
 
   & input:focus:-ms-input-placeholder
     opacity: 0
     transition: var(--transitionOpacity)
+    transition: var(--transitionColor)
+    color: var(--blue)
 
   & textarea, select
     border: none
@@ -103,7 +110,7 @@
     display: none
 
   & button
-    background: var(--brandColour)
+    background: var(--blue)
     border: none
     width: 100%
     padding: 10px 25px 10px 25px
@@ -114,10 +121,18 @@
     font-size: 1em
     transition: var(--transitionBackground)
     &:hover
-      background: var(--brandColour)
+      background: var(--blue)
       transition: var(--transitionBackground)
+
     &:disabled
       background: var(--brandGrey)
       transition: var(--transitionBackground)
 
+  & span.formStatus
+    font-family: 'soleil', sans-serif
 
+  & span.formStatus.error
+    color: red
+
+  & span.formStatus.success
+    color: green
