@@ -111,7 +111,7 @@ module.exports = {
   // minify html and css
   reshape: htmlStandards({
     minify: true,
-    locals: (ctx) => { return Object.assign(locals, { pageId: pageId(ctx) }, { marked: marked }, {typeKitId: process.env.TYPEKIT_ID}, {slugify: slugify}, {formatDate: formatDate}, { checkLength: checkLength }) },
+    locals: (ctx) => { return Object.assign(locals, { pageId: pageId(ctx) }, { marked: marked }, {slugify: slugify}, {formatDate: formatDate}, { checkLength: checkLength }) },
     markdown: { linkify: false }
   }),
   postcss: cssStandards({
