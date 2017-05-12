@@ -25,16 +25,16 @@ extends(src='layout.sgr')
               h3 Contact Us
               form.contact-form(action='thanks', name="contact", netlify, netlify-honeypot="bot-field" novalidate)
                   .form-row
-                    input#name(type='text', name='name', placeholder='Your Name' required)
+                    input#name(type='text' name='name' placeholder='Your Name' required)
                     label(for="name") Name (required)
                   .form-row
-                    input#email(type='email', name='email', placeholder='name@domain.com' required)
+                    input#email(type='email' name='email' placeholder='name@domain.com' required)
                     label(for="email") Email (required)
                   .form-row
-                    input#message(type="text" name='message', placeholder='Message or question')
+                    input#message(type="text" name='message' placeholder='Message or question')
                     label(for="about") Message
                   .form-row
-                    input.hidden#bot-field(type='text', name='bot-field', placeholder='Spam check')
+                    input.hidden#bot-field(type='text' name='bot-field' placeholder='Spam check')
                     label.hidden(for="bot-field") Bot field
                   .form-row
                     button(name="submit") Send
