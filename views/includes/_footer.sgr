@@ -23,10 +23,10 @@
           li 519-280-6697
 
 
-      .footer-item
-        h5 Follow Us
-        ul
-          li: a(href='https://www.facebook.com/drforbes') Facebook Icon
+      //- .footer-item
+      //-   h5 Follow Us
+      //-   ul
+      //-     li: a(href='https://www.facebook.com/drforbes') Facebook Icon
 
 
       .bottom
