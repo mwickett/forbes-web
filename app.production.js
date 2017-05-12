@@ -105,7 +105,7 @@ module.exports = {
   module: {
     rules: [{
       test: /\.(jpe?g|png|gif|svg)$/i,
-      use: [{ loader: 'image-webpack' }]
+      use: [{ loader: 'image-webpack-loader' }]
     }]
   },
   // minify html and css

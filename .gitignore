@@ -3,3 +3,4 @@ node_modules
 public
 _cache
 .env
+.font-script.js
