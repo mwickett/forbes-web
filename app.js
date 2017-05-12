@@ -1,4 +1,4 @@
-require('dotenv').config({ silent: true})
+require('dotenv').config({ silent: true })
 
 const htmlStandards = require('reshape-standard')
 const cssStandards = require('spike-css-standards')
@@ -9,13 +9,12 @@ const marked = require('marked')
 const axios = require('axios')
 const googleMapsApiKey = process.env.GOOGLE_MAPS_KEY
 const moment = require('moment')
-const syntaxDynamicImport = require('babel-plugin-syntax-dynamic-import')
 
 
 const locals = {}
 
 // Used to convert anything to URL friendly slug
-const slugify = function(text) {
+const slugify = function (text) {
   return text
     .toString()
     .trim()
@@ -31,22 +30,22 @@ function checkLength (item) {
   return item.length
 }
 
-function reverseLookup(lat, lon) {
+function reverseLookup (lat, lon) {
   return axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lon}&key=${googleMapsApiKey}`)
     .then(function (response) {
       const results = response
       const address = results.data.results[0].formatted_address
       return address
     })
-    .catch(function(error){
+    .catch(function (error){
       console.log(error)
     })
 }
 
-function getAddress(lat, lon) {
+function getAddress (lat, lon) {
   return new Promise((resolve, reject) => {
     reverseLookup(lat, lon)
-    .then(function(address) {
+    .then(function (address) {
       resolve(address)
     })
     .catch(reject)
@@ -54,8 +53,8 @@ function getAddress(lat, lon) {
 }
 
 // Clean up data & time format
-function formatDate(dateTime) {
-  const cleanDate = moment(dateTime).format("dddd, MMMM Do YYYY, h:mm a")
+function formatDate (dateTime) {
+  const cleanDate = moment(dateTime).format('dddd, MMMM Do YYYY, h:mm a')
   return cleanDate
 }
 
@@ -71,7 +70,7 @@ module.exports = {
     markdown: { linkify: false }
   }),
   postcss: cssStandards(),
-  babel: { presets: [[jsStandards, { modules: false }]], plugins: ["syntax-dynamic-import"] },
+  babel: { presets: [[jsStandards, { modules: false }]], plugins: ['syntax-dynamic-import'] },
   plugins: [
     new Contentful({
       addDataTo: locals,

@@ -5,7 +5,7 @@
         h5 Services
         ul
           each(loop='service of contentful.services')
-            li:a(href='/how-we-help#{{{ slugify(service.fields.serviceName) }}}') {{ service.fields.serviceName }}
+            li:a(href="/how-we-help#{{{ slugify(service.fields.serviceName) }}}") {{ service.fields.serviceName }}
 
 
       .footer-item

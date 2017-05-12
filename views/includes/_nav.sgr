@@ -8,4 +8,4 @@ header.sticky
       nav#nav
         ul
           each(loop='item in ["How We Help", "Meet Our Team", "Upcoming Events", "Get In Touch"]')
-            li:a(href='{{{ slugify(item) }}}' class="{{ pageId === slugify(item) ? 'active' : 'inactive'}}") {{ item }}
+            li:a(href='{{{ slugify(item) }}}' class="{{{ pageId === slugify(item) ? 'active' : 'inactive'}}}") {{ item }}

@@ -35,7 +35,6 @@ function teamCarousel () {
       }
 
       if (teamMember.classList.contains('js-active')) {
-        console.log("active")
         teamMember.classList.remove('js-active')
         teamMember.classList.add('js-inactive')
         // If it's the last one active, we need to start over, otherwise set the next one to be activated

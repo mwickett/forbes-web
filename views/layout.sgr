@@ -18,7 +18,7 @@ html(lang='en-ca')
       meta(name="theme-color" content="#ffffff")
 
     block(name='title')
-      title Dr. Forbes & Associates - Psychologist, counselling, educational assessments - London, Ontario
+      title Dr. Forbes &amp; Associates - Psychologist, counselling, educational assessments - London, Ontario
 
     script.
       (function(d) {
