@@ -32,7 +32,7 @@ extends(src="layout.sgr")
                     label(for="email") Email (required)
                   .form-row
                     input#message(type="text" name="message" placeholder="Message or question")
-                    label(for="about") Message
+                    label(for="message") Message
                   .form-row
                     input.hidden#bot-field(type="text" name="bot-field" placeholder="Spam check")
                     label.hidden(for="bot-field") Bot field
