@@ -110,7 +110,7 @@ module.exports = {
   },
   // minify html and css
   reshape: htmlStandards({
-    minify: true,
+    minify: false,
     locals: (ctx) => { return Object.assign(locals, { pageId: pageId(ctx) }, { marked: marked }, {slugify: slugify}, {formatDate: formatDate}, { checkLength: checkLength }) },
     markdown: { linkify: false }
   }),
