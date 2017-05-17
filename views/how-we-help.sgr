@@ -28,7 +28,7 @@ extends(src='layout.sgr')
           .p-services-content-panel.g-border
             .g-flourish-bar
             h4 What are the fees?
-            | ${{ service.fields.fee }}
+            | ${{ service.fields.fee }} {{ service.fields.feeQuantity }}
             | {{{ marked(service.fields.feeDescription) }}}
 
     .g-wrapper
