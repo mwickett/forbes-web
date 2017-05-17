@@ -71,18 +71,18 @@ extends(src='layout.sgr')
           each(loop='event of contentful.homePageEvents')
             .events-card
               h3 {{ event.fields.eventTitle }}
-              p {{ event.fields.eventDescription }}
+              p {{ event.fields.eventDescription.split(' ').slice(0, 25).join(' ') }}…
               a(href='/upcoming-events#{{{ slugify(event.fields.eventTitle) }}}') Read more &rarr;
               p {{{ formatDate(event.fields.dateTime) }}}
               p Location:
               .g-address
                 | {{{ marked(event.fields.eventAddress) }}}
-          a.read-more(href='/upcoming-events') See all events
         else
           .events-card
             h3 No events scheduled
             p
               a(href="#") Sign-up to be notified
               | &nbsp; by email when an event is scheduled.
+      a.read-more(href='/upcoming-events') See all events
 
     include(src='includes/_cta.sgr')
