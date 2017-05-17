@@ -1,8 +1,8 @@
 #how-we-help
   & .p-services-container
-    @apply --flexCol
 
     @media screen and (min-width: 600px)
+      display: flex
       flex-flow: row wrap
       justify-content: space-around
       align-content: center
@@ -17,12 +17,12 @@
         padding: 2em
         color: white
         font-family: 'soleil', sans-serif
-        @apply --flexCol
+        // @apply --flexCol
 
         & .p-services-header-content
-          @apply --flexCol
+          // @apply --flexCol
           flex: 1.5 1.5 auto
-          align-items: flex-start
+          // align-items: flex-start
 
           & h2
             color: white
@@ -34,11 +34,12 @@
           flex: 1 1 auto
 
         @media screen and (min-width: 600px)
+          display: flex
           flex-flow: row nowrap
           justify-content: space-around
 
     & .p-services-content
-      @apply --flexCol
+      // @apply --flexCol
       margin-bottom: 4em
       position: relative
 
