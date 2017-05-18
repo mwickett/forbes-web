@@ -1,11 +1,11 @@
 #how-we-help
   & .p-services-container
 
-    @media screen and (min-width: 600px)
-      display: flex
-      flex-flow: row wrap
-      justify-content: space-around
-      align-content: center
+    // @media screen and (min-width: 600px)
+    //   display: flex
+    //   flex-flow: row wrap
+    //   justify-content: space-around
+    //   align-content: center
 
     & .p-services-header
       background-color: var(--brandColour)
@@ -26,7 +26,7 @@
 
           & h2
             color: white
-            font-size: 3em
+            font-size: 2em
             line-height: 1
             margin-bottom: 0.4em
 
@@ -38,13 +38,16 @@
           flex-flow: row nowrap
           justify-content: space-around
 
+          & h2
+            font-size: 3em !important
+
     & .p-services-content
       // @apply --flexCol
       margin-bottom: 4em
       position: relative
 
-      &:before
-        @apply --addDotsTriangle
+      // &:before
+      //   @apply --addDotsTriangle
 
       & .p-services-content-panel
         padding: 1.5em
