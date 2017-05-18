@@ -15,6 +15,7 @@
     "image-webpack-loader": "^3.3.1",
     "marked": "^0.3.6",
     "moment": "^2.18.1",
+    "promise-polyfill": "^6.0.2",
     "reshape-standard": "^1.1.0",
     "sanitize.css": "^5.0.0",
     "siema": "^1.4.6",

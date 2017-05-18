@@ -2810,7 +2810,7 @@ filenamify@^1.0.1:
     strip-outer "^1.0.0"
     trim-repeated "^1.0.0"
 
-filewrap@0.1.0:
+filewrap@0.1.0, filewrap@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/filewrap/-/filewrap-0.1.0.tgz#839b91c59e28e8dd73ba354aa26096edce689b1c"
 
@@ -5800,6 +5800,10 @@ promise-each@^2.2.0:
   dependencies:
     any-promise "^0.1.0"
 
+promise-polyfill@^6.0.2:
+  version "6.0.2"
+  resolved "https://registry.yarnpkg.com/promise-polyfill/-/promise-polyfill-6.0.2.tgz#d9c86d3dc4dc2df9016e88946defd69b49b41162"
+
 promise.pipe@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/promise.pipe/-/promise.pipe-3.0.0.tgz#b8f729867f54353996e6d8e86f3bbd56882e32a6"
@@ -6711,6 +6715,23 @@ spike-css-standards@^1.0.0:
 spike-page-id@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/spike-page-id/-/spike-page-id-1.0.0.tgz#70a48384709aceb8fd449ddf4bff9f4a9b3bcb3c"
+
+spike-pushstate@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/spike-pushstate/-/spike-pushstate-0.3.0.tgz#1b059b4b3462dce8cbd84f7d06346069833e8307"
+  dependencies:
+    filewrap "^0.1.0"
+    mkdirp "^0.5.1"
+    spike-util "^0.3.0"
+
+spike-util@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/spike-util/-/spike-util-0.3.0.tgz#0aa207bb95a400e6f7821ce60290fc2316ccdd7d"
+  dependencies:
+    filewrap "0.1.0"
+    glob "^7.0.4"
+    micromatch "^2.3.8"
+    when "^3.7.7"
 
 spike-util@^1.1.0:
   version "1.1.0"

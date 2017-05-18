@@ -1,5 +1,6 @@
 import mobileNav from './modules/nav.js'
 import Sticky from 'sticky-js'
+import Promise from 'promise-polyfill'
 require('offline-plugin/runtime').install()
 
 function getPageId () {
@@ -36,6 +37,11 @@ function loadContactForm() {
 document.addEventListener('DOMContentLoaded', function () {
   // GLOBAL LOADS
   // Handle mobile nav dropdown
+
+  if (!window.Promise) {
+    window.Promise = Promise
+  }
+
   mobileNav()
   const sticky = new Sticky('.sticky', {  })
 
