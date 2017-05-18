@@ -62,7 +62,8 @@ extends(src='layout.sgr')
               .s-team-carousel-member__bio
                 | {{{ marked(teamMember.fields.shortBio) }}}
               a(href='/meet-our-team#{{{ slugify(teamMember.fields.name)}}}') Read more &rarr;
-      a.g-button(id='nextTeamMember') Next team member &rarr;
+      .g-center
+        a.g-button(id='nextTeamMember') Next team member &rarr;
 
     #eventsPreview.g-imageBg
       h2 Events
@@ -83,6 +84,7 @@ extends(src='layout.sgr')
             p
               a(href="#") Sign-up to be notified
               | &nbsp; by email when an event is scheduled.
-      a.read-more(href='/upcoming-events') See all events
+      .g-center
+        a.read-more(href='/upcoming-events') See all events
 
     include(src='includes/_cta.sgr')
