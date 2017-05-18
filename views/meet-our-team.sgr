@@ -1,7 +1,7 @@
 extends(src='layout.sgr')
   block(name='content')
     .g-header-full
-      img(src="img/team-header.jpg")
+      img(src="img/team-shot.jpg")
     .p-wrapper
       .g-wrapper
         each(loop='team of contentful.team')

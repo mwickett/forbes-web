@@ -1,7 +1,7 @@
 extends(src="layout.sgr")
   block(name="content")
     .g-header-full
-      img(src="img/runners.jpg")
+      img(src="img/contact-page.jpg")
     .p-wrapper
       .g-wrapper
         .p-content-block.g-border
