@@ -4,3 +4,4 @@ public
 _cache
 .env
 .font-script.js
+variables.env
