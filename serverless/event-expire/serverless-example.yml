@@ -43,8 +43,8 @@ provider:
 
 # you can define service wide environment variables here
   environment:
-    CONTENTFUL_SPACE_ID: zgs2tu6qgkp6
-    CONTENTFUL_MANAGEMENT_TOKEN: CFPAT-5e56d46991a3e60f8e8b93c5aded7e8f3c3efbeb1271498b7f34c98b79785f5f
+    CONTENTFUL_SPACE_ID: SPACEID
+    CONTENTFUL_MANAGEMENT_TOKEN: CMA-TOKEN
 
 
 

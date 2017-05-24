@@ -6,3 +6,5 @@ jspm_packages
 .serverless
 
 .env
+
+serverless.yml

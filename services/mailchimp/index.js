@@ -1,5 +1,8 @@
-const Mailchimp = require('mailchimp-api-v3')
+require('dotenv').config({ silent: true })
 
-module.exports = async () => {
+const Mailchimp = require('mailchimp-api-v3')
+const apiKey = process.env.MAILCHIMP_API_KEY
+
+module.exports = async (req, res) => {
 
 }
