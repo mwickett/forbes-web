@@ -74,7 +74,10 @@ extends(src='layout.sgr')
               h3 {{ event.fields.eventTitle }}
               p {{ event.fields.eventDescription.split(' ').slice(0, 25).join(' ') }}…
               a(href='/upcoming-events#{{{ slugify(event.fields.eventTitle) }}}') Read more &rarr;
-              p {{{ formatDate(event.fields.dateTime) }}}
+              if(condition="event.fields.dateTime")
+                p {{{ formatDate(event.fields.dateTime) }}}
+              else
+                p Date to be determined
               p Location:
               .g-address
                 | {{{ marked(event.fields.eventAddress) }}}
