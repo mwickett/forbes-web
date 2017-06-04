@@ -74,19 +74,23 @@ extends(src='layout.sgr')
               h3 {{ event.fields.eventTitle }}
               p {{ event.fields.eventDescription.split(' ').slice(0, 25).join(' ') }}…
               a(href='/upcoming-events#{{{ slugify(event.fields.eventTitle) }}}') Read more &rarr;
+              hr
+              .g-address
+                | {{{ marked(event.fields.eventAddress) }}}
+              hr
               if(condition="event.fields.dateTime")
                 p {{{ formatDate(event.fields.dateTime) }}}
               else
                 p Date to be determined
-              p Location:
-              .g-address
-                | {{{ marked(event.fields.eventAddress) }}}
         else
           .events-card
             h3 No events scheduled
             p
-              a(href="#") Sign-up to be notified
-              | &nbsp; by email when an event is scheduled.
+              Check back soon, or
+              a(href="/get-in-touch")get in touch.
+            //- p
+            //-   a(href="#") Sign-up to be notified
+            //-   | &nbsp; by email when an event is scheduled.
       .g-center
         a.read-more(href='/upcoming-events') See all events
 

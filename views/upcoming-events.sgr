@@ -27,10 +27,10 @@ extends(src='layout.sgr')
             h2 No events scheduled yet
             .p-content-block__grid-wrapper
               .p-content-block__col
-                h4 Check back later, or sign-up to be notified
-                p
-                  a(href="#") Sign-up to be notified
-                  | &nbsp; by email when an event is scheduled.
+                h4 Check back later
+                //- p
+                //-   a(href="#") Sign-up to be notified
+                //-   | &nbsp; by email when an event is scheduled.
               .p-content-block__col
                 h4 Got a bright idea? &#128161;
                 .p-event-address
