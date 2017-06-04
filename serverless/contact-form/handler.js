@@ -3,8 +3,8 @@
 const AWS = require('aws-sdk')
 const ses = new AWS.SES()
 
-const RECEIVER = 'mike@sagecomm.com'
-const SENDER = 'mike@wickett.ca'
+const RECEIVER = [ 'mike@sagecomm.com', 'mike@wickett.ca', 'mike@drforbes.ca' ]
+const SENDER = 'mike@drforbes.ca'
 
 module.exports.formEmail = function (event, context) {
   console.log('Received event:', event)
@@ -16,9 +16,7 @@ module.exports.formEmail = function (event, context) {
 function sendEmail (event, done) {
   const params = {
     Destination: {
-      ToAddresses: [
-        RECEIVER
-      ]
+      ToAddresses: RECEIVER
     },
     Message: {
       Body: {
@@ -28,7 +26,7 @@ function sendEmail (event, done) {
         }
       },
       Subject: {
-        Data: 'Website Referral Form: ' + event.name,
+        Data: 'Dr. Forbes & Associates Web Contact Form: ' + event.name,
         Charset: 'UTF-8'
       }
     },
