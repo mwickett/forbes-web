@@ -9,7 +9,10 @@ extends(src='layout.sgr')
             .p-content-block(id='{{{ slugify(event.fields.eventTitle) }}}').g-border
               .g-flourish-bar
               h2 {{ event.fields.eventTitle }}
-              time.s-event-date {{{ formatDate(event.fields.dateTime) }}}
+              if(condition="event.fields.dateTime")
+                time.s-event-date {{{ formatDate(event.fields.dateTime) }}}
+              else
+                p.s-event-date Date to be determined
               .p-content-block__grid-wrapper
                 .p-content-block__col
                   h4 Description
