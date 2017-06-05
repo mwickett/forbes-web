@@ -23,8 +23,9 @@ extends(src='layout.sgr')
             .g-flourish-bar
             h4 Frequently Asked Questions
             each(loop='faq of service.fields.serviceFaq')
-              h5 {{ faq.fields.question }}
-              | {{{ marked(faq.fields.answer) }}}
+              .p-services-content__block
+                h5 {{ faq.fields.question }}
+                | {{{ marked(faq.fields.answer) }}}
           .p-services-content-panel.g-border
             .g-flourish-bar
             h4 What are the fees?
