@@ -71,17 +71,21 @@ extends(src='layout.sgr')
         if(condition="{{{ checkLength(contentful.events)}}} > 0")
           each(loop='event of contentful.homePageEvents')
             .events-card
-              h3 {{ event.fields.eventTitle }}
-              p {{ event.fields.eventDescription.split(' ').slice(0, 25).join(' ') }}…
-              a(href='/upcoming-events#{{{ slugify(event.fields.eventTitle) }}}') Read more &rarr;
-              hr
-              .g-address
-                | {{{ marked(event.fields.eventAddress) }}}
-              hr
-              if(condition="event.fields.dateTime")
-                p {{{ formatDate(event.fields.dateTime) }}}
-              else
-                p Date to be determined
+              .events-card__image
+                img(src="http://lorempixel.com/g/400/200")
+              .events-card__content
+                h3 {{ event.fields.eventTitle }}
+                hr
+                p {{ event.fields.eventDescription.split(' ').slice(0, 25).join(' ') }}…
+                a.g-button(href='/upcoming-events#{{{ slugify(event.fields.eventTitle) }}}') Read more &rarr;
+                hr
+                .g-address
+                  | {{{ marked(event.fields.eventAddress) }}}
+                hr
+                if(condition="event.fields.dateTime")
+                  p {{{ formatDate(event.fields.dateTime) }}}
+                else
+                  p Date to be determined
         else
           .events-card
             h3 No events scheduled

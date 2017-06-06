@@ -9,11 +9,8 @@
   "author": "Mike Wickett",
   "license": "ISC",
   "dependencies": {
-    "contentful": "^4.3.0",
     "contentful-management": "^3.4.0",
-    "moment": "^2.18.1"
-  },
-  "devDependencies": {
+    "moment": "^2.18.1",
     "dotenv": "^4.0.0"
   }
 }
