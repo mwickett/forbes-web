@@ -72,7 +72,7 @@ extends(src='layout.sgr')
           each(loop='event of contentful.homePageEvents')
             .events-card
               .events-card__image
-                img(src="http://lorempixel.com/g/400/200")
+                img(src="{{ event.fields.eventImage.fields.file.url }}?w=500")
               .events-card__content
                 h3 {{ event.fields.eventTitle }}
                 hr
