@@ -1,7 +1,6 @@
 extends(src="layout.sgr")
   block(name="content")
-    .g-header-full
-      img(src="img/contact-page.jpg")
+    .p-header-img(role="img" aria-label="Dr. Forbes & Associates Contact Page Header")
     .p-wrapper
       .g-wrapper
         .p-content-block.g-border
