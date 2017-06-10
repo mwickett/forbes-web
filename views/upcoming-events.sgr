@@ -1,7 +1,6 @@
 extends(src='layout.sgr')
   block(name='content')
-    .g-header-full
-      img(src="img/events-header.jpg")
+    .p-header-img(role="img" aria-label="Dr. Forbes & Associates Events Page Header")
     .p-wrapper
       .g-wrapper
         if(condition="{{{ checkLength(contentful.events)}}} > 0")

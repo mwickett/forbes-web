@@ -1,7 +1,6 @@
 extends(src='layout.sgr')
   block(name='content')
-    .g-header-full
-      img(src="img/team-shot.jpg")
+    .p-header-img(role="img" aria-label="Dr. Forbes & Associates Team")
     .p-wrapper
       .g-wrapper
         each(loop='team of contentful.team')
