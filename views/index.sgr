@@ -68,7 +68,7 @@ extends(src='layout.sgr')
     #eventsPreview.g-imageBg
       h2 Events
       .events-container.g-wrapper
-        if(condition="{{{ checkLength(contentful.events)}}} > 0")
+        if(condition="contentful.events.length > 0")
           each(loop='event of contentful.homePageEvents')
             .events-card
               .events-card__image
@@ -95,7 +95,8 @@ extends(src='layout.sgr')
             //- p
             //-   a(href="#") Sign-up to be notified
             //-   | &nbsp; by email when an event is scheduled.
-      .g-center
-        a.read-more(href='/upcoming-events') See all events
+      if(condition="contentful.events.length > 3")
+        .g-center
+          a.read-more(href='/upcoming-events') See all events
 
     include(src='includes/_cta.sgr')
