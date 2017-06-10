@@ -17,7 +17,7 @@
       .footer-item
         h5 Contact Us
         ul
-          li: a(href='mailto:info@drforbes.ca') info@drforbes.ca
+          li info@drforbes.ca
           li 630 Colborne Street
              |Unit 130
              br
