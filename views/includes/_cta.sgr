@@ -1,4 +1,4 @@
 #cta
   .s-cta-content
-    h2 Learning performance starts here
-    a.g-button(href='/get-in-touch') Get started
+    h2 {{ dato.cta_block[0].ctaText }}
+    a.g-button(href='{{ dato.cta_block[0].ctaUrl }}') {{ dato.cta_block[0].buttonText }}

@@ -1,24 +1,24 @@
 extends(src="layout.sgr")
   block(name="content")
-    .p-header-img(role="img" aria-label="Dr. Forbes & Associates Contact Page Header")
+    .p-header-img(role="img" aria-label="Dr. Forbes & Associates Contact Page Header" style="background-image: url(https://www.datocms-assets.com{{ dato.contact_page[0].contactHeaderImage.path }});")
     .p-wrapper
       .g-wrapper
         .p-content-block.g-border
           .g-flourish-bar
           .p-content-block__grid-wrapper
             .p-content-block__col
-              h2 {{ contentful.contactPage[0].fields.getInTouch }}
+              h2 {{ dato.contact_page[0].contactPageTitle }}
               p
-                | {{{ marked(contentful.contactPage[0].fields.contactBody) }}}
+                | {{{ marked(dato.contact_page[0].contactPageBody) }}}
               p
-               | Phone: {{ contentful.contactPage[0].fields.contactPhone }}
+               | Phone: {{ dato.contact_page[0].contactPhone }}
               p
-                | Fax: {{ contentful.contactPage[0].fields.contactFax }}
+                | Fax: {{ dato.contact_page[0].contactFax }}
 
-              p: a(href="mailto:{{ contentful.contactPage[0].fields.contactEmail }}") {{ contentful.contactPage[0].fields.contactEmail }}
+              p: a(href="mailto:{{ dato.contact_page[0].contactEmail }}") {{ dato.contact_page[0].contactEmail }}
 
               p
-                | {{{ marked(contentful.contactPage[0].fields.contactAddress) }}}
+                | {{{ marked(dato.contact_page[0].contactAddress) }}}
 
             .p-content-block__col
               h3 Contact Us

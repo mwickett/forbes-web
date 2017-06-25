@@ -5,6 +5,7 @@ const cssStandards = require('spike-css-standards')
 const jsStandards = require('babel-preset-env')
 const pageId = require('spike-page-id')
 const Contentful = require('spike-contentful')
+const DatoCMS = require('spike-datocms')
 const marked = require('marked')
 const moment = require('moment')
 
@@ -12,6 +13,7 @@ const OfflinePlugin = require('offline-plugin')
 const {UglifyJsPlugin} = require('webpack').optimize
 
 const locals = {}
+const datoLocals = {}
 
 // Used to convert anything to URL friendly slug
 const slugify = function (text) {
@@ -99,6 +101,18 @@ module.exports = {
           id: 'imageCarousel'
         }
       ]
+    }),
+    new DatoCMS({
+      addDataTo: datoLocals,
+      token: process.env.DATO_CMS_TOKEN,
+      models: [
+        {
+          name: 'cta_block'
+        },
+        {
+          name: 'contact_page'
+        }
+      ]
     })
   ],
   // image optimization
@@ -111,7 +125,7 @@ module.exports = {
   // minify html and css
   reshape: htmlStandards({
     minify: false,
-    locals: (ctx) => { return Object.assign(locals, { pageId: pageId(ctx) }, { marked: marked }, {slugify: slugify}, {formatDate: formatDate}, { checkLength: checkLength }) },
+    locals: (ctx) => { return Object.assign(locals, datoLocals, { pageId: pageId(ctx) }, { marked: marked }, {slugify: slugify}, {formatDate: formatDate}, { checkLength: checkLength }) },
     markdown: { linkify: false }
   }),
   postcss: cssStandards({

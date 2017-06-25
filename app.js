@@ -5,6 +5,7 @@ const cssStandards = require('spike-css-standards')
 const jsStandards = require('babel-preset-env')
 const pageId = require('spike-page-id')
 const Contentful = require('spike-contentful')
+const DatoCMS = require('spike-datocms')
 const marked = require('marked')
 const axios = require('axios')
 const googleMapsApiKey = process.env.GOOGLE_MAPS_KEY
@@ -12,6 +13,7 @@ const moment = require('moment')
 
 
 const locals = {}
+const datoLocals = {}
 
 // Used to convert anything to URL friendly slug
 const slugify = function (text) {
@@ -66,7 +68,7 @@ module.exports = {
   },
   ignore: ['**/layout.sgr', '**/_*', '**/.*', '_cache/**', 'readme.md', 'yarn.lock', 'serverless/**', 'services/**'],
   reshape: htmlStandards({
-    locals: (ctx) => { return Object.assign(locals, { pageId: pageId(ctx) }, { marked: marked }, {slugify: slugify}, {formatDate: formatDate}, { checkLength: checkLength }) },
+    locals: (ctx) => { return Object.assign(locals, datoLocals, { pageId: pageId(ctx) }, { marked: marked }, {slugify: slugify}, {formatDate: formatDate}, { checkLength: checkLength }) },
     markdown: { linkify: false }
   }),
   postcss: cssStandards(),
@@ -124,6 +126,19 @@ module.exports = {
         }
       ],
       json: 'data/data.json'
+    }),
+    new DatoCMS({
+      addDataTo: datoLocals,
+      token: process.env.DATO_CMS_TOKEN,
+      models: [
+        {
+          name: 'cta_block'
+        },
+        {
+          name: 'contact_page'
+        }
+      ],
+      json: 'data.json'
     })
   ]
 }
