@@ -4,16 +4,17 @@ const htmlStandards = require('reshape-standard')
 const cssStandards = require('spike-css-standards')
 const jsStandards = require('babel-preset-env')
 const pageId = require('spike-page-id')
-const Contentful = require('spike-contentful')
 const DatoCMS = require('spike-datocms')
 const marked = require('marked')
+const axios = require('axios')
+const googleMapsApiKey = process.env.GOOGLE_MAPS_KEY
 const moment = require('moment')
+const get = require('lodash.get')
 
 const OfflinePlugin = require('offline-plugin')
-const {UglifyJsPlugin} = require('webpack').optimize
+const { UglifyJsPlugin } = require('webpack').optimize
 
 const locals = {}
-const datoLocals = {}
 
 // Used to convert anything to URL friendly slug
 const slugify = function (text) {
@@ -30,6 +31,47 @@ const slugify = function (text) {
 
 function checkLength (item) {
   return item.length
+}
+
+function reverseLookup (lat, lon) {
+  return axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lon}&key=${googleMapsApiKey}`)
+    .then(function (response) {
+      const results = response
+      const address = results.data.results[0].formatted_address
+      return address
+    })
+    .catch(function (error) {
+      console.log(error)
+    })
+}
+
+function getAddress (lat, lon) {
+  return new Promise((resolve, reject) => {
+    reverseLookup(lat, lon)
+    .then(function (address) {
+      resolve(address)
+    })
+    .catch(reject)
+  })
+}
+
+// This is used to check if an event type has no event occurrences, and then display a "no events" placeholder
+// It's using lodash.get to be able to check for an eventType.id inside of the event occurences
+function doesItExist (arrayToScan, valueToCheck, pathToCheck) {
+  // If the scan target is empty, bail out
+  if (!arrayToScan) {
+    return 0
+  }
+  const scanResults = arrayToScan.map((item) => {
+    const check = get(item, pathToCheck, 0)
+    if (check === valueToCheck) {
+      return 1
+    } else {
+      return 0
+    }
+  })
+  // Because our results are an array of 1 or 0, we can reduce down to know if there are any results
+  return scanResults.reduce((acc, val) => acc + val)
 }
 
 // Clean up data & time format
@@ -50,60 +92,8 @@ module.exports = {
       // webpack optimization and service worker
     new UglifyJsPlugin(),
     new OfflinePlugin({ updateStrategy: 'all' }),
-    new Contentful({
-      addDataTo: locals,
-      accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
-      spaceId: process.env.CONTENTFUL_SPACE_ID,
-      contentTypes: [
-        {
-          name: 'home',
-          id: 'home'
-        },
-        {
-          name: 'contactPage',
-          id: 'contactPage'
-        },
-        {
-          name: 'services',
-          id: 'service',
-          filters: {
-            order: 'fields.order'
-          }
-        },
-        {
-          name: 'team',
-          id: 'team',
-          filters: {
-            order: 'fields.order'
-          }
-        },
-        {
-          name: 'events',
-          id: 'event',
-          filters: {
-            order: 'fields.dateTime'
-          }
-        },
-        {
-          name: 'homePageEvents',
-          id: 'event',
-          filters: {
-            order: 'fields.dateTime',
-            limit: 3
-          }
-        },
-        {
-          name: 'basicPage',
-          id: 'basicPage'
-        },
-        {
-          name: 'officeCarousel',
-          id: 'imageCarousel'
-        }
-      ]
-    }),
     new DatoCMS({
-      addDataTo: datoLocals,
+      addDataTo: locals,
       token: process.env.DATO_CMS_TOKEN,
       models: [
         {
@@ -119,7 +109,11 @@ module.exports = {
           name: 'event_page'
         },
         {
-          name: 'event_occurence'
+          name: 'event_occurence',
+          transform: (event) => {
+            getAddress(event.eventLocation.latitude, event.eventLocation.longitude).then((res) => { event.eventLocation.address = res })
+            return event
+          }
         },
         {
           name: 'home_page'
@@ -149,7 +143,7 @@ module.exports = {
   // minify html and css
   reshape: htmlStandards({
     minify: false,
-    locals: (ctx) => { return Object.assign(locals, datoLocals, { pageId: pageId(ctx) }, { marked: marked }, {slugify: slugify}, {formatDate: formatDate}, { checkLength: checkLength }) },
+    locals: (ctx) => { return Object.assign(locals, { pageId: pageId(ctx) }, { marked: marked }, {slugify: slugify}, {formatDate: formatDate}, { checkLength: checkLength }, { doesItExist: doesItExist }) },
     markdown: { linkify: false }
   }),
   postcss: cssStandards({

@@ -4,7 +4,6 @@ const htmlStandards = require('reshape-standard')
 const cssStandards = require('spike-css-standards')
 const jsStandards = require('babel-preset-env')
 const pageId = require('spike-page-id')
-const Contentful = require('spike-contentful')
 const DatoCMS = require('spike-datocms')
 const marked = require('marked')
 const axios = require('axios')
@@ -12,9 +11,7 @@ const googleMapsApiKey = process.env.GOOGLE_MAPS_KEY
 const moment = require('moment')
 const get = require('lodash.get')
 
-
 const locals = {}
-const datoLocals = {}
 
 // Used to convert anything to URL friendly slug
 const slugify = function (text) {
@@ -88,67 +85,14 @@ module.exports = {
   },
   ignore: ['**/layout.sgr', '**/_*', '**/.*', '_cache/**', 'readme.md', 'yarn.lock', 'serverless/**', 'services/**'],
   reshape: htmlStandards({
-    locals: (ctx) => { return Object.assign(locals, datoLocals, { pageId: pageId(ctx) }, { marked: marked }, {slugify: slugify}, {formatDate: formatDate}, { checkLength: checkLength }, { doesItExist: doesItExist }) },
+    locals: (ctx) => { return Object.assign(locals, { pageId: pageId(ctx) }, { marked: marked }, {slugify: slugify}, {formatDate: formatDate}, { checkLength: checkLength }, { doesItExist: doesItExist }) },
     markdown: { linkify: false }
   }),
   postcss: cssStandards(),
   babel: { presets: [[jsStandards, { modules: false }]], plugins: ['syntax-dynamic-import'] },
   plugins: [
-    new Contentful({
-      addDataTo: locals,
-      accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
-      spaceId: process.env.CONTENTFUL_SPACE_ID,
-      contentTypes: [
-        {
-          name: 'home',
-          id: 'home'
-        },
-        {
-          name: 'contactPage',
-          id: 'contactPage'
-        },
-        {
-          name: 'services',
-          id: 'service',
-          filters: {
-            order: 'fields.order'
-          }
-        },
-        {
-          name: 'team',
-          id: 'team',
-          filters: {
-            order: 'fields.order'
-          }
-        },
-        {
-          name: 'events',
-          id: 'event',
-          filters: {
-            order: 'fields.dateTime'
-          }
-        },
-        {
-          name: 'homePageEvents',
-          id: 'event',
-          filters: {
-            order: 'fields.dateTime',
-            limit: 3
-          }
-        },
-        {
-          name: 'basicPage',
-          id: 'basicPage'
-        },
-        {
-          name: 'officeCarousel',
-          id: 'imageCarousel'
-        }
-      ],
-      json: 'data/data.json'
-    }),
     new DatoCMS({
-      addDataTo: datoLocals,
+      addDataTo: locals,
       token: process.env.DATO_CMS_TOKEN,
       models: [
         {
