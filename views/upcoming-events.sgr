@@ -1,25 +1,35 @@
 extends(src='layout.sgr')
   block(name='content')
-    .p-header-img(role="img" aria-label="Dr. Forbes & Associates Events Page Header")
+    .p-header-img(role="img" aria-label="Dr. Forbes & Associates Events Page Header" style="background-image: url(https:/{{ dato._meta.imgixHost + dato.event_page[0].headerImage.path }});")
     .p-wrapper
       .g-wrapper
-        if(condition="{{{ checkLength(contentful.events)}}} > 0")
-          each(loop='event of contentful.events')
-            .p-content-block(id='{{{ slugify(event.fields.eventTitle) }}}').g-border
+        if(condition="{{{ checkLength(dato.event_type)}}} > 0")
+          each(loop='eventType of dato.event_type')
+            .p-content-block(id='{{{ slugify(eventType.eventTitle) }}}').g-border
               .g-flourish-bar
-              h2 {{ event.fields.eventTitle }}
-              if(condition="event.fields.dateTime")
-                time.s-event-date {{{ formatDate(event.fields.dateTime) }}}
-              else
-                p.s-event-date Date to be determined
+              h2 {{ eventType.eventTitle }}
+              //- Move this around based on occurrences
+              //- if(condition="event.fields.dateTime")
+              //-   time.s-event-date {{{ formatDate(event.fields.dateTime) }}}
+              //- else
+              //-   p.s-event-date Date to be determined
               .p-content-block__grid-wrapper
                 .p-content-block__col
                   h4 Description
-                  p {{{ marked(event.fields.eventDescription) }}}
+                  p {{{ marked(eventType.eventDescription) }}}
                 .p-content-block__col
-                  h4 Location
-                  .p-event-address
-                    | {{{ marked(event.fields.eventAddress) }}}
+                  if(condition="{{{ checkLength(dato.event_type)}}} > 0")
+                    each(loop='event of dato.event_occurence.filter((event) => event.eventType.id === eventType.id)')
+                      h4 Upcoming events
+                      time.s-event-date {{{ formatDate(event.eventDate) }}}
+                      .p-event-address
+                        | lat: {{ event.eventLocation.latitude }}
+                        | lon: {{ event.eventLocation.longitude }}
+                  else
+                    h4 Got a bright idea? &#128161;
+                    .p-event-address
+                      a(href="get-in-touch") Get in touch
+                      | &nbsp; and let us know if you have an idea for an event
         else
           .p-content-block.g-border
             .g-flourish-bar

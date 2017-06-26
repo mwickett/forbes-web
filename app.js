@@ -39,7 +39,7 @@ function reverseLookup (lat, lon) {
       const address = results.data.results[0].formatted_address
       return address
     })
-    .catch(function (error){
+    .catch(function (error) {
       console.log(error)
     })
 }
@@ -68,7 +68,7 @@ module.exports = {
   },
   ignore: ['**/layout.sgr', '**/_*', '**/.*', '_cache/**', 'readme.md', 'yarn.lock', 'serverless/**', 'services/**'],
   reshape: htmlStandards({
-    locals: (ctx) => { return Object.assign(locals, datoLocals, { pageId: pageId(ctx) }, { marked: marked }, {slugify: slugify}, {formatDate: formatDate}, { checkLength: checkLength }) },
+    locals: (ctx) => { return Object.assign(locals, datoLocals, { pageId: pageId(ctx) }, { marked: marked }, {slugify: slugify}, {formatDate: formatDate}, { checkLength: checkLength }, { getAddress: getAddress }) },
     markdown: { linkify: false }
   }),
   postcss: cssStandards(),
@@ -136,6 +136,30 @@ module.exports = {
         },
         {
           name: 'contact_page'
+        },
+        {
+          name: 'event_type'
+        },
+        {
+          name: 'event_page'
+        },
+        {
+          name: 'event_occurence'
+        },
+        {
+          name: 'home_page'
+        },
+        {
+          name: 'service'
+        },
+        {
+          name: 'services_page'
+        },
+        {
+          name: 'team'
+        },
+        {
+          name: 'team_page'
         }
       ],
       json: 'data.json'

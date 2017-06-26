@@ -1,31 +1,31 @@
 extends(src='layout.sgr')
   block(name='content')
-    .p-header-img(role="img" aria-label="Dr. Forbes & Associates Team")
+    .p-header-img(role="img" aria-label="Dr. Forbes & Associates Team" style="background-image: url(https:/{{ dato._meta.imgixHost + dato.team_page[0].pageHeader.path }});")
     .p-wrapper
       .g-wrapper
-        each(loop='team of contentful.team')
-          .p-content-block(id='{{{ slugify(team.fields.name)}}}').g-border
+        each(loop='team of dato.team.sort((a, b) => a.position < b.position ? -1 : 1)')
+          .p-content-block(id='{{{ slugify(team.name)}}}').g-border
             .g-flourish-bar
-            h2 {{ team.fields.name }}, {{ team.fields.educationTitle }}
-            p.s-job-title {{ team.fields.jobTitle }}
+            h2 {{ team.name }}, {{ team.educationTitle }}
+            p.s-job-title {{ team.jobTitle }}
             .p-content-block__grid-wrapper
               .p-content-block__col
-                | {{{ marked(team.fields.fullBio) }}}
+                | {{{ marked(team.fullBio) }}}
               .p-content-block__col
                 picture
                   source(type='image/webp'
-                    srcset='{{ team.fields.avatar.fields.file.url }}?f=face&fit=thumb&w=2000&h=2000&r=1000&fm=webp 2000w,
-                    {{ team.fields.avatar.fields.file.url }}?f=face&fit=thumb&w=1500&h=1500&r=1000&fm=webp 1500w,
-                    {{ team.fields.avatar.fields.file.url }}?f=face&fit=thumb&w=900&h=900&r=1000&fm=webp 900w,
-                    {{ team.fields.avatar.fields.file.url }}?f=face&fit=thumb&w=200&h=200&r=1000&fm=webp 450w')
-                  img(src='{{ team.fields.avatar.fields.file.url }}?fm=jpg&w=900&h=900&fit=thumb&r=1000'
-                    srcset='{{ team.fields.avatar.fields.file.url }}?f=face&fit=thumb&w=2000&h=2000&r=1000&fm=jpg 2000w,
-                    {{ team.fields.avatar.fields.file.url }}?f=face&fit=thumb&w=1500&h=1500&r=1000&fm=jpg 1500w,
-                    {{ team.fields.avatar.fields.file.url }}?f=face&fit=thumb&w=900&h=900&r=1000&fm=jpg 900w,
-                    {{ team.fields.avatar.fields.file.url }}?f=face&fit=thumb&w=450&h=450&r=1000&fm=jpg 450w'
-                    alt='{{ team.fields.avatar.fields.description }}')
-                if(condition="{{{ team.fields.contactEmail }}}")
+                    srcset='https://{{ dato._meta.imgixHost + team.avatar.path }}?fit=facearea&facepad=10&mask=ellipse&w=2000&h=2000&fm=webp 2000w,
+                    https://{{ dato._meta.imgixHost + team.avatar.path }}?fit=facearea&facepad=10&mask=ellipse&w=1500&h=1500&fm=webp 1500w,
+                    https://{{ dato._meta.imgixHost + team.avatar.path }}?fit=facearea&facepad=10&mask=ellipse&w=900&h=900&fm=webp 900w,
+                    https://{{ dato._meta.imgixHost + team.avatar.path }}?fit=facearea&facepad=10&mask=ellipse&w=200&h=200&fm=webp 450w')
+                  img(src='https://{{ dato._meta.imgixHost + team.avatar.path }}?fit=facearea&facepad=10&mask=ellipse&w=900&h=900&fm=png'
+                    srcset='https://{{ dato._meta.imgixHost + team.avatar.path }}?fit=facearea&facepad=10&mask=ellipse&w=2000&h=2000&fm=png 2000w,
+                    https://{{ dato._meta.imgixHost + team.avatar.path }}?fit=facearea&facepad=10&mask=ellipse&w=1500&h=1500&fm=png 1500w,
+                    https://{{ dato._meta.imgixHost + team.avatar.path }}?fit=facearea&facepad=10&mask=ellipse&w=900&h=900&fm=png 900w,
+                    https://{{ dato._meta.imgixHost + team.avatar.path }}?fit=facearea&facepad=10&mask=ellipse&w=450&h=450&fm=png 450w'
+                    alt='{{ team.avatar.alt }}')
+                if(condition="{{{ team.contactEmail }}}")
                   h4 Contact
-                  a(href='mailto:{{{ team.fields.contactEmail }}}') {{{ team.fields.contactEmail }}}
+                  a(href='mailto:{{{ team.contactEmail }}}') {{{ team.contactEmail }}}
 
     include(src='includes/_cta.sgr')

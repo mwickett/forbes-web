@@ -111,6 +111,30 @@ module.exports = {
         },
         {
           name: 'contact_page'
+        },
+        {
+          name: 'event_type'
+        },
+        {
+          name: 'event_page'
+        },
+        {
+          name: 'event_occurence'
+        },
+        {
+          name: 'home_page'
+        },
+        {
+          name: 'service'
+        },
+        {
+          name: 'services_page'
+        },
+        {
+          name: 'team'
+        },
+        {
+          name: 'team_page'
         }
       ]
     })
