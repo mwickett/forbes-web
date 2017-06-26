@@ -2,101 +2,94 @@ extends(src='layout.sgr')
   block(name='content')
     #hero
       #heroContent
-        h1 {{{ marked(contentful.home[0].fields.missionStatement) }}}
+        h1 {{{ marked(dato.home_page[0].headerTitle) }}}
       #heroImage
         picture
           source(type='image/webp'
-            srcset='{{ contentful.home[0].fields.landerImage.fields.file.url }}?fm=webp&w=2000&fit=fill 2000w,
-            {{ contentful.home[0].fields.landerImage.fields.file.url }}?fm=webp&w=1500&fit=fill 1500w,
-            {{ contentful.home[0].fields.landerImage.fields.file.url }}?fm=webp&w=900 900w,
-            {{ contentful.home[0].fields.landerImage.fields.file.url }}?fm=webp&w=450 450w')
-          img(src='{{ contentful.home[0].fields.landerImage.fields.file.url }}?fm=jpg&w=900&fit=fill'
-            srcset='{{ contentful.home[0].fields.landerImage.fields.file.url }}?fm=jpg&w=2000&fit=fill 2000w,
-            {{ contentful.home[0].fields.landerImage.fields.file.url }}?fm=jpg&w=1500&fit=fill 1500w,
-            {{ contentful.home[0].fields.landerImage.fields.file.url }}?fm=jpg&w=900 900w,
-            {{ contentful.home[0].fields.landerImage.fields.file.url }}?fm=jpg&w=450 450w'
-            alt='{{ contentful.home[0].fields.landerImage.fields.description }}')
+            srcset='https://{{ dato._meta.imgixHost + dato.home_page[0].heroImage.path }}?fm=webp&w=2000&fit=fill 2000w,
+            https://{{ dato._meta.imgixHost + dato.home_page[0].heroImage.path }}?fm=webp&w=1500&fit=fill 1500w,
+            https://{{ dato._meta.imgixHost + dato.home_page[0].heroImage.path }}?fm=webp&w=900 900w,
+            https://{{ dato._meta.imgixHost + dato.home_page[0].heroImage.path }}?fm=webp&w=450 450w')
+          img(src='https://{{ dato._meta.imgixHost + dato.home_page[0].heroImage.path }}?fm=jpg&w=900&fit=fill'
+            srcset='https://{{ dato._meta.imgixHost + dato.home_page[0].heroImage.path }}?fm=jpg&w=2000&fit=fill 2000w,
+            https://{{ dato._meta.imgixHost + dato.home_page[0].heroImage.path }}?fm=jpg&w=1500&fit=fill 1500w,
+            https://{{ dato._meta.imgixHost + dato.home_page[0].heroImage.path }}?fm=jpg&w=900 900w,
+            https://{{ dato._meta.imgixHost + dato.home_page[0].heroImage.path }}?fm=jpg&w=450 450w'
+            alt='{{ dato.home_page[0].heroImage.alt }}')
 
     #whatToExpect.g-imageBg
       .g-wrapper
         .what-to-expect-content
-          h2 {{ contentful.home[0].fields.whatToExpectTitle }}
+          h2 {{ dato.home_page[0].introTitle }}
           .expectContent
-            | {{{ marked(contentful.home[0].fields.whatToExpectBody) }}}
+            | {{{ marked(dato.home_page[0].introDetail) }}}
 
     #howWeHelp
       h2 How we help
       .service-container.g-wrapper
         .g-background
-        each(loop='homePageFeature of contentful.home[0].fields.homePageFeatures')
+        each(loop='service of dato.service.sort((a, b) => a.position < b.position ? -1 : 1 )')
           .service-card
             .service-card__image
-              img(src='{{ homePageFeature.fields.serviceIcon.fields.file.url }}' alt='{{ homePageFeature.fields.serviceIcon.fields.description }}')
+              img(src='https://{{ dato._meta.imgixHost + service.serviceIcon.path }}' alt='{{ service.serviceName }} icon')
             .service-card__content
-              h3 {{ homePageFeature.fields.serviceName }}
+              h3 {{ service.serviceName }}
               hr
-              p {{ homePageFeature.fields.homepageDescription }}
-            a.g-button(href='/how-we-help#{{{ slugify(homePageFeature.fields.serviceName) }}}') {{ homePageFeature.fields.homepageButtonText }}
+              p {{ service.homepageServiceDescription }}
+            a.g-button(href='/how-we-help#{{{ slugify(service.serviceName) }}}') {{ service.homepageButtonText }}
 
     #meetTheTeam
       h2 Meet the team
       .s-team-carousel.g-wrapper
-        each(loop='teamMember of contentful.team')
-          .s-team-carousel-member(id='{{{ slugify(teamMember.fields.name )}}}')
+        each(loop='teamMember of dato.team.sort((a, b) => a.position < b.position ? -1 : 1)')
+          .s-team-carousel-member(id='{{{ slugify(teamMember.name )}}}')
             .s-team-carousel-member__avatar
               picture
                 source(type='image/webp'
-                  srcset='{{ teamMember.fields.avatar.fields.file.url }}?f=face&fit=thumb&w=2000&h=2000&r=1000&fm=webp 2000w,
-                  {{ teamMember.fields.avatar.fields.file.url }}?f=face&fit=thumb&w=1500&h=1500&r=1000&fm=webp 1500w,
-                  {{ teamMember.fields.avatar.fields.file.url }}?f=face&fit=thumb&w=900&h=900&r=1000&fm=webp 900w,
-                  {{ teamMember.fields.avatar.fields.file.url }}?f=face&fit=thumb&w=200&h=200&r=1000&fm=webp 450w')
-                img(src='{{ teamMember.fields.avatar.fields.file.url }}?fm=jpg&w=900&h=900&fit=thumb&r=1000'
-                  srcset='{{ teamMember.fields.avatar.fields.file.url }}?f=face&fit=thumb&w=2000&h=2000&r=1000&fm=jpg 2000w,
-                  {{ teamMember.fields.avatar.fields.file.url }}?f=face&fit=thumb&w=1500&h=1500&r=1000&fm=jpg 1500w,
-                  {{ teamMember.fields.avatar.fields.file.url }}?f=face&fit=thumb&w=900&h=900&r=1000&fm=jpg 900w,
-                  {{ teamMember.fields.avatar.fields.file.url }}?f=face&fit=thumb&w=450&h=450&r=1000&fm=jpg 450w'
-                  alt='{{ teamMember.fields.avatar.fields.description }}')
+                  srcset='https://{{ dato._meta.imgixHost + teamMember.avatar.path }}?fit=facearea&facepad=9&mask=ellipse&w=2000&h=2000&fm=webp 2000w,
+                  https://{{ dato._meta.imgixHost + teamMember.avatar.path }}?fit=facearea&facepad=9&mask=ellipse&w=1500&h=1500&fm=webp 1500w,
+                  https://{{ dato._meta.imgixHost + teamMember.avatar.path }}?fit=facearea&facepad=9&mask=ellipse&w=900&h=900&fm=webp 900w,
+                  https://{{ dato._meta.imgixHost + teamMember.avatar.path }}?fit=facearea&facepad=9&mask=ellipse&w=200&h=200&fm=webp 450w')
+                img(src='https://{{ dato._meta.imgixHost + teamMember.avatar.path }}?fit=facearea&facepad=9&mask=ellipse&w=900&h=900&fm=png'
+                  srcset='https://{{ dato._meta.imgixHost + teamMember.avatar.path }}?fit=facearea&facepad=9&mask=ellipse&w=2000&h=2000&fm=png 2000w,
+                  https://{{ dato._meta.imgixHost + teamMember.avatar.path }}?fit=facearea&facepad=9&mask=ellipse&w=1500&h=1500&fm=png 1500w,
+                  https://{{ dato._meta.imgixHost + teamMember.avatar.path }}?fit=facearea&facepad=9&mask=ellipse&w=900&h=900&fm=png 900w,
+                  https://{{ dato._meta.imgixHost + teamMember.avatar.path }}?fit=facearea&facepad=9&mask=ellipse&w=450&h=450&fm=png 450w'
+                  alt='{{ teamMember.avatar.alt }}')
             .s-team-carousel-member__content
-              h3.s-team-carousel-member__name {{ teamMember.fields.name }}, {{ teamMember.fields.educationTitle }}
-              p.s-team-carousel-member__jobTitle {{ teamMember.fields.jobTitle }}
+              h3.s-team-carousel-member__name {{ teamMember.name }}, {{ teamMember.educationTitle }}
+              p.s-team-carousel-member__jobTitle {{ teamMember.jobTitle }}
               .s-team-carousel-member__bio
-                | {{{ marked(teamMember.fields.shortBio) }}}
-              a(href='/meet-our-team#{{{ slugify(teamMember.fields.name)}}}') Read more &rarr;
+                | {{{ marked(teamMember.shortBio) }}}
+              a(href='/meet-our-team#{{{ slugify(teamMember.name)}}}') Read more &rarr;
       .g-center
         a.g-button(id='nextTeamMember') Next team member &rarr;
 
     #eventsPreview.g-imageBg
       h2 Events
       .events-container.g-wrapper
-        if(condition="contentful.events.length > 0")
-          each(loop='event of contentful.homePageEvents')
+        if(condition="dato.event_type.length > 0")
+          each(loop='eventType of dato.event_type')
             .events-card
               .events-card__image
-                img(src="{{ event.fields.eventImage.fields.file.url }}?w=500" alt="{{ event.fields.eventImage.fields.description }}")
+                img(src="https://{{ dato._meta.imgixHost + eventType.eventImage.path }}?w=500" alt="{{ eventType.eventImage.alt }}")
               .events-card__content
-                h3 {{ event.fields.eventTitle }}
+                h3 {{ eventType.eventTitle }}
                 hr
-                p {{ event.fields.eventDescription.split(' ').slice(0, 25).join(' ') }}…
-                a.g-button(href='/upcoming-events#{{{ slugify(event.fields.eventTitle) }}}') Read more &rarr;
+                p {{ eventType.eventDescription.split(' ').slice(0, 25).join(' ') }}…
+                a.g-button(href='/upcoming-events#{{{ slugify(eventType.eventTitle) }}}') Read more &rarr;
                 hr
-                .g-address
-                  | {{{ marked(event.fields.eventAddress) }}}
-                hr
-                if(condition="event.fields.dateTime")
-                  p {{{ formatDate(event.fields.dateTime) }}}
-                else
-                  p Date to be determined
+                each(loop='event of dato.event_occurence.filter((event) => event.eventType.id === eventType.id)')
+                  if(condition="event.eventDate")
+                    p {{{ formatDate(event.eventDate) }}}
+                  else
+                    p Date to be determined
+                  address.g-address {{ event.eventLocation.address }}
         else
           .events-card
             h3 No events scheduled
             p
               Check back soon, or
               a(href="/get-in-touch")get in touch.
-            //- p
-            //-   a(href="#") Sign-up to be notified
-            //-   | &nbsp; by email when an event is scheduled.
-      if(condition="contentful.events.length > 3")
-        .g-center
-          a.read-more(href='/upcoming-events') See all events
 
     include(src='includes/_cta.sgr')
