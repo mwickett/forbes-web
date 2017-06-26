@@ -80,13 +80,11 @@ extends(src='layout.sgr')
                 a.g-button(href='/upcoming-events#{{{ slugify(eventType.eventTitle) }}}') Read more &rarr;
                 hr
                 each(loop='event of dato.event_occurence.filter((event) => event.eventType.id === eventType.id)')
-                  .g-address
-                    | {{{ getAddress(event.eventLocation.latitude, event.eventLocation.longitude) }}}
-                  hr
                   if(condition="event.eventDate")
                     p {{{ formatDate(event.eventDate) }}}
                   else
                     p Date to be determined
+                  address.g-address {{ event.eventLocation.address }}
         else
           .events-card
             h3 No events scheduled

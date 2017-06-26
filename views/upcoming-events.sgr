@@ -8,28 +8,23 @@ extends(src='layout.sgr')
             .p-content-block(id='{{{ slugify(eventType.eventTitle) }}}').g-border
               .g-flourish-bar
               h2 {{ eventType.eventTitle }}
-              //- Move this around based on occurrences
-              //- if(condition="event.fields.dateTime")
-              //-   time.s-event-date {{{ formatDate(event.fields.dateTime) }}}
-              //- else
-              //-   p.s-event-date Date to be determined
               .p-content-block__grid-wrapper
                 .p-content-block__col
                   h4 Description
                   p {{{ marked(eventType.eventDescription) }}}
                 .p-content-block__col
-                  if(condition="{{{ checkLength(dato.event_type)}}} > 0")
+                  if(condition="{{{ doesItExist(dato.event_occurence, eventType.id, 'eventType.id') }}}")
+                    h4 Upcoming events
                     each(loop='event of dato.event_occurence.filter((event) => event.eventType.id === eventType.id)')
-                      h4 Upcoming events
                       time.s-event-date {{{ formatDate(event.eventDate) }}}
-                      .p-event-address
-                        | lat: {{ event.eventLocation.latitude }}
-                        | lon: {{ event.eventLocation.longitude }}
+                      address.p-event-address {{ event.eventLocation.address }}
+                      hr
                   else
-                    h4 Got a bright idea? &#128161;
+                    h4 No upcoming events
+                    p Got a bright idea? &#128161;
                     .p-event-address
                       a(href="get-in-touch") Get in touch
-                      | &nbsp; and let us know if you have an idea for an event
+                      | &nbsp; and let us know.
         else
           .p-content-block.g-border
             .g-flourish-bar
@@ -37,9 +32,6 @@ extends(src='layout.sgr')
             .p-content-block__grid-wrapper
               .p-content-block__col
                 h4 Check back later
-                //- p
-                //-   a(href="#") Sign-up to be notified
-                //-   | &nbsp; by email when an event is scheduled.
               .p-content-block__col
                 h4 Got a bright idea? &#128161;
                 .p-event-address
