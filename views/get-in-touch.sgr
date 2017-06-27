@@ -8,17 +8,13 @@ extends(src="layout.sgr")
           .p-content-block__grid-wrapper
             .p-content-block__col
               h2 {{ dato.contact_page[0].contactPageTitle }}
-              p
+              .div
                 | {{{ marked(dato.contact_page[0].contactPageBody) }}}
-              p
-               | Phone: {{ dato.contact_page[0].contactPhone }}
-              p
-                | Fax: {{ dato.contact_page[0].contactFax }}
-
-              p: a(href="mailto:{{ dato.contact_page[0].contactEmail }}") {{ dato.contact_page[0].contactEmail }}
-
-              p
-                | {{{ marked(dato.contact_page[0].contactAddress) }}}
+              ul.p-contact
+                li Phone: {{ dato.contact_page[0].contactPhone }}
+                li Fax: {{ dato.contact_page[0].contactFax }}
+                li: a(href="mailto:{{ dato.contact_page[0].contactEmail }}") {{ dato.contact_page[0].contactEmail }}
+                li: address {{{ marked(dato.contact_page[0].contactAddress) }}}
 
             .p-content-block__col
               h3 Contact Us
