@@ -1,6 +1,6 @@
 extends(src='layout.sgr')
   block(name='content')
-    .p-header-img(role="img" aria-label="Dr. Forbes & Associates Events Page Header" style="background-image: url(https:/{{ dato._meta.imgixHost + dato.event_page[0].headerImage.path }});")
+    .p-header-img(role="img" aria-label="Dr. Forbes & Associates Events Page Header" style="background-image: url(https://{{ dato._meta.imgixHost + dato.event_page[0].headerImage.path }});")
     .p-wrapper
       .g-wrapper
         if(condition="{{{ checkLength(dato.event_type)}}} > 0")

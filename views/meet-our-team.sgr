@@ -1,6 +1,6 @@
 extends(src='layout.sgr')
   block(name='content')
-    .p-header-img(role="img" aria-label="Dr. Forbes & Associates Team" style="background-image: url(https:/{{ dato._meta.imgixHost + dato.team_page[0].pageHeader.path }});")
+    .p-header-img(role="img" aria-label="Dr. Forbes & Associates Team" style="background-image: url(https://{{ dato._meta.imgixHost + dato.team_page[0].pageHeader.path }});")
     .p-wrapper
       .g-wrapper
         each(loop='team of dato.team.sort((a, b) => a.position < b.position ? -1 : 1)')
