@@ -1,4 +1,10 @@
 extends(src='layout.sgr')
+  block(name='pagemeta')
+    meta(name='description' content='{{ dato.event_page[0].eventSeo.description }}')
+    
+  block(name='title')
+    title {{ dato.event_page[0].eventSeo.title + ' | ' + dato._meta.globalSeo.siteName }}
+
   block(name='content')
     .p-header-img(role="img" aria-label="Dr. Forbes & Associates Events Page Header" style="background-image: url(https://{{ dato._meta.imgixHost + dato.event_page[0].headerImage.path }});")
     .p-wrapper

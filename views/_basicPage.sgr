@@ -1,4 +1,0 @@
-extends(src='layout.sgr')
-  block(name='content')
-    h2 {{ item.pageTitle }}
-    .content(md) Cool

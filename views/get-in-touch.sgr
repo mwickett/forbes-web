@@ -1,4 +1,10 @@
 extends(src="layout.sgr")
+  block(name='pagemeta')
+    meta(name='description' content='{{ dato.contact_page[0].contactSeo.description }}')
+
+  block(name='title')
+    title {{ dato.contact_page[0].contactSeo.title + ' | ' + dato._meta.globalSeo.siteName }}
+
   block(name="content")
     .p-header-img(role="img" aria-label="Dr. Forbes & Associates Contact Page Header" style="background-image: url(https://{{ dato._meta.imgixHost + dato.contact_page[0].contactHeaderImage.path }});")
     .p-wrapper

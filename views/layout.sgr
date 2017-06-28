@@ -1,11 +1,9 @@
 doctype html
 html(lang='en-ca')
   head
-    block(name='meta')
+    block(name='globalmeta')
       meta(charset='utf-8')
       meta(http-equiv='X-UA-Compatible' content='IE=edge, chrome=1')
-      meta(name='description' content='')
-      meta(name='author' content='Dr. Forbes & Associates Psychology')
       meta(name="viewport" content="width=device-width, initial-scale=1")
 
       link(rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png")
@@ -16,9 +14,12 @@ html(lang='en-ca')
       link(rel="shortcut icon" href="/favicon/favicon.ico")
       meta(name="msapplication-config" content="/favicon/browserconfig.xml")
       meta(name="theme-color" content="#ffffff")
+    
+    block(name='pagemeta')
+      meta(name='description' content='{{ dato._meta.globalSeo.fallbackSeo.description }}')
 
     block(name='title')
-      title Dr. Forbes &amp; Associates - Psychologist, counselling, educational assessments - London, Ontario
+      title {{ dato._meta.globalSeo.siteName + " " + dato._meta.globalSeo.titleSuffix}}
 
     script.
       (function(d) {
