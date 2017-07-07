@@ -72,7 +72,7 @@ extends(src='layout.sgr')
         a.g-button(id='nextTeamMember') Next team member &rarr;
 
     #eventsPreview.g-imageBg
-      h2 Events
+      h2 Events & Talks
       .events-container.g-wrapper
         if(condition="dato.event_type.length > 0")
           each(loop='eventType of dato.event_type')
