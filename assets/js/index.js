@@ -1,3 +1,5 @@
+import Raven from 'raven-js'
+Raven.config('https://f84132f1f5f34b71a925919e73d18d1b@sentry.io/191355').install()
 import mobileNav from './modules/nav.js'
 import Sticky from 'sticky-js'
 import Promise from 'promise-polyfill'
