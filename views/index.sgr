@@ -63,7 +63,7 @@ extends(src='layout.sgr')
                   https://{{ dato._meta.imgixHost + teamMember.avatar.path }}?fit=facearea&facepad=9&mask=ellipse&w=450&h=450&fm=png 450w'
                   alt='{{ teamMember.avatar.alt }}')
             .s-team-carousel-member__content
-              h3.s-team-carousel-member__name {{ teamMember.name }}, {{ teamMember.educationTitle }}
+              h4.s-team-carousel-member__name {{ teamMember.name }}, {{ teamMember.educationTitle }}
               p.s-team-carousel-member__jobTitle {{ teamMember.jobTitle }}
               .s-team-carousel-member__bio
                 | {{{ marked(teamMember.shortBio) }}}
