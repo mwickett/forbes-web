@@ -6,7 +6,6 @@ require('offline-plugin/runtime').install()
 
 function getPageId () {
   const pageId = document.querySelector('main')
-  console.log(pageId.id.toLowerCase())
   return pageId.id.toLowerCase()
 }
 
