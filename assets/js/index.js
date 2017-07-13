@@ -2,6 +2,7 @@ import mobileNav from './modules/nav.js'
 import Sticky from 'sticky-js'
 import Promise from 'promise-polyfill'
 require('offline-plugin/runtime').install()
+// require('spike-pushstate')
 
 function getPageId () {
   const pageId = document.querySelector('main')

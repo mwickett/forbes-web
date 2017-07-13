@@ -77,20 +77,20 @@ extends(src='layout.sgr')
         if(condition="dato.event_type.length > 0")
           each(loop='eventType of dato.event_type')
             .events-card
-              .events-card__image
-                img(src="https://{{ dato._meta.imgixHost + eventType.eventImage.path }}?w=500" alt="{{ eventType.eventImage.alt }}")
+              //- .events-card__image
+              //-   img(src="https://{{ dato._meta.imgixHost + eventType.eventImage.path }}?w=500" alt="{{ eventType.eventImage.alt }}")
               .events-card__content
                 h3 {{ eventType.eventTitle }}
                 hr
-                p {{ eventType.eventDescription.split(' ').slice(0, 25).join(' ') }}…
+                p {{ eventType.eventDescription.split(' ').slice(0, 35).join(' ') }}…
                 a.g-button(href='/upcoming-events#{{{ slugify(eventType.eventTitle) }}}') Read more &rarr;
-                hr
-                each(loop='event of dato.event_occurence.filter((event) => event.eventType.id === eventType.id)')
-                  if(condition="event.eventDate")
-                    p {{{ formatDate(event.eventDate) }}}
-                  else
-                    p Date to be determined
-                  address.g-address {{ event.eventLocation.address }}
+                //- hr
+                //- each(loop='event of dato.event_occurence.filter((event) => event.eventType.id === eventType.id)')
+                //-   if(condition="event.eventDate")
+                //-     p {{{ formatDate(event.eventDate) }}}
+                //-   else
+                //-     p Date to be determined
+                //-   address.g-address {{ event.eventLocation.address }}
         else
           .events-card
             h3 No events scheduled

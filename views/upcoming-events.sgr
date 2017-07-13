@@ -16,7 +16,6 @@ extends(src='layout.sgr')
               h2 {{ eventType.eventTitle }}
               .p-content-block__grid-wrapper
                 .p-content-block__col
-                  h4 Description
                   p {{{ marked(eventType.eventDescription) }}}
                 .p-content-block__col
                   if(condition="{{{ doesItExist(dato.event_occurence, eventType.id, 'eventType.id') }}}")
