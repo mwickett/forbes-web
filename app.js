@@ -11,6 +11,8 @@ const googleMapsApiKey = process.env.GOOGLE_MAPS_KEY
 const moment = require('moment')
 const get = require('lodash.get')
 
+// const PushState = require('spike-pushstate')
+
 const locals = {}
 
 // Used to convert anything to URL friendly slug
@@ -91,6 +93,7 @@ module.exports = {
   postcss: cssStandards(),
   babel: { presets: [[jsStandards, { modules: false }]], plugins: ['syntax-dynamic-import'] },
   plugins: [
+    // new PushState({ files: '**/*.sgr' }),
     new DatoCMS({
       addDataTo: locals,
       token: process.env.DATO_CMS_TOKEN,

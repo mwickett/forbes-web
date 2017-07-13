@@ -13,6 +13,7 @@ const get = require('lodash.get')
 
 const OfflinePlugin = require('offline-plugin')
 const { UglifyJsPlugin } = require('webpack').optimize
+// const PushState = require('spike-pushstate')
 
 const locals = {}
 
@@ -91,6 +92,7 @@ module.exports = {
   plugins: [
       // webpack optimization and service worker
     new UglifyJsPlugin(),
+    // new PushState({ files: '**/*.sgr' }),
     new OfflinePlugin({ updateStrategy: 'all' }),
     new DatoCMS({
       addDataTo: locals,

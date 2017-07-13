@@ -16,25 +16,23 @@
     "lodash.get": "^4.4.2",
     "marked": "^0.3.6",
     "moment": "^2.18.1",
+    "offline-plugin": "^4.8.3",
     "promise-polyfill": "^6.0.2",
     "reshape-standard": "^2.0.0",
     "sanitize.css": "^5.0.0",
     "siema": "^1.4.6",
-    "spike-contentful": "^1.0.0",
+    "spike": "^2.0.1",
     "spike-css-standards": "^1.0.0",
-    "spike-datocms": "^0.4.1",
+    "spike-datocms": "^1.0.0",
     "spike-page-id": "^1.0.0",
+    "spike-pushstate": "^1.0.0",
     "sticky-js": "^1.2.0",
-    "tiny-slider": "^1.5.5",
-    "webpack": "^3.1.0"
+    "tiny-slider": "^1.5.5"
   },
   "devDependencies": {
     "ava": "^0.20.0",
-    "offline-plugin": "^4.8.1",
     "rimraf": "^2.5.4",
     "snazzy": "^7.0.0",
-    "spike": "^2.0.0",
-    "spike-core": "^2.0.0",
     "standard": "^10.0.2"
   },
   "homepage": "https://github.com/mwickett/forbes-and-associates-web",
@@ -46,6 +44,8 @@
     "precommit": "npm run lint -s",
     "pretest": "npm run lint -s",
     "test": "NODE_ENV=test ava",
-    "watch": "spike watch"
+    "watch": "spike watch",
+    "watch-prod": "spike watch -e production",
+    "compile": "spike compile -e production"
   }
 }
