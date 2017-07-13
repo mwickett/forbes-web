@@ -60,7 +60,7 @@ function getAddress (lat, lon) {
 // It's using lodash.get to be able to check for an eventType.id inside of the event occurences
 function doesItExist (arrayToScan, valueToCheck, pathToCheck) {
   // If the scan target is empty, bail out
-  if (!arrayToScan) {
+  if (arrayToScan.length === 0) {
     return 0
   }
   const scanResults = arrayToScan.map((item) => {
