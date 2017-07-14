@@ -1,0 +1,17 @@
+extends(src='layout.sgr')
+  block(name='pagemeta')
+    meta(name='description' content='Page not found')
+
+  block(name='title')
+    title Sorry, this page doesn't exist
+
+  block(name='content')
+    .p-header-img(role="img" aria-label="Dr. Forbes & Associates Contact Page Header" style="background-image: url(https://{{ dato._meta.imgixHost + dato.contact_page[0].contactHeaderImage.path }});")
+    .p-wrapper
+      .g-wrapper
+        h2 Page not found
+        p Sorry for the trouble, but the page you've requested doesn't exist. 
+        p Here are some things you can try:
+        ul
+          li: a(href="/") Go back to the homepage
+          li: a(href="/get-in-touch") Get in touch 
