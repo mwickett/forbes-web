@@ -6,7 +6,11 @@ header
   z-index: 5
 
 .header-content
-  @apply --flexCol
+  // flexCol
+  display: flex
+  flex-flow: column nowrap
+  justify-content: space-between
+  align-items: center
 
   & nav
     display: none

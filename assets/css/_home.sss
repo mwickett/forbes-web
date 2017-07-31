@@ -2,7 +2,11 @@
 
   // Hero section
   & #hero
-    @apply --flexCol
+    // flexCol
+    display: flex
+    flex-flow: column nowrap
+    justify-content: space-between
+    align-items: center
     height: 90vh
 
     & #heroContent
@@ -37,7 +41,11 @@
     font-family: 'soleil', sans-serif
 
     & .what-to-expect-content
-      @apply --flexCol
+      // flexCol
+      display: flex
+      flex-flow: column nowrap
+      justify-content: space-between
+      align-items: center
       margin: 3em 0
       width: 100%
 
@@ -69,8 +77,19 @@
     position: relative
 
     &:before
-      @apply --addDotsTriangle
+      // addDotsTriangle
       z-index: -1
+      background: url('../img/dots.svg') top center no-repeat
+      background-size: contain
+      content: ' '
+      position: absolute
+      width: 90%
+      height: 100%
+      opacity: 0.2
+      left: 5%
+      @media all and (min-width: 740px)
+        width: 50%
+        left: 25%
 
     & h2
       color: var(--brandGrey)
@@ -86,6 +105,7 @@
       justify-content: center
       position: relative
       width: 100%
+      z-index: 1
 
       @media screen and (min-width: 600px)
         display: flex
@@ -161,9 +181,21 @@
     margin-bottom: 5em
 
     &:before
-      @apply --addDotsTriangle
+      // addDotsTriangle
       top: -127px
       z-index: -1
+      background: url('../img/dots.svg') top center no-repeat
+      background-size: contain
+      content: ' '
+      position: absolute
+      z-index: 0
+      width: 90%
+      height: 100%
+      opacity: 0.2
+      left: 5%
+      @media all and (min-width: 740px)
+        width: 50%
+        left: 25%
 
     & h2
       color: var(--brandGrey)
