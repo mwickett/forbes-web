@@ -10,6 +10,8 @@ const axios = require('axios')
 const googleMapsApiKey = process.env.GOOGLE_MAPS_KEY
 const moment = require('moment')
 const get = require('lodash.get')
+const sugarml = require('sugarml')
+const sugarss = require('sugarss')
 
 // const PushState = require('spike-pushstate')
 
@@ -88,9 +90,12 @@ module.exports = {
   ignore: ['**/layout.sgr', '**/_*', '**/.*', '_cache/**', 'readme.md', 'yarn.lock', 'serverless/**', 'services/**'],
   reshape: htmlStandards({
     locals: (ctx) => { return Object.assign(locals, { pageId: pageId(ctx) }, { marked: marked }, {slugify: slugify}, {formatDate: formatDate}, { checkLength: checkLength }, { doesItExist: doesItExist }) },
-    markdown: { linkify: false }
+    markdown: { linkify: false },
+    parser: sugarml
   }),
-  postcss: cssStandards(),
+  postcss: cssStandards({
+    parser: sugarss
+  }),
   babel: { presets: [[jsStandards, { modules: false }]], plugins: ['syntax-dynamic-import'] },
   plugins: [
     // new PushState({ files: '**/*.sgr' }),
