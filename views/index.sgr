@@ -12,15 +12,13 @@ extends(src='layout.sgr')
       #heroImage
         picture
           source(type='image/webp'
-            srcset='https://{{ dato._meta.imgixHost + dato.home_page[0].heroImage.path }}?fm=webp&w=2000&fit=fill 2000w,
-            https://{{ dato._meta.imgixHost + dato.home_page[0].heroImage.path }}?fm=webp&w=1500&fit=fill 1500w,
+            srcset='https://{{ dato._meta.imgixHost + dato.home_page[0].heroImage.path }}?fm=webp&w=1500&fit=fill 1500w,
             https://{{ dato._meta.imgixHost + dato.home_page[0].heroImage.path }}?fm=webp&w=900 900w,
             https://{{ dato._meta.imgixHost + dato.home_page[0].heroImage.path }}?fm=webp&w=450 450w')
-          img(src='https://{{ dato._meta.imgixHost + dato.home_page[0].heroImage.path }}?fm=jpg&w=900&fit=fill'
-            srcset='https://{{ dato._meta.imgixHost + dato.home_page[0].heroImage.path }}?fm=jpg&w=2000&fit=fill 2000w,
-            https://{{ dato._meta.imgixHost + dato.home_page[0].heroImage.path }}?fm=jpg&w=1500&fit=fill 1500w,
-            https://{{ dato._meta.imgixHost + dato.home_page[0].heroImage.path }}?fm=jpg&w=900 900w,
-            https://{{ dato._meta.imgixHost + dato.home_page[0].heroImage.path }}?fm=jpg&w=450 450w'
+          img(src='https://{{ dato._meta.imgixHost + dato.home_page[0].heroImage.path }}?fm=png&w=300&fit=fill'
+            srcset='https://{{ dato._meta.imgixHost + dato.home_page[0].heroImage.path }}?fm=png&w=1500&fit=fill 1500w,
+            https://{{ dato._meta.imgixHost + dato.home_page[0].heroImage.path }}?fm=png&w=900 900w,
+            https://{{ dato._meta.imgixHost + dato.home_page[0].heroImage.path }}?fm=png&w=450 450w'
             alt='{{ dato.home_page[0].heroImage.alt }}')
 
     #whatToExpect.g-imageBg
@@ -56,11 +54,11 @@ extends(src='layout.sgr')
                   https://{{ dato._meta.imgixHost + teamMember.avatar.path }}?fit=facearea&facepad=9&mask=ellipse&w=1500&h=1500&fm=webp 1500w,
                   https://{{ dato._meta.imgixHost + teamMember.avatar.path }}?fit=facearea&facepad=9&mask=ellipse&w=900&h=900&fm=webp 900w,
                   https://{{ dato._meta.imgixHost + teamMember.avatar.path }}?fit=facearea&facepad=9&mask=ellipse&w=200&h=200&fm=webp 450w')
-                img(src='https://{{ dato._meta.imgixHost + teamMember.avatar.path }}?fit=facearea&facepad=9&mask=ellipse&w=900&h=900&fm=png'
-                  srcset='https://{{ dato._meta.imgixHost + teamMember.avatar.path }}?fit=facearea&facepad=9&mask=ellipse&w=2000&h=2000&fm=png 2000w,
-                  https://{{ dato._meta.imgixHost + teamMember.avatar.path }}?fit=facearea&facepad=9&mask=ellipse&w=1500&h=1500&fm=png 1500w,
-                  https://{{ dato._meta.imgixHost + teamMember.avatar.path }}?fit=facearea&facepad=9&mask=ellipse&w=900&h=900&fm=png 900w,
-                  https://{{ dato._meta.imgixHost + teamMember.avatar.path }}?fit=facearea&facepad=9&mask=ellipse&w=450&h=450&fm=png 450w'
+                img(src='https://{{ dato._meta.imgixHost + teamMember.avatar.path }}?fit=facearea&facepad=9&mask=ellipse&w=350&h=350&fm=jpg'
+                  srcset='https://{{ dato._meta.imgixHost + teamMember.avatar.path }}?fit=facearea&facepad=9&mask=ellipse&w=2000&h=2000&fm=jpg 2000w,
+                  https://{{ dato._meta.imgixHost + teamMember.avatar.path }}?fit=facearea&facepad=9&mask=ellipse&w=1500&h=1500&fm=jpg 1500w,
+                  https://{{ dato._meta.imgixHost + teamMember.avatar.path }}?fit=facearea&facepad=9&mask=ellipse&w=900&h=900&fm=jpg 900w,
+                  https://{{ dato._meta.imgixHost + teamMember.avatar.path }}?fit=facearea&facepad=9&mask=ellipse&w=450&h=450&fm=jpg 450w'
                   alt='{{ teamMember.avatar.alt }}')
             .s-team-carousel-member__content
               h4.s-team-carousel-member__name {{ teamMember.name }}, {{ teamMember.educationTitle }}

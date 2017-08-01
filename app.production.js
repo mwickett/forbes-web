@@ -10,10 +10,13 @@ const axios = require('axios')
 const googleMapsApiKey = process.env.GOOGLE_MAPS_KEY
 const moment = require('moment')
 const get = require('lodash.get')
+const sugarml = require('sugarml')
+const sugarss = require('sugarss')
 
-const OfflinePlugin = require('offline-plugin')
+// const OfflinePlugin = require('offline-plugin')
 const { UglifyJsPlugin } = require('webpack').optimize
 // const PushState = require('spike-pushstate')
+const optimize = require('spike-optimize')
 
 const locals = {}
 
@@ -91,9 +94,7 @@ module.exports = {
   ignore: ['**/layout.sgr', '**/_*', '**/.*', '_cache/**', 'readme.md', 'yarn.lock', 'serverless/**', 'services/**'],
   plugins: [
       // webpack optimization and service worker
-    new UglifyJsPlugin(),
     // new PushState({ files: '**/*.sgr' }),
-    new OfflinePlugin({ updateStrategy: 'all' }),
     new DatoCMS({
       addDataTo: locals,
       token: process.env.DATO_CMS_TOKEN,
@@ -133,7 +134,9 @@ module.exports = {
           name: 'team_page'
         }
       ]
-    })
+    }),
+    new UglifyJsPlugin()
+    // new OfflinePlugin({ updateStrategy: 'all' })
   ],
   // image optimization
   module: {
@@ -146,11 +149,20 @@ module.exports = {
   reshape: htmlStandards({
     minify: false,
     locals: (ctx) => { return Object.assign(locals, { pageId: pageId(ctx) }, { marked: marked }, {slugify: slugify}, {formatDate: formatDate}, { checkLength: checkLength }, { doesItExist: doesItExist }) },
-    markdown: { linkify: false }
+    markdown: { linkify: false },
+    parser: sugarml
   }),
   postcss: cssStandards({
     minify: true,
-    warnForDuplicates: false // cssnano includes autoprefixer
+    warnForDuplicates: false, // cssnano includes autoprefixer
+    parser: sugarss
   }),
-  babel: { presets: [[jsStandards, { modules: false }]], plugins: ['syntax-dynamic-import'] }
+  babel: { presets: [[jsStandards, { modules: false }]], plugins: ['syntax-dynamic-import'] },
+  afterSpikePlugins: [
+    ...optimize({
+      scopeHoisting: true,
+      minify: true,
+      aggressiveSplitting: true // or set your size limits ex. [30000, 50000]
+    })
+  ]
 }
