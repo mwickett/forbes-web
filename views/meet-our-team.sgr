@@ -6,7 +6,7 @@ extends(src='layout.sgr')
     title {{ dato.team_page[0].teamSeo.title + ' | ' + dato._meta.globalSeo.siteName }}
 
   block(name='content')
-    .p-header-img(role="img" aria-label="Dr. Forbes & Associates Team" style="background-image: url(https://{{ dato._meta.imgixHost + dato.team_page[0].pageHeader.path }});")
+    .p-header-img(role="img" aria-label="Dr. Forbes & Associates Team" style="background-image: url(https://{{ dato._meta.imgixHost + dato.team_page[0].pageHeader.path }}?w=1000&fm=jpg&q=60);")
     .p-wrapper
       .g-wrapper
         each(loop='team of dato.team.sort((a, b) => a.position < b.position ? -1 : 1)')
@@ -20,15 +20,13 @@ extends(src='layout.sgr')
               .p-content-block__col
                 picture
                   source(type='image/webp'
-                    srcset='https://{{ dato._meta.imgixHost + team.avatar.path }}?fit=facearea&facepad=10&mask=ellipse&w=2000&h=2000&fm=webp 2000w,
-                    https://{{ dato._meta.imgixHost + team.avatar.path }}?fit=facearea&facepad=10&mask=ellipse&w=1500&h=1500&fm=webp 1500w,
+                    srcset='https://{{ dato._meta.imgixHost + team.avatar.path }}?fit=facearea&facepad=10&mask=ellipse&w=1500&h=1500&fm=webp 1500w,
                     https://{{ dato._meta.imgixHost + team.avatar.path }}?fit=facearea&facepad=10&mask=ellipse&w=900&h=900&fm=webp 900w,
                     https://{{ dato._meta.imgixHost + team.avatar.path }}?fit=facearea&facepad=10&mask=ellipse&w=200&h=200&fm=webp 450w')
-                  img(src='https://{{ dato._meta.imgixHost + team.avatar.path }}?fit=facearea&facepad=10&mask=ellipse&w=900&h=900&fm=png'
-                    srcset='https://{{ dato._meta.imgixHost + team.avatar.path }}?fit=facearea&facepad=10&mask=ellipse&w=2000&h=2000&fm=png 2000w,
-                    https://{{ dato._meta.imgixHost + team.avatar.path }}?fit=facearea&facepad=10&mask=ellipse&w=1500&h=1500&fm=png 1500w,
-                    https://{{ dato._meta.imgixHost + team.avatar.path }}?fit=facearea&facepad=10&mask=ellipse&w=900&h=900&fm=png 900w,
-                    https://{{ dato._meta.imgixHost + team.avatar.path }}?fit=facearea&facepad=10&mask=ellipse&w=450&h=450&fm=png 450w'
+                  img(src='https://{{ dato._meta.imgixHost + team.avatar.path }}?fit=facearea&facepad=10&mask=ellipse&w=450&h=450&fm=jpg'
+                    srcset='https://{{ dato._meta.imgixHost + team.avatar.path }}?fit=facearea&facepad=10&mask=ellipse&w=1500&h=1500&fm=jpg 1500w,
+                    https://{{ dato._meta.imgixHost + team.avatar.path }}?fit=facearea&facepad=10&mask=ellipse&w=900&h=900&fm=jpg 900w,
+                    https://{{ dato._meta.imgixHost + team.avatar.path }}?fit=facearea&facepad=10&mask=ellipse&w=450&h=450&fm=jpg 450w'
                     alt='{{ team.avatar.alt }}')
                 if(condition="{{{ team.contactEmail }}}")
                   h4 Contact
