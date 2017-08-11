@@ -1,10 +1,12 @@
-function teamCarousel () {
-  function getTeamMembers () {
-    const teamMembers = Array.from(document.getElementsByClassName('s-team-carousel-member'))
+function teamCarousel() {
+  function getTeamMembers() {
+    const teamMembers = Array.from(
+      document.getElementsByClassName('s-team-carousel-member')
+    )
     return teamMembers
   }
 
-  function onMount () {
+  function onMount() {
     const teamMembers = getTeamMembers()
     teamMembers.forEach((teamMember, i) => {
       // If it's the first one, we want it displayed to start
@@ -16,19 +18,18 @@ function teamCarousel () {
     })
   }
 
-  function advance (e) {
+  function advance(e) {
     let nextActive = false
 
     const teamMembers = getTeamMembers()
 
-    function setNextActive (itemToActivate) {
+    function setNextActive(itemToActivate) {
       nextActive = false
       itemToActivate.classList.remove('js-inactive')
       itemToActivate.classList.add('js-active')
     }
 
     teamMembers.every((teamMember, i, array) => {
-      console.log("Counter: " + i + teamMember)
       if (nextActive === true) {
         setNextActive(teamMember)
         return true
@@ -38,7 +39,7 @@ function teamCarousel () {
         teamMember.classList.remove('js-active')
         teamMember.classList.add('js-inactive')
         // If it's the last one active, we need to start over, otherwise set the next one to be activated
-        if (i === (array.length) - 1) {
+        if (i === array.length - 1) {
           setNextActive(teamMembers[0])
         } else {
           nextActive = true
@@ -50,7 +51,9 @@ function teamCarousel () {
   // Initial startup
   onMount()
   // Button triggers advance() function above
-  document.getElementById('nextTeamMember').addEventListener('click', advance, false)
+  document
+    .getElementById('nextTeamMember')
+    .addEventListener('click', advance, false)
 }
 
 export default teamCarousel
