@@ -16,11 +16,11 @@ extends(src='layout.sgr')
                 p {{ service.serviceDescription }}
               picture.p-services-header-image
                 source(type='image/webp'
-                  srcset='https://{{ dato._meta.imgixHost + service.serviceImage.path }}?fm=webp&w=1500&fit=fill 1500w,
+                  data-srcset='https://{{ dato._meta.imgixHost + service.serviceImage.path }}?fm=webp&w=1500&fit=fill 1500w,
                   https://{{ dato._meta.imgixHost + service.serviceImage.path }}?fm=webp&w=900 900w,
                   https://{{ dato._meta.imgixHost + service.serviceImage.path }}?fm=webp&w=450 450w')
-                img(src='https://{{ dato._meta.imgixHost + service.serviceImage.path }}?fm=jpg&w=900&fit=fill'
-                  srcset='https://{{ dato._meta.imgixHost + service.serviceImage.path }}?fm=jpg&w=1500&fit=fill 1500w,
+                img(class='lazyload' data-src='https://{{ dato._meta.imgixHost + service.serviceImage.path }}?fm=jpg&w=900&fit=fill'
+                  data-srcset='https://{{ dato._meta.imgixHost + service.serviceImage.path }}?fm=jpg&w=1500&fit=fill 1500w,
                   https://{{ dato._meta.imgixHost + service.serviceImage.path }}?fm=jpg&w=900 900w,
                   https://{{ dato._meta.imgixHost + service.serviceImage.path }}?fm=jpg&w=450 450w'
                   alt='{{ service.serviceImage.alt }}')
@@ -44,12 +44,12 @@ extends(src='layout.sgr')
         each(loop='image of dato.services_page[0].officePhotos')
           picture
             source(type='image/webp'
-              srcset='https://{{ dato._meta.imgixHost + image.path }}?fm=webp&w=2000&fit=fill 2000w,
+              data-srcset='https://{{ dato._meta.imgixHost + image.path }}?fm=webp&w=2000&fit=fill 2000w,
               https://{{ dato._meta.imgixHost + image.path }}?fm=webp&w=1500&fit=fill 1500w,
               https://{{ dato._meta.imgixHost + image.path }}?fm=webp&w=900 900w,
               https://{{ dato._meta.imgixHost + image.path }}?fm=webp&w=450 450w')
-            img(src='https://{{ dato._meta.imgixHost + image.path }}?fm=jpg&w=900&fit=fill'
-              srcset='https://{{ dato._meta.imgixHost + image.path }}?fm=jpg&w=2000&fit=fill 2000w,
+            img(class='lazyload' data-src='https://{{ dato._meta.imgixHost + image.path }}?fm=jpg&w=900&fit=fill'
+              data-srcset='https://{{ dato._meta.imgixHost + image.path }}?fm=jpg&w=2000&fit=fill 2000w,
               https://{{ dato._meta.imgixHost + image.path }}?fm=jpg&w=1500&fit=fill 1500w,
               https://{{ dato._meta.imgixHost + image.path }}?fm=jpg&w=900 900w,
               https://{{ dato._meta.imgixHost + image.path }}?fm=jpg&w=450 450w'
