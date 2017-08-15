@@ -12,13 +12,13 @@ extends(src='layout.sgr')
       #heroImage
         picture
           source(type='image/webp'
-            data-srcset='https://{{ dato._meta.imgixHost + dato.home_page[0].heroImage.path }}?fm=webp&w=1500&fit=fill 1500w,
-            https://{{ dato._meta.imgixHost + dato.home_page[0].heroImage.path }}?fm=webp&w=900 900w,
-            https://{{ dato._meta.imgixHost + dato.home_page[0].heroImage.path }}?fm=webp&w=450 450w')
-          img(class='lazyload' data-src='https://{{ dato._meta.imgixHost + dato.home_page[0].heroImage.path }}?fm=png&w=300&fit=fill'
-            data-srcset='https://{{ dato._meta.imgixHost + dato.home_page[0].heroImage.path }}?fm=png&w=1500&fit=fill 1500w,
-            https://{{ dato._meta.imgixHost + dato.home_page[0].heroImage.path }}?fm=png&w=900 900w,
-            https://{{ dato._meta.imgixHost + dato.home_page[0].heroImage.path }}?fm=png&w=450 450w'
+            data-srcset='//{{ dato._meta.imgixHost + dato.home_page[0].heroImage.path }}?fm=webp&w=1500&fit=fill 1500w,
+            //{{ dato._meta.imgixHost + dato.home_page[0].heroImage.path }}?fm=webp&w=900 900w,
+            //{{ dato._meta.imgixHost + dato.home_page[0].heroImage.path }}?fm=webp&w=450 450w')
+          img(class='lazyload' data-src='//{{ dato._meta.imgixHost + dato.home_page[0].heroImage.path }}?fm=png&w=300&fit=fill'
+            data-srcset='//{{ dato._meta.imgixHost + dato.home_page[0].heroImage.path }}?fm=png&w=1500&fit=fill 1500w,
+            //{{ dato._meta.imgixHost + dato.home_page[0].heroImage.path }}?fm=png&w=900 900w,
+            //{{ dato._meta.imgixHost + dato.home_page[0].heroImage.path }}?fm=png&w=450 450w'
             alt='{{ dato.home_page[0].heroImage.alt }}')
 
     #whatToExpect.g-imageBg
@@ -35,7 +35,7 @@ extends(src='layout.sgr')
         each(loop='service of dato.service.sort((a, b) => a.position < b.position ? -1 : 1 )')
           .service-card
             .service-card__image
-              img(src='https://{{ dato._meta.imgixHost + service.serviceIcon.path }}' alt='{{ service.serviceName }} icon')
+              img(src='//{{ dato._meta.imgixHost + service.serviceIcon.path }}' alt='{{ service.serviceName }} icon')
             .service-card__content
               h3 {{ service.serviceName }}
               hr
@@ -50,15 +50,15 @@ extends(src='layout.sgr')
             .s-team-carousel-member__avatar
               picture
                 source(type='image/webp'
-                  data-srcset='https://{{ dato._meta.imgixHost + teamMember.avatar.path }}?fit=facearea&facepad=9&mask=ellipse&w=2000&h=2000&fm=webp 2000w,
-                  https://{{ dato._meta.imgixHost + teamMember.avatar.path }}?fit=facearea&facepad=9&mask=ellipse&w=1500&h=1500&fm=webp 1500w,
-                  https://{{ dato._meta.imgixHost + teamMember.avatar.path }}?fit=facearea&facepad=9&mask=ellipse&w=900&h=900&fm=webp 900w,
-                  https://{{ dato._meta.imgixHost + teamMember.avatar.path }}?fit=facearea&facepad=9&mask=ellipse&w=200&h=200&fm=webp 450w')
-                img(class='lazyload' data-src='https://{{ dato._meta.imgixHost + teamMember.avatar.path }}?fit=facearea&facepad=9&mask=ellipse&w=350&h=350&fm=jpg'
-                  data-srcset='https://{{ dato._meta.imgixHost + teamMember.avatar.path }}?fit=facearea&facepad=9&mask=ellipse&w=2000&h=2000&fm=jpg 2000w,
-                  https://{{ dato._meta.imgixHost + teamMember.avatar.path }}?fit=facearea&facepad=9&mask=ellipse&w=1500&h=1500&fm=jpg 1500w,
-                  https://{{ dato._meta.imgixHost + teamMember.avatar.path }}?fit=facearea&facepad=9&mask=ellipse&w=900&h=900&fm=jpg 900w,
-                  https://{{ dato._meta.imgixHost + teamMember.avatar.path }}?fit=facearea&facepad=9&mask=ellipse&w=450&h=450&fm=jpg 450w'
+                  data-srcset='//{{ dato._meta.imgixHost + teamMember.avatar.path }}?fit=facearea&facepad=9&mask=ellipse&w=2000&h=2000&fm=webp 2000w,
+                  //{{ dato._meta.imgixHost + teamMember.avatar.path }}?fit=facearea&facepad=9&mask=ellipse&w=1500&h=1500&fm=webp 1500w,
+                  //{{ dato._meta.imgixHost + teamMember.avatar.path }}?fit=facearea&facepad=9&mask=ellipse&w=900&h=900&fm=webp 900w,
+                  //{{ dato._meta.imgixHost + teamMember.avatar.path }}?fit=facearea&facepad=9&mask=ellipse&w=200&h=200&fm=webp 450w')
+                img(class='lazyload' data-src='//{{ dato._meta.imgixHost + teamMember.avatar.path }}?fit=facearea&facepad=9&mask=ellipse&w=350&h=350&fm=jpg'
+                  data-srcset='//{{ dato._meta.imgixHost + teamMember.avatar.path }}?fit=facearea&facepad=9&mask=ellipse&w=2000&h=2000&fm=jpg 2000w,
+                  //{{ dato._meta.imgixHost + teamMember.avatar.path }}?fit=facearea&facepad=9&mask=ellipse&w=1500&h=1500&fm=jpg 1500w,
+                  //{{ dato._meta.imgixHost + teamMember.avatar.path }}?fit=facearea&facepad=9&mask=ellipse&w=900&h=900&fm=jpg 900w,
+                  //{{ dato._meta.imgixHost + teamMember.avatar.path }}?fit=facearea&facepad=9&mask=ellipse&w=450&h=450&fm=jpg 450w'
                   alt='{{ teamMember.avatar.alt }}')
             .s-team-carousel-member__content
               h4.s-team-carousel-member__name {{ teamMember.name }}, {{ teamMember.educationTitle }}
@@ -76,7 +76,7 @@ extends(src='layout.sgr')
           each(loop='eventType of dato.event_type')
             .events-card
               //- .events-card__image
-              //-   img(src="https://{{ dato._meta.imgixHost + eventType.eventImage.path }}?w=500" alt="{{ eventType.eventImage.alt }}")
+              //-   img(src="//{{ dato._meta.imgixHost + eventType.eventImage.path }}?w=500" alt="{{ eventType.eventImage.alt }}")
               .events-card__content
                 h3 {{ eventType.eventTitle }}
                 hr
