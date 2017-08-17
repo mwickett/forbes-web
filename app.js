@@ -12,7 +12,6 @@ const moment = require('moment')
 const get = require('lodash.get')
 const sugarml = require('sugarml')
 const sugarss = require('sugarss')
-const DashboardPlugin = require('webpack-dashboard/plugin')
 
 // const PushState = require('spike-pushstate')
 
@@ -171,6 +170,5 @@ module.exports = {
       ],
       json: 'data.json'
     })
-  ],
-  afterSpikePlugins: [new DashboardPlugin()]
+  ]
 }
