@@ -38,7 +38,8 @@
     "ava": "^0.21.0",
     "rimraf": "^2.5.4",
     "snazzy": "^7.0.0",
-    "standard": "^10.0.2"
+    "standard": "^10.0.2",
+    "webpack-dashboard": "^1.0.0-2"
   },
   "homepage": "https://github.com/mwickett/forbes-and-associates-web",
   "main": "app.js",
