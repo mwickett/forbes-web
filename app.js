@@ -18,52 +18,55 @@ const sugarss = require('sugarss')
 const locals = {}
 
 // Used to convert anything to URL friendly slug
-const slugify = function (text) {
+const slugify = function(text) {
   return text
     .toString()
     .trim()
     .toLowerCase()
-    .replace(/\s+/g, "-")
-    .replace(/[^\w\-]+/g, "")
-    .replace(/\-\-+/g, "-")
-    .replace(/^-+/, "")
-    .replace(/-+$/, "")
+    .replace(/\s+/g, '-')
+    .replace(/[^\w\-]+/g, '')
+    .replace(/\-\-+/g, '-')
+    .replace(/^-+/, '')
+    .replace(/-+$/, '')
 }
 
-function checkLength (item) {
+function checkLength(item) {
   return item.length
 }
 
-function reverseLookup (lat, lon) {
-  return axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lon}&key=${googleMapsApiKey}`)
-    .then(function (response) {
+function reverseLookup(lat, lon) {
+  return axios
+    .get(
+      `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lon}&key=${googleMapsApiKey}`
+    )
+    .then(function(response) {
       const results = response
       const address = results.data.results[0].formatted_address
       return address
     })
-    .catch(function (error) {
+    .catch(function(error) {
       console.log(error)
     })
 }
 
-function getAddress (lat, lon) {
+function getAddress(lat, lon) {
   return new Promise((resolve, reject) => {
     reverseLookup(lat, lon)
-    .then(function (address) {
-      resolve(address)
-    })
-    .catch(reject)
+      .then(function(address) {
+        resolve(address)
+      })
+      .catch(reject)
   })
 }
 
 // This is used to check if an event type has no event occurrences, and then display a "no events" placeholder
 // It's using lodash.get to be able to check for an eventType.id inside of the event occurences
-function doesItExist (arrayToScan, valueToCheck, pathToCheck) {
+function doesItExist(arrayToScan, valueToCheck, pathToCheck) {
   // If the scan target is empty, bail out
   if (arrayToScan.length === 0) {
     return 0
   }
-  const scanResults = arrayToScan.map((item) => {
+  const scanResults = arrayToScan.map(item => {
     const check = get(item, pathToCheck, 0)
     if (check === valueToCheck) {
       return 1
@@ -76,7 +79,7 @@ function doesItExist (arrayToScan, valueToCheck, pathToCheck) {
 }
 
 // Clean up data & time format
-function formatDate (dateTime) {
+function formatDate(dateTime) {
   const cleanDate = moment(dateTime).format('dddd, MMMM Do YYYY, h:mm a')
   return cleanDate
 }
@@ -87,16 +90,38 @@ module.exports = {
     html: '*(**/)*.sgr',
     css: '*(**/)*.sss'
   },
-  ignore: ['**/layout.sgr', '**/_*', '**/.*', '_cache/**', 'readme.md', 'yarn.lock', 'serverless/**', 'services/**'],
+  ignore: [
+    '**/layout.sgr',
+    '**/_*',
+    '**/.*',
+    '_cache/**',
+    'readme.md',
+    'yarn.lock',
+    'serverless/**',
+    'services/**'
+  ],
   reshape: htmlStandards({
-    locals: (ctx) => { return Object.assign(locals, { pageId: pageId(ctx) }, { marked: marked }, {slugify: slugify}, {formatDate: formatDate}, { checkLength: checkLength }, { doesItExist: doesItExist }) },
+    locals: ctx => {
+      return Object.assign(
+        locals,
+        { pageId: pageId(ctx) },
+        { marked: marked },
+        { slugify: slugify },
+        { formatDate: formatDate },
+        { checkLength: checkLength },
+        { doesItExist: doesItExist }
+      )
+    },
     markdown: { linkify: false },
     parser: sugarml
   }),
   postcss: cssStandards({
     parser: sugarss
   }),
-  babel: { presets: [[jsStandards, { modules: false }]], plugins: ['syntax-dynamic-import'] },
+  babel: {
+    presets: [[jsStandards, { modules: false }]],
+    plugins: ['syntax-dynamic-import']
+  },
   plugins: [
     // new PushState({ files: '**/*.sgr' }),
     new DatoCMS({
@@ -117,8 +142,13 @@ module.exports = {
         },
         {
           name: 'event_occurence',
-          transform: (event) => {
-            getAddress(event.eventLocation.latitude, event.eventLocation.longitude).then((res) => { event.eventLocation.address = res })
+          transform: event => {
+            getAddress(
+              event.eventLocation.latitude,
+              event.eventLocation.longitude
+            ).then(res => {
+              event.eventLocation.address = res
+            })
             return event
           }
         },
