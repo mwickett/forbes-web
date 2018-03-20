@@ -41,7 +41,9 @@ function loadContactForm() {
 document.addEventListener('DOMContentLoaded', function() {
   // GLOBAL LOADS
   // Handle mobile nav dropdown
-
+  console.log(
+    '<ShamelessSelfPromotion>Made by Mike Wickett - https://www.wickett.ca. Drop me a line anytime.</ShamelessSelfPromotion>'
+  )
   // Promise polyfill
   if (!window.Promise) {
     window.Promise = Promise

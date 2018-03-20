@@ -48,18 +48,19 @@ extends(src='layout.sgr')
         each(loop='teamMember of dato.team.sort((a, b) => a.position < b.position ? -1 : 1)')
           .s-team-carousel-member(id='{{{ slugify(teamMember.name )}}}')
             .s-team-carousel-member__avatar
-              picture
-                source(type='image/webp'
-                  data-srcset='//{{ dato._meta.imgixHost + teamMember.avatar.path }}?fit=facearea&facepad=9&mask=ellipse&w=2000&h=2000&fm=webp 2000w,
-                  //{{ dato._meta.imgixHost + teamMember.avatar.path }}?fit=facearea&facepad=9&mask=ellipse&w=1500&h=1500&fm=webp 1500w,
-                  //{{ dato._meta.imgixHost + teamMember.avatar.path }}?fit=facearea&facepad=9&mask=ellipse&w=900&h=900&fm=webp 900w,
-                  //{{ dato._meta.imgixHost + teamMember.avatar.path }}?fit=facearea&facepad=9&mask=ellipse&w=200&h=200&fm=webp 450w')
-                img(class='lazyload' data-src='//{{ dato._meta.imgixHost + teamMember.avatar.path }}?fit=facearea&facepad=9&mask=ellipse&w=350&h=350&fm=jpg'
-                  data-srcset='//{{ dato._meta.imgixHost + teamMember.avatar.path }}?fit=facearea&facepad=9&mask=ellipse&w=2000&h=2000&fm=jpg 2000w,
-                  //{{ dato._meta.imgixHost + teamMember.avatar.path }}?fit=facearea&facepad=9&mask=ellipse&w=1500&h=1500&fm=jpg 1500w,
-                  //{{ dato._meta.imgixHost + teamMember.avatar.path }}?fit=facearea&facepad=9&mask=ellipse&w=900&h=900&fm=jpg 900w,
-                  //{{ dato._meta.imgixHost + teamMember.avatar.path }}?fit=facearea&facepad=9&mask=ellipse&w=450&h=450&fm=jpg 450w'
-                  alt='{{ teamMember.avatar.alt }}')
+              if(condition="{{{ teamMember.avatar }}}")
+                picture
+                  source(type='image/webp'
+                    data-srcset='//{{ dato._meta.imgixHost + teamMember.avatar.path }}?fit=facearea&facepad=9&mask=ellipse&w=2000&h=2000&fm=webp 2000w,
+                    //{{ dato._meta.imgixHost + teamMember.avatar.path }}?fit=facearea&facepad=9&mask=ellipse&w=1500&h=1500&fm=webp 1500w,
+                    //{{ dato._meta.imgixHost + teamMember.avatar.path }}?fit=facearea&facepad=9&mask=ellipse&w=900&h=900&fm=webp 900w,
+                    //{{ dato._meta.imgixHost + teamMember.avatar.path }}?fit=facearea&facepad=9&mask=ellipse&w=200&h=200&fm=webp 450w')
+                  img(class='lazyload' data-src='//{{ dato._meta.imgixHost + teamMember.avatar.path }}?fit=facearea&facepad=9&mask=ellipse&w=350&h=350&fm=jpg'
+                    data-srcset='//{{ dato._meta.imgixHost + teamMember.avatar.path }}?fit=facearea&facepad=9&mask=ellipse&w=2000&h=2000&fm=jpg 2000w,
+                    //{{ dato._meta.imgixHost + teamMember.avatar.path }}?fit=facearea&facepad=9&mask=ellipse&w=1500&h=1500&fm=jpg 1500w,
+                    //{{ dato._meta.imgixHost + teamMember.avatar.path }}?fit=facearea&facepad=9&mask=ellipse&w=900&h=900&fm=jpg 900w,
+                    //{{ dato._meta.imgixHost + teamMember.avatar.path }}?fit=facearea&facepad=9&mask=ellipse&w=450&h=450&fm=jpg 450w'
+                    alt='{{ teamMember.avatar.alt }}')
             .s-team-carousel-member__content
               h4.s-team-carousel-member__name {{ teamMember.name }}, {{ teamMember.educationTitle }}
               p.s-team-carousel-member__jobTitle {{ teamMember.jobTitle }}
