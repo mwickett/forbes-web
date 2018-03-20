@@ -18,16 +18,17 @@ extends(src='layout.sgr')
               .p-content-block__col
                 | {{{ marked(team.fullBio) }}}
               .p-content-block__col
-                picture
-                  source(type='image/webp'
-                    data-srcset='//{{ dato._meta.imgixHost + team.avatar.path }}?fit=facearea&facepad=10&mask=ellipse&w=1500&h=1500&fm=webp 1500w,
-                    //{{ dato._meta.imgixHost + team.avatar.path }}?fit=facearea&facepad=10&mask=ellipse&w=900&h=900&fm=webp 900w,
-                    //{{ dato._meta.imgixHost + team.avatar.path }}?fit=facearea&facepad=10&mask=ellipse&w=200&h=200&fm=webp 450w')
-                  img(class='lazyload' data-src='//{{ dato._meta.imgixHost + team.avatar.path }}?fit=facearea&facepad=10&mask=ellipse&w=450&h=450&fm=jpg'
-                    data-srcset='//{{ dato._meta.imgixHost + team.avatar.path }}?fit=facearea&facepad=10&mask=ellipse&w=1500&h=1500&fm=jpg 1500w,
-                    //{{ dato._meta.imgixHost + team.avatar.path }}?fit=facearea&facepad=10&mask=ellipse&w=900&h=900&fm=jpg 900w,
-                    //{{ dato._meta.imgixHost + team.avatar.path }}?fit=facearea&facepad=10&mask=ellipse&w=450&h=450&fm=jpg 450w'
-                    alt='{{ team.avatar.alt }}')
+                if(condition="{{{ team.avatar }}}")
+                  picture
+                    source(type='image/webp'
+                      data-srcset='//{{ dato._meta.imgixHost + team.avatar.path }}?fit=facearea&facepad=10&mask=ellipse&w=1500&h=1500&fm=webp 1500w,
+                      //{{ dato._meta.imgixHost + team.avatar.path }}?fit=facearea&facepad=10&mask=ellipse&w=900&h=900&fm=webp 900w,
+                      //{{ dato._meta.imgixHost + team.avatar.path }}?fit=facearea&facepad=10&mask=ellipse&w=200&h=200&fm=webp 450w')
+                    img(class='lazyload' data-src='//{{ dato._meta.imgixHost + team.avatar.path }}?fit=facearea&facepad=10&mask=ellipse&w=450&h=450&fm=jpg'
+                      data-srcset='//{{ dato._meta.imgixHost + team.avatar.path }}?fit=facearea&facepad=10&mask=ellipse&w=1500&h=1500&fm=jpg 1500w,
+                      //{{ dato._meta.imgixHost + team.avatar.path }}?fit=facearea&facepad=10&mask=ellipse&w=900&h=900&fm=jpg 900w,
+                      //{{ dato._meta.imgixHost + team.avatar.path }}?fit=facearea&facepad=10&mask=ellipse&w=450&h=450&fm=jpg 450w'
+                      alt='{{ team.avatar.alt }}')
                 if(condition="{{{ team.contactEmail }}}")
                   h4 Contact
                   a(href='mailto:{{{ team.contactEmail }}}') {{{ team.contactEmail }}}
