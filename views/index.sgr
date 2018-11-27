@@ -68,7 +68,7 @@ extends(src='layout.sgr')
                 | {{{ marked(teamMember.shortBio) }}}
               a(href='/meet-our-team#{{{ slugify(teamMember.name)}}}') Read more &rarr;
       .g-center
-        a.g-button(id='nextTeamMember') Next team member;
+        a.g-button(id='nextTeamMember') Next team member
 
     #eventsPreview.g-imageBg
       h2 Events & Talks
