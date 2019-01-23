@@ -18,10 +18,7 @@
         h5 Contact Us
         ul
           li info@drforbes.ca
-          li 630 Colborne Street
-             |Unit 130
-             br
-             |London Ontario N6B 2V2
+          li {{{ marked(dato.contact_page[0].contactAddress) }}}
           li 519-280-6697
 
       .bottom
