@@ -6,7 +6,7 @@ const jsStandards = require('babel-preset-env')
 const pageId = require('spike-page-id')
 const DatoCMS = require('spike-datocms')
 const marked = require('marked')
-const moment = require('moment')
+const moment = require('moment-timezone')
 const get = require('lodash.get')
 const sugarml = require('sugarml')
 const sugarss = require('sugarss')
@@ -56,7 +56,9 @@ function doesItExist(arrayToScan, valueToCheck, pathToCheck) {
 
 // Clean up data & time format
 function formatDate(dateTime) {
-  const cleanDate = moment(dateTime).format('dddd, MMMM Do YYYY, h:mm a')
+  const cleanDate = moment(dateTime)
+    .tz('America/Toronto')
+    .format('dddd, MMMM Do YYYY, h:mm a')
   return cleanDate
 }
 
