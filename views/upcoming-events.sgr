@@ -1,7 +1,7 @@
 extends(src='layout.sgr')
   block(name='pagemeta')
     meta(name='description' content='{{ dato.event_page[0].eventSeo.description }}')
-    
+
   block(name='title')
     title {{ dato.event_page[0].eventSeo.title + ' | ' + dato._meta.globalSeo.siteName }}
 
@@ -22,8 +22,8 @@ extends(src='layout.sgr')
                     h4 Upcoming events
                     each(loop='event of dato.event_occurence.filter((event) => event.eventType.id === eventType.id)')
                       time.s-event-date {{{ formatDate(event.eventDate) }}}
-                      address.p-event-address {{ event.eventLocation.address }}
                       hr
+                      p {{{ marked(event.eventDetails) }}}
                   else
                     h4 No upcoming events
                     p Got a bright idea? &#128161;
