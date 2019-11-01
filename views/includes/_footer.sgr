@@ -22,4 +22,4 @@
           li 519-280-6697
 
       .bottom
-        h6 &copy; {{ new Date().getFullYear() }} Forbes and Associates
+        h6 © {{ new Date().getFullYear() }} Forbes and Associates

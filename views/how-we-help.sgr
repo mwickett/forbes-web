@@ -55,8 +55,8 @@ extends(src='layout.sgr')
               //{{ dato._meta.imgixHost + image.path }}?fm=jpg&w=450 450w'
             alt='{{ image.alt }}')
       .siema-buttons
-        button.g-button.prev &larr; Prev
-        button.g-button.next Next &rarr;
+        button.g-button.prev Prev
+        button.g-button.next Next
 
 
     include(src='includes/_cta.sgr')
