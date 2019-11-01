@@ -60,6 +60,7 @@ function formatDate(dateTime) {
 }
 
 module.exports = {
+  root: './',
   devtool: 'source-map',
   matchers: {
     html: '*(**/)*.sgr',
@@ -88,7 +89,8 @@ module.exports = {
       )
     },
     markdown: { linkify: false },
-    parser: sugarml
+    parser: sugarml,
+    root: './views'
   }),
   postcss: cssStandards({
     parser: sugarss
@@ -102,6 +104,8 @@ module.exports = {
     new DatoCMS({
       addDataTo: locals,
       token: process.env.DATO_CMS_TOKEN,
+      drafts: true,
+      // aggressiveRefresh: true,
       models: [
         {
           name: 'cta_block'
@@ -132,6 +136,15 @@ module.exports = {
         },
         {
           name: 'team_page'
+        },
+        {
+          name: 'blog',
+          template: {
+            path: 'views/blog/single.sgr',
+            output: post => {
+              return `blog/${post.slug}.html`
+            }
+          }
         }
       ],
       json: 'data.json'

@@ -51,6 +51,7 @@
     "test": "NODE_ENV=test ava",
     "watch": "spike watch",
     "watch-prod": "spike watch -e production",
-    "compile": "spike compile -e production"
+    "compile": "spike compile -e production",
+    "clean": "spike clean"
   }
 }

@@ -64,6 +64,7 @@ function formatDate(dateTime) {
 
 module.exports = {
   // disable source maps
+  root: './',
   devtool: false,
   matchers: {
     html: '*(**/)*.sgr',
@@ -115,6 +116,15 @@ module.exports = {
         },
         {
           name: 'team_page'
+        },
+        {
+          name: 'blog',
+          template: {
+            path: 'views/blogpage.sgr',
+            output: post => {
+              return `blog/${post.slug}.html`
+            }
+          }
         }
       ]
     }),

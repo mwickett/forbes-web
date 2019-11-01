@@ -1,0 +1,10 @@
+extends(src='layout.sgr')
+  block(name='pagemeta')
+    meta(name='description' content='{{ dato.home_page[0].seoHome.description }}')
+
+  block(name='title')
+    title {{ dato.home_page[0].seoHome.title + ' | ' + dato._meta.globalSeo.siteName }}
+
+  block(name='content')
+    #blog
+      pre {{{ JSON.stringify(dato.blog, null, 2)}}}
