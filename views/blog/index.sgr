@@ -12,5 +12,6 @@ extends(src='layout.sgr')
           .post
             a(href={{post.slug}})
               h3 {{ post.title }}
+              // pre {{ post.blogImage.path }}
       pre {{{ JSON.stringify(dato.blog, null, 2)}}}
 
