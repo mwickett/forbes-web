@@ -6,5 +6,11 @@ extends(src='layout.sgr')
     title {{ dato.home_page[0].seoHome.title + ' | ' + dato._meta.globalSeo.siteName }}
 
   block(name='content')
-    #blog
+    .g-wrapper
+      .post-list
+        each(loop='post of dato.blog')
+          .post
+            a(href={{post.slug}})
+              h3 {{ post.title }}
       pre {{{ JSON.stringify(dato.blog, null, 2)}}}
+
