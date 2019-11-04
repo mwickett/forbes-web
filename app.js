@@ -32,6 +32,10 @@ function checkLength(item) {
   return item.length
 }
 
+function getThing(thing) {
+  return thing
+}
+
 // This is used to check if an event type has no event occurrences, and then display a "no events" placeholder
 // It's using lodash.get to be able to check for an eventType.id inside of the event occurences
 function doesItExist(arrayToScan, valueToCheck, pathToCheck) {
@@ -85,7 +89,8 @@ module.exports = {
         { slugify: slugify },
         { formatDate: formatDate },
         { checkLength: checkLength },
-        { doesItExist: doesItExist }
+        { doesItExist: doesItExist },
+        { getThing: getThing }
       )
     },
     markdown: { linkify: false },
@@ -144,6 +149,12 @@ module.exports = {
             output: post => {
               return `blog/${post.slug}.html`
             }
+          },
+          transform: record => {
+            if (record.blogImage) {
+              record.blogImagePath = record.blogImage.path
+            }
+            return record
           }
         }
       ],

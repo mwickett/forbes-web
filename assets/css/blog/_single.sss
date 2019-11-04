@@ -1,2 +1,17 @@
 #blog-single
-  color: blue
+  & .p-wrapper
+    position: relative
+    margin: 1em
+    // Creates card overlap effect
+    margin-top: -2em
+
+    @media all and (min-width: 600px)
+      margin-top: -5em
+
+  & .blog-post
+    padding: 2em 1em
+    background-color: white
+    margin-bottom: 4em
+
+    @media all and (min-width: 600px)
+      padding: 2em

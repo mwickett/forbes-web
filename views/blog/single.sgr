@@ -6,13 +6,14 @@ extends(src='layout.sgr')
     title {{ dato.home_page[0].seoHome.title + ' | ' + dato._meta.globalSeo.siteName }}
 
   block(name='content')
-    // .p-header-img(role="img" aria-label="Dr. Forbes & Associates Events Page Header" style="background-image: url(//{{{ dato._meta.imgixHost + item.image.path }}}?w=1000&fm=jpg&q=60);")
-    .g-wrapper
-      pre {{{JSON.stringify(item, null, 2)}}}
-      // pre {{{ `${item.blogImage.path}` }}}
-      h1 {{ item.title }}
-      date {{ new Date(item.createdAt) }}
-      .author
-        p {{ item.author.name }}
+    if(condition="{{{item.blogImagePath}}}")
+      .p-header-img(role="img" aria-label="Dr. Forbes & Associates Events Page Header" style="background-image: url(//{{{ dato._meta.imgixHost + item.blogImagePath }}}?w=1000&fm=jpg&q=60);")
+    .p-wrapper
+      .g-wrapper
+        .blog-post
+          h1 {{ item.title }}
+          date {{ new Date(item.createdAt) }}
+          .author
+            p {{ item.author.name }}
 
-      article {{{ marked(item.content) }}}
+          article {{{ marked(item.content) }}}
