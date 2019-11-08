@@ -15,8 +15,9 @@ extends(src='layout.sgr')
         .blog-post
           .g-flourish-bar
           h1 {{ item.title }}
-          date {{ formatDate(item.createdAt, 'dddd, MMMM Do YYYY') }}
-          .author
-            p {{ item.author.name }}
+          span.meta
+            date {{ formatDate(item.createdAt, 'dddd, MMMM Do YYYY') }}
+            span.separator |
+            span {{ item.author.name }}
 
           article {{{ marked(item.content) }}}
