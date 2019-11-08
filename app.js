@@ -56,10 +56,10 @@ function doesItExist(arrayToScan, valueToCheck, pathToCheck) {
 }
 
 // Clean up data & time format
-function formatDate(dateTime) {
+function formatDate(dateTime, format) {
   const cleanDate = moment(dateTime)
     .tz('America/Toronto')
-    .format('dddd, MMMM Do YYYY, h:mm a')
+    .format(format)
   return cleanDate
 }
 
