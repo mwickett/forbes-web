@@ -6,12 +6,16 @@ extends(src='layout.sgr')
     title {{ dato.home_page[0].seoHome.title + ' | ' + dato._meta.globalSeo.siteName }}
 
   block(name='content')
-    .g-wrapper
-      .post-list
-        each(loop='post of dato.blog')
-          .post
+    .p-wrapper
+      .g-wrapper
+        ul.post-list
+          each(loop='post of dato.blog')
             a(href={{post.slug}})
-              h3 {{ post.title }}
-              // pre {{ post.blogImage.path }}
-      pre {{{ JSON.stringify(dato.blog, null, 2)}}}
+              li.post
+                h3 {{ post.title }}
+                span.meta
+                  date {{ formatDate(post.createdAt, 'dddd, MMMM Do YYYY') }}
+                  span.separator |
+                  span {{ post.author.name }}
+        pre {{{ JSON.stringify(dato.blog, null, 2)}}}
 

@@ -1,2 +1,29 @@
-#blog
-   color: blue
+#blog-index
+  & .g-wrapper
+    max-width: 35em
+
+  & .post-list
+    list-style: none
+    margin: 0
+    padding: 0
+
+    & a
+      text-decoration: none
+
+    & .post
+      margin-bottom: 1em
+      border: 1px solid var(--lightGrey)
+      padding: 1em
+      transition: box-shadow 0.5s ease
+
+      &:hover
+        box-shadow: 2px 2px 15px var(--lightGrey)
+
+
+      & span.meta
+        font-family: "soleil", sans-serif
+        color: var(--lightGrey)
+        font-size: smaller
+
+        & .separator
+          margin: 0 1em
