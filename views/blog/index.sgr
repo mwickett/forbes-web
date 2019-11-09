@@ -23,18 +23,18 @@ extends(src='layout.sgr')
                     span.separator |
                     span {{ post.author.name }}
 
-    hr
-    hr
-    hr
-    hr
-    hr
-    hr
-    hr
-    hr
-    hr
-    hr
-    hr
-    hr
+    // hr
+    // hr
+    // hr
+    // hr
+    // hr
+    // hr
+    // hr
+    // hr
+    // hr
+    // hr
+    // hr
+    // hr
     // pre {{{ JSON.stringify(dato, null, 2)}}}
 
 
