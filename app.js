@@ -156,6 +156,15 @@ module.exports = {
             }
             return record
           }
+        },
+        {
+          name: 'blog_list_page',
+          transform: record => {
+            if (record.headerImage) {
+              record.headerImagePath = record.headerImage.path
+            }
+            return record
+          }
         }
       ],
       json: 'data.json'

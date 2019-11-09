@@ -1,10 +1,27 @@
 #blog-index
+  & .p-wrapper
+    position: relative
+    margin: 1em
+    // Creates card overlap effect
+    margin-top: -2em
+
+    @media all and (min-width: 600px)
+      margin-top: -5em
+
+    & .p-content-block
+      padding: 2em 1em
+      background-color: white
+      margin-bottom: 4em
+
+      @media all and (min-width: 600px)
+        padding: 2em
+
   & .g-wrapper
-    max-width: 35em
+    /* max-width: 35em */
 
   & .post-list
     list-style: none
-    margin: 0
+    margin: 3em 0
     padding: 0
 
     & a
@@ -12,12 +29,16 @@
 
     & .post
       margin-bottom: 1em
-      border: 1px solid var(--lightGrey)
+      border: 1px solid #d7d7d7
       padding: 1em
-      transition: box-shadow 0.5s ease
+      transition: box-shadow 0.5s ease, border-color 0.5s ease
 
       &:hover
-        box-shadow: 2px 2px 15px var(--lightGrey)
+        box-shadow: 4px 4px 8px rgba(0,0,0,0.24)
+        border-color: var(--brandColour)
+
+      & h3
+        margin: 0
 
 
       & span.meta

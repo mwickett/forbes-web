@@ -6,16 +6,35 @@ extends(src='layout.sgr')
     title {{ dato.home_page[0].seoHome.title + ' | ' + dato._meta.globalSeo.siteName }}
 
   block(name='content')
+    .p-header-img(role="img" aria-label="Dr. Forbes & Associates Contact Page Header" style="background-image: url(//{{ dato._meta.imgixHost + dato.blog_list_page[0].headerImagePath }}?w=1000&fm=jpg&q=60);")
     .p-wrapper
       .g-wrapper
-        ul.post-list
-          each(loop='post of dato.blog')
-            a(href={{post.slug}})
-              li.post
-                h3 {{ post.title }}
-                span.meta
-                  date {{ formatDate(post.createdAt, 'dddd, MMMM Do YYYY') }}
-                  span.separator |
-                  span {{ post.author.name }}
-        pre {{{ JSON.stringify(dato.blog, null, 2)}}}
+        .p-content-block.g-border
+          .g-flourish-bar
+          h1 {{ dato.blog_list_page[0].heading }}
+          p {{ dato.blog_list_page[0].description }}
+          ul.post-list
+            each(loop='post of dato.blog')
+              a(href={{post.slug}})
+                li.post
+                  h3 {{ post.title }}
+                  span.meta
+                    date {{ formatDate(post.createdAt, 'dddd, MMMM Do YYYY') }}
+                    span.separator |
+                    span {{ post.author.name }}
+
+    hr
+    hr
+    hr
+    hr
+    hr
+    hr
+    hr
+    hr
+    hr
+    hr
+    hr
+    hr
+    // pre {{{ JSON.stringify(dato, null, 2)}}}
+
 
