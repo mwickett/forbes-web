@@ -170,7 +170,8 @@ module.exports = {
       )
     },
     markdown: { linkify: false },
-    parser: sugarml
+    parser: sugarml,
+    root: './views'
   }),
   postcss: cssStandards({
     minify: true,
