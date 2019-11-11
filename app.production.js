@@ -55,10 +55,10 @@ function doesItExist(arrayToScan, valueToCheck, pathToCheck) {
 }
 
 // Clean up data & time format
-function formatDate(dateTime) {
+function formatDate(dateTime, format) {
   const cleanDate = moment(dateTime)
     .tz('America/Toronto')
-    .format('dddd, MMMM Do YYYY, h:mm a')
+    .format(format)
   return cleanDate
 }
 
@@ -120,10 +120,25 @@ module.exports = {
         {
           name: 'blog',
           template: {
-            path: 'views/blogpage.sgr',
+            path: 'views/blog/single.sgr',
             output: post => {
               return `blog/${post.slug}.html`
             }
+          },
+          transform: record => {
+            if (record.blogImage) {
+              record.blogImagePath = record.blogImage.path
+            }
+            return record
+          }
+        },
+        {
+          name: 'blog_list_page',
+          transform: record => {
+            if (record.headerImage) {
+              record.headerImagePath = record.headerImage.path
+            }
+            return record
           }
         }
       ]
