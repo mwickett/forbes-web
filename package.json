@@ -11,6 +11,7 @@
     "babel-plugin-syntax-dynamic-import": "6.18.0",
     "babel-preset-env": "1.7.0",
     "dotenv": "8.1.0",
+    "feed": "^4.0.0",
     "image-webpack-loader": "4.6.0",
     "lazysizes": "4.1.8",
     "lodash.get": "4.4.2",
@@ -51,7 +52,8 @@
     "test": "NODE_ENV=test ava",
     "watch": "spike watch",
     "watch-prod": "spike watch -e production",
-    "compile": "spike compile -e production",
-    "clean": "spike clean"
+    "compile": "spike compile -e production && npm run generate:blog-feed",
+    "clean": "spike clean",
+    "generate:blog-feed": "node ./scripts/build-feed.js"
   }
 }
