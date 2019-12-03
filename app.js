@@ -84,6 +84,7 @@ module.exports = {
     locals: ctx => {
       return Object.assign(
         locals,
+        { draftMode: process.env.DRAFTS === "true" ? true : false },
         { pageId: pageId(ctx) },
         { marked: marked },
         { slugify: slugify },
