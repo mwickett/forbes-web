@@ -1,0 +1,36 @@
+#blog-single
+  & .spacer
+    height: 30px
+    margin-top: 1em
+
+    @media all and (min-width: 600px)
+      margin-top: 10em
+
+  & .g-wrapper
+    max-width: 35em
+    margin-bottom: 8rem
+
+  & .p-wrapper
+    position: relative
+    margin: 1em
+    // Creates card overlap effect
+    margin-top: -2em
+
+    @media all and (min-width: 600px)
+      margin-top: -5em
+
+  & .blog-post
+    padding: 2em 1em
+    background-color: white
+    margin-bottom: 2em
+
+    @media all and (min-width: 600px)
+      padding: 2em
+
+    & span.meta
+      font-family: "soleil", sans-serif
+      color: var(--lightGrey)
+      font-size: smaller
+
+      & .separator
+        margin: 0 1em

@@ -1,22 +1,22 @@
-require('dotenv').config({ silent: true })
+require("dotenv").config({ silent: true });
 
-const htmlStandards = require('reshape-standard')
-const cssStandards = require('spike-css-standards')
-const jsStandards = require('babel-preset-env')
-const pageId = require('spike-page-id')
-const DatoCMS = require('spike-datocms')
-const marked = require('marked')
-const moment = require('moment-timezone')
-const get = require('lodash.get')
-const sugarml = require('sugarml')
-const sugarss = require('sugarss')
+const htmlStandards = require("reshape-standard");
+const cssStandards = require("spike-css-standards");
+const jsStandards = require("babel-preset-env");
+const pageId = require("spike-page-id");
+const DatoCMS = require("spike-datocms");
+const marked = require("marked");
+const moment = require("moment-timezone");
+const get = require("lodash.get");
+const sugarml = require("sugarml");
+const sugarss = require("sugarss");
 
 // const OfflinePlugin = require('offline-plugin')
-const { UglifyJsPlugin } = require('webpack').optimize
+const { UglifyJsPlugin } = require("webpack").optimize;
 // const PushState = require('spike-pushstate')
-const optimize = require('spike-optimize')
+const optimize = require("spike-optimize");
 
-const locals = {}
+const locals = {};
 
 // Used to convert anything to URL friendly slug
 const slugify = function(text) {
@@ -24,15 +24,15 @@ const slugify = function(text) {
     .toString()
     .trim()
     .toLowerCase()
-    .replace(/\s+/g, '-')
-    .replace(/[^\w\-]+/g, '')
-    .replace(/\-\-+/g, '-')
-    .replace(/^-+/, '')
-    .replace(/-+$/, '')
-}
+    .replace(/\s+/g, "-")
+    .replace(/[^\w\-]+/g, "")
+    .replace(/\-\-+/g, "-")
+    .replace(/^-+/, "")
+    .replace(/-+$/, "");
+};
 
 function checkLength(item) {
-  return item.length
+  return item.length;
 }
 
 // This is used to check if an event type has no event occurrences, and then display a "no events" placeholder
@@ -40,44 +40,45 @@ function checkLength(item) {
 function doesItExist(arrayToScan, valueToCheck, pathToCheck) {
   // If the scan target is empty, bail out
   if (arrayToScan.length === 0) {
-    return 0
+    return 0;
   }
   const scanResults = arrayToScan.map(item => {
-    const check = get(item, pathToCheck, 0)
+    const check = get(item, pathToCheck, 0);
     if (check === valueToCheck) {
-      return 1
+      return 1;
     } else {
-      return 0
+      return 0;
     }
-  })
+  });
   // Because our results are an array of 1 or 0, we can reduce down to know if there are any results
-  return scanResults.reduce((acc, val) => acc + val)
+  return scanResults.reduce((acc, val) => acc + val);
 }
 
 // Clean up data & time format
-function formatDate(dateTime) {
+function formatDate(dateTime, format) {
   const cleanDate = moment(dateTime)
-    .tz('America/Toronto')
-    .format('dddd, MMMM Do YYYY, h:mm a')
-  return cleanDate
+    .tz("America/Toronto")
+    .format(format);
+  return cleanDate;
 }
 
 module.exports = {
   // disable source maps
+  root: "./",
   devtool: false,
   matchers: {
-    html: '*(**/)*.sgr',
-    css: '*(**/)*.sss'
+    html: "*(**/)*.sgr",
+    css: "*(**/)*.sss"
   },
   ignore: [
-    '**/layout.sgr',
-    '**/_*',
-    '**/.*',
-    '_cache/**',
-    'readme.md',
-    'yarn.lock',
-    'serverless/**',
-    'services/**'
+    "**/layout.sgr",
+    "**/_*",
+    "**/.*",
+    "_cache/**",
+    "readme.md",
+    "yarn.lock",
+    "serverless/**",
+    "services/**"
   ],
   plugins: [
     // webpack optimization and service worker
@@ -85,38 +86,64 @@ module.exports = {
     new DatoCMS({
       addDataTo: locals,
       token: process.env.DATO_CMS_TOKEN,
+      drafts: process.env.DRAFTS === "true" ? true : false,
       models: [
         {
-          name: 'cta_block'
+          name: "cta_block"
         },
         {
-          name: 'contact_page'
+          name: "contact_page"
         },
         {
-          name: 'event_type'
+          name: "event_type"
         },
         {
-          name: 'event_page'
+          name: "event_page"
         },
         {
-          name: 'event_occurence'
+          name: "event_occurence"
         },
         {
-          name: 'home_page'
+          name: "home_page"
         },
         {
-          name: 'service'
+          name: "service"
         },
         {
-          name: 'services_page'
+          name: "services_page"
         },
         {
-          name: 'team'
+          name: "team"
         },
         {
-          name: 'team_page'
+          name: "team_page"
+        },
+        {
+          name: "blog",
+          template: {
+            path: "views/blog/single.sgr",
+            output: post => {
+              return `blog/${post.slug}.html`;
+            }
+          },
+          transform: record => {
+            if (record.blogImage) {
+              record.blogImagePath = record.blogImage.path;
+            }
+            return record;
+          }
+        },
+        {
+          name: "blog_list_page",
+          transform: record => {
+            if (record.headerImage) {
+              record.headerImagePath = record.headerImage.path;
+            }
+            return record;
+          }
         }
-      ]
+      ],
+      json: "data.json"
     }),
     new UglifyJsPlugin()
     // new OfflinePlugin({ updateStrategy: 'all' })
@@ -126,7 +153,7 @@ module.exports = {
     rules: [
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
-        use: [{ loader: 'image-webpack-loader' }]
+        use: [{ loader: "image-webpack-loader" }]
       }
     ]
   },
@@ -142,10 +169,11 @@ module.exports = {
         { formatDate: formatDate },
         { checkLength: checkLength },
         { doesItExist: doesItExist }
-      )
+      );
     },
     markdown: { linkify: false },
-    parser: sugarml
+    parser: sugarml,
+    root: "./views"
   }),
   postcss: cssStandards({
     minify: true,
@@ -154,7 +182,7 @@ module.exports = {
   }),
   babel: {
     presets: [[jsStandards, { modules: false }]],
-    plugins: ['syntax-dynamic-import']
+    plugins: ["syntax-dynamic-import"]
   },
   afterSpikePlugins: [
     ...optimize({
@@ -163,4 +191,4 @@ module.exports = {
       aggressiveSplitting: true // or set your size limits ex. [30000, 50000]
     })
   ]
-}
+};

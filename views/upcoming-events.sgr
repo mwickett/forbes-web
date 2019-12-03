@@ -21,7 +21,7 @@ extends(src='layout.sgr')
                   if(condition="{{{ doesItExist(dato.event_occurence, eventType.id, 'eventType.id') }}}")
                     h4 Upcoming events
                     each(loop='event of dato.event_occurence.filter((event) => event.eventType.id === eventType.id)')
-                      time.s-event-date {{{ formatDate(event.eventDate) }}}
+                      time.s-event-date {{{ formatDate(event.eventDate, 'dddd, MMMM Do YYYY, h:mm a') }}}
                       hr
                       p {{{ marked(event.eventDetails) }}}
                   else

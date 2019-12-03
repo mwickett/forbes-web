@@ -14,7 +14,7 @@ html(lang='en-ca')
       link(rel="shortcut icon" href="/favicon/favicon.ico")
       meta(name="msapplication-config" content="/favicon/browserconfig.xml")
       meta(name="theme-color" content="#ffffff")
-    
+
     block(name='pagemeta')
       meta(name='description' content='{{ dato._meta.globalSeo.fallbackSeo.description }}')
 
@@ -35,7 +35,7 @@ html(lang='en-ca')
      .wf-loading {visibility: hidden;} .wf-active { visibility: visible; }
 
     block(name='stylesheets')
-      link(rel='stylesheet' href='css/index.css')
+      link(rel='stylesheet' href='/css/index.css')
 
   body(role='document')
     include(src='includes/_nav.sgr')
@@ -44,4 +44,4 @@ html(lang='en-ca')
     include(src='includes/_footer.sgr')
 
     block(name='javascript')
-      script(src='js/main.js' defer)
+      script(src='/js/main.js' defer)

@@ -1,0 +1,38 @@
+extends(src='layout.sgr')
+  block(name='pagemeta')
+    meta(name='description' content='{{ dato.home_page[0].seoHome.description }}')
+
+  block(name='title')
+    title {{ dato.home_page[0].seoHome.title + ' | ' + dato._meta.globalSeo.siteName }}
+
+  block(name='content')
+    .p-header-img(role="img" aria-label="Dr. Forbes & Associates Contact Page Header" style="background-image: url(//{{ dato._meta.imgixHost + dato.blog_list_page[0].headerImagePath }}?w=1000&fm=jpg&q=60);")
+    .p-wrapper
+      .g-wrapper
+        .p-content-block.g-border
+          .g-flourish-bar
+          h1 {{ dato.blog_list_page[0].heading }}
+          p {{ dato.blog_list_page[0].description }}
+          .mailchimp-container
+            link(href="//cdn-images.mailchimp.com/embedcode/slim-10_7.css" rel="stylesheet" type="text/css")
+            #mc_embed_signup
+              form(action="https://drforbes.us5.list-manage.com/subscribe/post?u=e925e7674eb60de4c1d0fbc77&amp;id=c38ca0ae3b" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate)
+                #mc_embed_signup_scroll
+                  label(for="mce-EMAIL") Receive Blog Updates by Email
+                  input(type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required)
+                    div(style="position: absolute; left: -5000px;" aria-hidden="true")
+                      input(type="text" name="b_e925e7674eb60de4c1d0fbc77_c38ca0ae3b" tabindex="-1" value="")
+                  .clear
+                    input(type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button")
+
+          ul.post-list
+            each(loop='post of dato.blog')
+              a(href={{post.slug}})
+                li.post
+                  h3 {{ post.title }}
+                  span.meta
+                    date {{ formatDate(post.createdAt, 'dddd, MMMM Do YYYY') }}
+                    span.separator |
+                    span {{ post.author.name }}
+
+

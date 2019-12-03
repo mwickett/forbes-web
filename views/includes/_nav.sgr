@@ -2,10 +2,10 @@ header.sticky
   .g-wrapper
     .header-content
       #logo
-        a(href='/'): img(src='img/DrForbes-logo.svg' alt="Dr. Forbes & Associates Logo")
+        a(href='/'): img(src='/img/DrForbes-logo.svg' alt="Dr. Forbes & Associates Logo")
         div#navToggle
           a#navLink(href='#') Menu
       nav#nav
         ul
-          each(loop='item in ["How We Help", "Meet Our Team", "Upcoming Events", "Get In Touch"]')
-            li:a(href='{{{ slugify(item) }}}' class="{{{ pageId === slugify(item) ? 'active' : 'inactive'}}}") {{ item }}
+          each(loop='item in ["How We Help", "Meet Our Team", "Upcoming Events", "Blog", "Get In Touch"]')
+            li:a(href='/{{{ slugify(item) }}}' class="{{{ pageId === slugify(item) ? 'active' : 'inactive'}}}") {{ item }}
