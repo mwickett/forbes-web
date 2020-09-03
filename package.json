@@ -13,7 +13,7 @@
     "dotenv": "8.1.0",
     "feed": "^4.0.0",
     "image-webpack-loader": "4.6.0",
-    "lazysizes": "4.1.8",
+    "lazysizes": "5.2.1",
     "lodash.get": "4.4.2",
     "marked": "0.7.0",
     "moment": "2.24.0",
