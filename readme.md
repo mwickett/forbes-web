@@ -4,7 +4,7 @@ Website for Forbes and Associates Psychology Practice.
 
 ## Warning
 
-This is a pretty old project.
+This is a pretty old project, so it might not work.
 
 ## Style Conventions
 
