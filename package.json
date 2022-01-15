@@ -15,7 +15,7 @@
     "image-webpack-loader": "4.6.0",
     "lazysizes": "5.2.1",
     "lodash.get": "4.4.2",
-    "marked": "0.7.0",
+    "marked": "4.0.10",
     "moment": "2.24.0",
     "moment-timezone": "0.5.26",
     "offline-plugin": "5.0.7",
