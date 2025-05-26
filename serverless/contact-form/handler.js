@@ -3,8 +3,8 @@
 const AWS = require('aws-sdk')
 const ses = new AWS.SES()
 
-const RECEIVER = ['mike@wickett.ca', 'mike@drforbes.ca', 'lindsey@drforbes.ca']
-const SENDER = 'mike@drforbes.ca'
+const RECEIVER = ['admin@drforbes.ca', 'lindsey@drforbes.ca']
+const SENDER = 'admin@drforbes.ca'
 
 module.exports.formEmail = function(event, context) {
     console.log('Received event:', event)
